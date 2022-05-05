@@ -1,18 +1,16 @@
 
 /* CSS variables */
 :root {
-    --primary: white;
-
+    --primary: #818D92; /* Light slate gray */
+    --secondary: #586A6A; /* Deep space sparkle */
+    --tertiary: #B9A394; /* Grullo */
+    --quartenary: #D4C5C7; /* Pale silver */
+    --quinary: #DAD4EF; /* Languid lavender */
 }
 
 /* styling general elements */
 * {
-    margin: 0;
-    /* background-color: var(--primary); */
-}
-
-nav{
-    border-style: dotted;
+    /* margin: 0; */
 }
 
 /* styling classes */
