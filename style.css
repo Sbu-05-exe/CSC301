@@ -10,6 +10,12 @@
 
 /* styling general elements */
 * {
+  margin: 0;
+    /* background-color: var(--primary); */
+}
+
+nav{
+    /* border-style: dotted; */
     /* margin: 0; */
 }
 
