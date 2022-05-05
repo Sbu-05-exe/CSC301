@@ -2,12 +2,13 @@
 /* CSS variables */
 :root {
     --primary: white;
-    --secondary: linen;
+
 }
 
 /* styling general elements */
 * {
-    /* margin: 0; */
+    margin: 0;
+    /* background-color: var(--primary); */
 }
 
 /* styling classes */
