@@ -3,6 +3,7 @@
 :root {
     --primary: #818D92; /* Light slate gray */
     --secondary: #586A6A; /* Deep space sparkle */
+    --secondary_dark: #394444;
     --tertiary: #B9A394; /* Grullo */
     --quartenary: #D4C5C7; /* Pale silver */
     --quinary: #DAD4EF; /* Languid lavender */
@@ -14,37 +15,77 @@
     /* background-color: var(--primary); */
 }
 
-header {
+body {
     display: flex;
-    justify-content: space-around;
-    background-color: var(--quinary);
-    padding: 20px;
+    flex-direction: column;
+    min-height: 100vh; /* making the body fit the entire page */
 }
 
-/* styling general elements */
+header {
+    display: flex;
+    justify-content: space-around; /* make the header elements inline and  */
+    background-color: var(--quinary);
+    padding: 20px;                  /* neatly space elements in the header */
+}
+
+main {
+    flex-grow: 1;
+}
+
+footer {
+    background-color: var(--secondary);
+}
+
+/* styling navbar */
 
 nav .menu {
     padding-left: 0;
-    list-style-type: none;
+    list-style-type: none; /* remove the bullets from list items*/
     height: 100%;
     display: flex;
     align-items: center;
 }
 
 nav .menu li {
-    display:inline-block;
+    display: inline-block;
     padding: 0px 10px;
 }
 
 .menu a {
     text-decoration: none;
-    color: var(--secondary)
+    color: var(--secondary);
 }
 
 nav .menu li a:hover {
-    color: var(--tertiary);
+    color: white;
     transition: 0.3s;
 }
 
+/* footer */
 
-/* styling ids */
+footer a {
+    text-decoration: none;
+    color: lightgrey;
+}
+
+footer .contact-us {
+    padding: 20px;
+    color: white;
+}
+
+.contact-us h3 {
+    color: linen;
+}
+
+.contact-us ul {
+    padding-left: 0px;
+}
+.contact-us li {
+    list-style-type: none;
+}
+
+footer p {
+    padding: 8px;
+    color: white;
+    background-color: var(--secondary_dark); 
+}
