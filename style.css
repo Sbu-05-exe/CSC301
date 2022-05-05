@@ -11,6 +11,10 @@
     /* background-color: var(--primary); */
 }
 
+nav{
+    border-style: dotted;
+}
+
 /* styling classes */
 
 
