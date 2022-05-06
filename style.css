@@ -25,7 +25,7 @@ header {
     display: flex;
     justify-content: space-around; /* make the header elements inline and  */
     background-color: var(--quinary);
-    padding: 20px;                  /* neatly space elements in the header */
+    padding: 2rem;                  /* neatly space elements in the header */
 }
 
 main {
@@ -35,11 +35,7 @@ main {
     justify-content: space-around;
 }
 
-footer {
-    background-color: var(--secondary);
-}
-
-/* styling navbar */
+/* styling header */
 
 nav .menu {
     padding-left: 0;
@@ -51,7 +47,7 @@ nav .menu {
 
 nav .menu li {
     display: inline-block;
-    padding: 0px 10px;
+    padding: 0px 1rem;
 }
 
 .menu a {
@@ -63,16 +59,63 @@ nav .menu li a:hover {
     color: white;
     transition: 0.3s;
 }
+/* Styling welcome paragraph */
+
+.welcome {
+    flex-grow: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Styling newsletter*/
+
+.newsletter {
+    padding: 1rem;
+    background-color: linen;
+    flex-grow: 1;
+}
+.newsletter h3 {
+    text-align: center;
+}
+
+#newsletter-form {
+    display: flex;
+    padding: 1rem 0;
+}
+
+#newsletter-form input {
+    border: none;
+    flex-grow: 5;
+    padding: 1rem;
+    /* background-color:#eeeeee; */
+}
+
+#newsletter-form input:focus {
+    outline: none;
+    border: 1rem solid var(--tertiary);
+    border-width: 0 0 1px 0;
+}
+
+#newsletter-form button {
+    flex-grow: 3;
+    border: none;
+    background-color: var(--tertiary)
+}
+
 
 /* footer */
 
+footer {
+    background-color: var(--primary);
+}
 footer a {
     text-decoration: none;
     color: lightgrey;
 }
 
 footer section {
-    padding: 20px 20px;
+    padding: 1rem 2rem;
     color: white;
 }
 
@@ -82,7 +125,10 @@ footer h3 {
 
 .footer-content {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    /* justify-content: space-around; */
 }
 
 .contact-us ul {
@@ -93,7 +139,7 @@ footer h3 {
 }
 
 .copy-symbol {
-    padding: 10px;
+    padding: 1rem;
     color: white;
     background-color: var(--secondary_dark);
     text-align: center; 
