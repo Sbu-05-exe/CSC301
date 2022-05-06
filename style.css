@@ -66,6 +66,8 @@ nav .menu li a:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem; 
 }
 
 /* Styling newsletter*/
@@ -114,6 +116,13 @@ footer a {
     color: lightgrey;
 }
 
+footer a:hover {
+
+    color: linen;
+    transition: 0.3s;
+
+}
+
 footer section {
     padding: 1rem 2rem;
     color: white;
@@ -146,5 +155,6 @@ footer h3 {
 }
 
 .gutter {
-    padding: 0 10vw;
+    padding-left: 10vw;
+    padding-right: 10vw;
 }
