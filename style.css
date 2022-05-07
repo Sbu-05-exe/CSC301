@@ -55,11 +55,11 @@ nav .menu li {
 .menu a {
     text-decoration: none;
     color: var(--secondary);
+	transition: color 0.3s;
 }
 
 nav .menu li a:hover {
     color: white;
-    transition: 0.3s;
 }
 
 .dropdown_content {
@@ -141,6 +141,15 @@ nav .menu li a:hover {
 }
 .newsletter h3 {
     text-align: center;
+	animation-name: blinking;
+	animation-duration: 0.5s;
+	animation-delay: 1s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes blinking {
+	from {color: black;}
+	to {color: var(--quinary);}
 }
 
 #newsletter-form {
