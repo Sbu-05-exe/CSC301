@@ -22,10 +22,9 @@ body {
 }
 
 header {
-    display: flex;
-    justify-content: space-around; /* make the header elements inline and  */
+    justify-content: space-between; /* make the header elements inline and  */
     background-color: linen;
-    padding: 1rem;                  /* neatly space elements in the header */
+    padding: 1rem 0;                  /* neatly space elements in the header */
 }
 
 main {
@@ -45,8 +44,69 @@ main {
 
 header a {
     text-decoration: none;
+    float:  right; /*putting the hamburger and the menu on the same line*/
+    margin-right:  2rem;
 }
 /* creating a hamburger icon */
+
+.hamburger-container {
+    margin-left:  1rem;
+    float:  left;  /* putting the hamburger and the logo on the same line */
+    display:  flex;
+    flex-direction:  column;
+    justify-content: space-between;
+    z-index:  1; /*put the hamburger underneath the #menu-toggle*/
+
+    width:  1.7rem;
+    height:  1.7rem;
+}
+
+.hamburger-container span {
+    border: 1px solid var(--primary);
+    border-radius:  10px;
+    width:  100%;
+    transition:  ease-out 0.5s;
+}
+
+#menu-toggle {
+    position: relative;
+    /*left: -100px;*/
+    left: -1.7rem;
+    opacity: 0; /*hiding the toggle button */
+    width:  1.8rem;
+    height:  1.8rem;
+    z-index:  2; /*put the toggle over the .hamburger-container*/
+}
+
+#menu-toggle:hover {
+    cursor:  pointer;
+}
+
+
+#menu-toggle:checked {
+    /*opacity:  0.2; debugging styling*/
+}
+
+#menu-toggle:checked ~ .hamburger-container .top {
+    /*position: relative;*/
+    /*top:  0.73rem;*/
+    transform:  rotate(45deg) translate(2px,1px);
+    transform-origin:  0% 100%;
+}
+
+#menu-toggle:checked ~ .hamburger-container .middle {
+    opacity:  0;
+}
+
+#menu-toggle:checked ~ .hamburger-container .bottom {
+    transform-origin:  0% 100%;
+    transform:  rotate(-45deg) translate(2px, 0);
+
+    position:  relative;
+
+
+    /*top:  -0.73rem;*/
+}
 
 nav .menu {
     padding-left: 0;
@@ -54,8 +114,9 @@ nav .menu {
     height: 100%;
     display: flex;
     align-items: center;
-    /*display: none; /* hide the navbar by default*/
+    display: none;
 }
+
 
 nav .menu li {
     display: inline-block;
@@ -139,14 +200,14 @@ nav .menu li a:hover {
 }
 
 
-@keyframes waving {
+/*@keyframes waving {
 	0% {transform: rotate(0.0deg) }
 	10% {transform: rotate(14.0deg) }
 	20% {transform: rotate(-14.0deg) }
 	30% {transform: rotate(14.0deg) }
 	40% {transform: rotate(-14.0deg) }
 	50% {transform: rotate(0.0deg) }
-}
+}*/
 
 .welcome {
     flex-grow: 10;
@@ -168,15 +229,15 @@ nav .menu li a:hover {
 .newsletter h3 {
     text-align: center;
 	animation-name: blinking;
-	animation-duration: 0.5s;
+	animation-duration: 1s;
 	animation-delay: 1s;
 	animation-iteration-count: infinite;
 }
 
-@keyframes blinking {
+/*@keyframes blinking {
 	from {color: black;}
-	to {color: var(--quinary);}
-}
+	to {color: var(--quinary);} // remind me to uncomment. I just can't focus with this animation blinking
+}*/
 
 #newsletter-form {
     display: flex;
