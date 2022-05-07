@@ -43,7 +43,7 @@ nav .menu {
     height: 100%;
     display: flex;
     align-items: center;
-    display: none; /* hide the navbar by default*/
+    /*display: none; /* hide the navbar by default*/
 }
 
 nav .menu li {
@@ -61,7 +61,66 @@ nav .menu li a:hover {
     color: white;
     transition: 0.3s;
 }
+
+.dropdown_content {
+	display: none;
+	position: absolute;
+	min-width: 90px;
+	background-color: var(--quartenary);
+	padding: 10px;
+	/* margin: 10px; */
+	
+}
+
+
+.dropdown_content a {
+	display: block;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown:hover .dropdown_content {
+	display: block;
+}
+
+
+/* Styling slideshow gallery */
+
+.projector {
+	position: relative; /* anything in the box moves with it */
+	width: 30%;
+	margin: auto;
+}
+
+.slide {
+	display: none;
+}
+
+.slide img {
+	width: 100%;
+
+}
+
+.prev, .next {
+	position: absolute;
+	top: 50%;
+	margin-top: -50px;
+	padding: 10px;
+	font-size: 16px;
+	background-color: black;
+	color: white;
+}
+
+.next {
+	right: 0;
+}
+
 /* Styling welcome paragraph */
+
+
 
 .welcome {
     flex-grow: 10;
