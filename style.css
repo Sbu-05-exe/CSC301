@@ -1,0 +1,189 @@
+
+/* CSS variables */
+:root {
+    --primary: #818D92; /* Light slate gray */
+    --secondary: #586A6A; /* Deep space sparkle */
+    --secondary_dark: #394444;
+    --tertiary: #B9A394; /* Grullo */
+    --quartenary: #D4C5C7; /* Pale silver */
+    --quinary: #DAD4EF; /* Languid lavender */
+}
+
+/* styling general elements */
+* {
+  margin: 0;
+    /* background-color: var(--primary); */
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* making the body fit the entire page */
+}
+
+header {
+    display: flex;
+    justify-content: space-around; /* make the header elements inline and  */
+    background-color: var(--quinary);
+    padding: 2rem;                  /* neatly space elements in the header */
+}
+
+main {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+/* styling header */
+
+nav .menu {
+    padding-left: 0;
+    list-style-type: none; /* remove the bullets from list items*/
+    height: 100%;
+    display: flex;
+    align-items: center;
+    /*display: none; /* hide the navbar by default*/
+}
+
+nav .menu li {
+    display: inline-block;
+    padding: 0px 1rem;
+}
+
+
+.menu a {
+    text-decoration: none;
+    color: var(--secondary);
+}
+
+nav .menu li a:hover {
+    color: white;
+    transition: 0.3s;
+}
+
+.dropdown_content {
+	display: none;
+	position: absolute;
+	min-width: 90px;
+	background-color: var(--quartenary);
+	padding: 10px;
+	/* margin: 10px; */
+	
+}
+
+
+.dropdown_content a {
+	display: block;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+}
+
+.dropdown:hover .dropdown_content {
+	display: block;
+}
+
+/* Styling welcome paragraph */
+
+
+
+.welcome {
+    flex-grow: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem; 
+    text-align: justify;
+}
+
+/* Styling newsletter*/
+
+.newsletter {
+    padding: 1rem;
+    background-color: linen;
+    flex-grow: 1;
+}
+.newsletter h3 {
+    text-align: center;
+}
+
+#newsletter-form {
+    display: flex;
+    padding: 1rem 0;
+}
+
+#newsletter-form input {
+    border: none;
+    flex-grow: 5;
+    padding: 1rem;
+    /* background-color:#eeeeee; */
+}
+
+#newsletter-form input:focus {
+    outline: none;
+    border: 1rem solid var(--tertiary);
+    border-width: 0 0 1px 0;
+}
+
+#newsletter-form button {
+    flex-grow: 3;
+    border: none;
+    background-color: var(--tertiary)
+}
+
+/* footer */
+
+footer {
+    background-color: var(--primary);
+}
+footer a {
+    text-decoration: none;
+    color: lightgrey;
+}
+
+footer a:hover {
+
+    color: linen;
+    transition: 0.3s;
+
+}
+
+footer section {
+    padding: 1rem 2rem;
+    color: white;
+}
+
+footer h3 {
+    color: linen;
+}
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem;
+    /* justify-content: space-around; */
+}
+
+.contact-us ul {
+    padding-left: 0px;
+}
+.contact-us li {
+    list-style-type: none;
+}
+
+.copy-symbol {
+    padding: 1rem;
+    color: white;
+    background-color: var(--secondary_dark);
+    text-align: center; 
+}
+
+.gutter {
+    padding-left: 10vw;
+    padding-right: 10vw;
+}

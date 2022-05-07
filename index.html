@@ -3,53 +3,69 @@
   <head> 
     <meta charset="utf-8"> 
   	<title>Visiting Makhanda - Home</title>
-	<style>
-	#contact-us-heading {
-		font-family: verdana;
-		color: #CFEB87;
-	}
-	#Visiting-Makhanda-heading {
-		font-family: verdana;
-		color: skyblue;
-	}
-	</style>
+    <link rel="stylesheet" href="style.css">
   </head> 
   <body>  	     
-    <header style="background-color:#CFEB87;border:4px solid;border-color:#E38C59;">
+    <header>
       <h2 id="Visiting-Makhanda-heading">Visiting Makhanda</h2>
-      <nav><ul>
+      <nav><ul class="menu">
         <li> <a href="index.html"> Home </a></li>
         <li> <a href="About.html"> About </a></li>
         <li> <a href="Attractions.html"> Attractions </a></li>
-        <li> <a href="Restaurant.html"> Restaurants </a></li>
+		<div class="dropdown">
+			<li> <a href="Restaurant.html"> Restaurants </a></li>
+			<div class="dropdown_content">
+				<a href="#">Coffeeshops</a>
+				<a href="#">Bars</a>
+				<a href="#">Eateries</a>
+			</div>
+		</div>
         <li> <a href="Login.html" accesskey="l"> Login </a> </li>
       </ul></nav>
     </header>
     <main>
-      <h1>Welcome to Makhanda!</h1>
-      <!-- TODO: make heading -->
-      <p title="Welcome message">From newly-arrived students to well-seasoned travellers, Makhanda offers many historical attractions and fine dining for people of all colours places and different shoes laces. 
-        This small town has an aura that is difficult not to get attached to. From the eccentric weather to the amiable residents of the area, you are destined to embark on a spirited advetures
-        that will leave you with memories that will last a lifetime! </p>
-      <h3><mark>Sign up</mark> <color> for our newsletter! </color></h3>
-      <form action="" method="post">
-        <input type="email" placeholder="you@email.com"></input>
-        <button type="submit">Submit</button>
-      </form>
-	  <br/>
-	  <h3>Terms and Conditions</h3>
-	  <p>Click <a href="terms_and_conds.txt">here</a> for our terms and conditions.</p>
+      <section class="welcome gutter">
+
+        <h1>Welcome to Makhanda!</h1>
+        <!-- TODO: make heading -->
+        <p title="Welcome message">From newly-arrived students to well-seasoned travellers, Makhanda offers many historical attractions and fine dining establishment for people of all colours, places, and different shoes laces. 
+          This small town has magnetic aura that will keep intrigued at every step of the way. From the eccentric weather to the welcoming residents, every tourist is destined to embark on a spirited adventure
+          that leaves you with memories that will last a lifetime! 
+        </p>
+      </section>
+      <section class="newsletter">
+        <h3 class="gutter">Sign up<color> for our newsletter! </color></h3>
+
+        <form id="newsletter-form" action="" method="post">
+          <input type="email" placeholder="you@email.com"></input>
+          <button type="submit">Submit</button>
+        </form>
+
+      </section>
+
+      
     </main>
-    <footer style="background-color:skyblue;border:4px solid;border-color:#E38C59;">
-      <h3 id="contact-us-heading">Contact us</h3>
-      <ul>
-        <li>Emily Morgan: <a href="#">e.morgan@ru.ac.za</a></li>
-        <li>Sibusiso Dlamini:<a href="#">s.dlamini@ru.ac.za</a> </li>
-        <li>John Morrison:<a href="#">j.morrison@ru.ac.za</a> </li>
-      </ul>
-      <p style="text-align: center; ">
-        <br/>
-        <small style="color: white">Copyright &copy; 2022</small>
+    <footer>
+      
+      <div class="footer-content">
+        <section class="contact-us">
+        <h3 id="contact-us-heading">Contact us</h3>
+        <ul>
+          <li>Emily Morgan: <a href="#"> e.morgan@ru.ac.za</a></li>
+          <li>Sibusiso Dlamini:<a href="#"> s.dlamini@ru.ac.za</a> </li>
+          <li>John Morrison:<a href="#"> j.morrison@ru.ac.za</a> </li>
+        </ul>
+        </section>
+        <section class="terms_and_conds">
+
+          <h3>Terms and Conditions</h3>
+          <p>Click <a href="terms_and_conds.txt">here</a> for our terms and conditions.</p>
+        </section>
+      </div>
+
+      <p class="copy-symbol">
+        
+        <small >Copyright &copy; 2022</small>
       </p>
     </footer>
   </body> 
