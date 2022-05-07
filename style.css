@@ -24,8 +24,8 @@ body {
 header {
     display: flex;
     justify-content: space-around; /* make the header elements inline and  */
-    background-color: var(--quinary);
-    padding: 2rem;                  /* neatly space elements in the header */
+    background-color: linen;
+    padding: 1rem;                  /* neatly space elements in the header */
 }
 
 main {
@@ -36,6 +36,17 @@ main {
 }
 
 /* styling header */
+
+.logo-heading {
+    display:  flex;
+    align-items:  center;
+    color:  var(--primary);
+}
+
+header a {
+    text-decoration: none;
+}
+/* creating a hamburger icon */
 
 nav .menu {
     padding-left: 0;
