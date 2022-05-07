@@ -120,7 +120,22 @@ nav .menu li a:hover {
 
 /* Styling welcome paragraph */
 
+.wave {
+	height: 30px;
+	animation-name: waving;
+	animation-duration: 2s;
+	animation-iteration-count: 5;
+}
 
+
+@keyframes waving {
+	0% {transform: rotate(0.0deg) }
+	10% {transform: rotate(14.0deg) }
+	20% {transform: rotate(-14.0deg) }
+	30% {transform: rotate(14.0deg) }
+	40% {transform: rotate(-14.0deg) }
+	50% {transform: rotate(0.0deg) }
+}
 
 .welcome {
     flex-grow: 10;
