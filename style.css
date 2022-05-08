@@ -161,6 +161,8 @@ nav .menu li a:hover {
     color: linen;
 }
 
+/* Styling welcome paragraph */
+
 .dropdown_content {
 	display: none;
 	position: absolute;
@@ -185,7 +187,6 @@ nav .menu li a:hover {
 	display: block;
 }
 
-
 /* Styling slideshow gallery */
 
 .projector {
@@ -200,21 +201,22 @@ nav .menu li a:hover {
 
 .slide img {
 	width: 100%;
-
+	animation-name: fade;
+	animation-duration: 10s; 
 }
 
-.prev, .next {
-	position: absolute;
-	top: 50%;
-	margin-top: -50px;
+.slide-caption {
+	font-family: Courier;
+	text-align: center;
 	padding: 10px;
-	font-size: 16px;
-	background-color: black;
-	color: white;
+	background-color: var(--quinary);
 }
 
-.next {
-	right: 0;
+@keyframes fade {
+	0% {opacity: 0}
+	30% {opacity: 1}
+    70% {opacity: 1}
+    100% {opacity:  0}
 }
 
 /* Styling welcome paragraph */
@@ -327,6 +329,7 @@ footer h3 {
 .contact-us ul {
     padding-left: 0px;
 }
+
 .contact-us li {
     list-style-type: none;
 }
