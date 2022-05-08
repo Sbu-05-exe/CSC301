@@ -12,6 +12,7 @@
 /* styling general elements */
 * {
   margin: 0;
+  box-sizing: border-box;
     /* background-color: var(--primary); */
 }
 
@@ -290,6 +291,42 @@ nav .menu li a:hover {
     flex-grow: 3;
     border: none;
     background-color: var(--tertiary)
+}
+
+/* Styling for about us page - three column layout with header and footer */
+
+.column {
+	/* Each column is left floated and takes up a third of the page */
+	float: left;
+	width: 33.33%;
+	padding: 10px;
+	text-align: center;			/* Image and name are centered */
+}
+
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.column h3 {
+	padding: 10px;
+}
+
+.column p {
+	text-align: left;		/* Information on each person left-aligned */
+}
+
+#person {
+	text-align: center;
+	padding: 10px;
+}
+
+@media screen and (max-width: 600px) {
+	/* If working on a mobile, columns are underneath each other, not next to each other */
+	.column {
+		width: 100%;
+	}
 }
 
 /* footer */
