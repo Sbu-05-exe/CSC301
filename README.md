@@ -11,7 +11,7 @@ Website I took inspiration from
 
 
 ### Backlog
-[x] make mobile friendly menu
-[ ] style the about page
-[ ] style the attractions page
-[ ] style the restuarant page
+- [x] make mobile friendly menu
+- [ ] style the about page
+- [ ] style the attractions page
+- [ ] style the restuarant page
