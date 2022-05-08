@@ -353,6 +353,22 @@ nav .menu li a:hover {
 	}
 }
 
+/* Styling authors notes - multicolumn layout (like newspaper) */
+
+#notes {
+	padding: 20px;
+	background-color: white;
+	margin: 10px;
+}
+
+.disclaimer {
+	padding: 20px;
+	background-color: white;
+	column-count: 3;
+	column-gap: 10%;
+	column-rule: 2px solid var(--secondary_dark);
+}
+
 /* Styling background for each page */
 
 #body_index {
