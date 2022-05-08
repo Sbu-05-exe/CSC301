@@ -299,6 +299,7 @@ nav .menu li a:hover {
 	/* Each column is left floated and takes up a third of the page */
 	float: left;
 	width: 33.33%;
+	height: 600px;
 	padding: 10px;
 	text-align: center;			/* Image and name are centered */
 }
@@ -326,7 +327,36 @@ nav .menu li a:hover {
 	/* If working on a mobile, columns are underneath each other, not next to each other */
 	.column {
 		width: 100%;
+		height: 300px;
 	}
+}
+
+/* Styling background for each page */
+
+#body_index {
+	background-color: white;
+}
+
+#body_about {
+	background: url(./Images/Index/whiteshape.webp);
+}
+
+#body_attractions {
+	background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(./Images/Attractions/burlap.jpg) no-repeat center;
+	background-size: cover;
+}
+
+#body_restaurant {
+	background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(./Images/Attractions/lavender.jpg) no-repeat center;
+	background-size: cover;
+}
+
+#body_signup {
+	background: url(./Images/logo/logo.png);
+}
+
+#body_login {
+	background: url(./Images/logo/potholeanddonkey.png) no-repeat bottom;
 }
 
 /* footer */
