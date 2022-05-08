@@ -3,15 +3,15 @@
 
 Website I took inspiration from
 
-https://www.fodors.com/
-https://superbalist.com/
-https://www.lonelyplanet.com/
-https://www.localeur.com/
-https://www.travelandleisureco.com/us/en
+* [fodor](https://www.fodors.com/)
+* [superbalist](https://superbalist.com/)
+* [lonenlyplanet](https://www.lonelyplanet.com/)
+* [localeur] (https://www.localeur.com/)
+* [travelandleisure] (https://www.travelandleisureco.com/us/en)
 
 
 ### Backlog
-[] make mobile friendly menu
-[] style the about page
-[] style the attractions page
-[] style the restuarant page
+[x] make mobile friendly menu
+[ ] style the about page
+[ ] style the attractions page
+[ ] style the restuarant page
