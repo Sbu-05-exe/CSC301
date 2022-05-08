@@ -39,45 +39,44 @@
     </header>
     <main>
 	  <div class="projector">
-			<a class="prev" onclick="changeSlides(-1)">Prev</a>
 			<div class="slide">
 				<img src="Images/Index/makhanda.jpg" alt="makhanda">
+				<div class="slide-caption">Makhanda</div>
 			</div>
 			<div class="slide">
 				<img src="Images/Index/cathedral.jpg" alt="cathedral">
+				<div class="slide-caption">Cathedral of St. Michael and St. George</div>
 			</div>
 			<div class="slide">
 				<img src="Images/Index/observatory.jpg" alt="observatory">
+				<div class="slide-caption">Observatory</div>
 			</div>
 			<div class="slide">
 				<img src="Images/Index/monument.jpg" alt="monument">
+				<div class="slide-caption">1820 Settlers Monument</div>
 			</div>
-			<a class="next" onclick="changeSlides(1)">Next</a>
 	  </div>
 	  
     <div class="test"></div>
 	  <script>
-			let slideIndex = 1;
+			let slideIndex = 0;
 			showSlides();
-			
-			function changeSlides(x) {
-				slideIndex += x;
-				showSlides();
-			}
 			
 			function showSlides() {
 				var i = 0;
 				let slides = document.getElementsByClassName("slide");
+				for (i = 0; i < slides.length; i++) {
+					slides[i].style.display = "none";
+				}
+				slideIndex++;
 				if (slideIndex > slides.length) {
 					slideIndex = 1;
 				}
 				if (slideIndex < 1) {
 					slideIndex = slides.length;
 				}
-				for (i = 0; i < slides.length; i++) {
-					slides[i].style.display = "none";
-				}
 				slides[slideIndex-1].style.display = "block";
+				setTimeout(showSlides, 4000);
 			}
 	  </script>
 	  

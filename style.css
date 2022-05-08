@@ -175,21 +175,20 @@ nav .menu li a:hover {
 
 .slide img {
 	width: 100%;
-
+	animation-name: fade;
+	animation-duration: 4s; 
 }
 
-.prev, .next {
-	position: absolute;
-	top: 50%;
-	margin-top: -50px;
+.slide-caption {
+	font-family: Courier;
+	text-align: center;
 	padding: 10px;
-	font-size: 16px;
-	background-color: black;
-	color: white;
+	background-color: var(--quinary);
 }
 
-.next {
-	right: 0;
+@keyframes fade {
+	0% {opacity: 0}
+	30% {opacity: 1}
 }
 
 /* Styling welcome paragraph */
