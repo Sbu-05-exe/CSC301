@@ -83,9 +83,9 @@ header>a {
 }
 
 
-#menu-toggle:checked {
-    /*opacity:  0.2; debugging styling*/
-}
+/*#menu-toggle:checked {
+    opacity:  0.2; debugging styling
+}*/
 
 #menu-toggle:checked ~ .hamburger-container .top {
     /*position: relative;*/
@@ -385,7 +385,7 @@ nav .menu li a:hover {
 }
 
 #body_restaurant {
-	background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(./Images/Attractions/lavender.jpg) no-repeat center;
+	background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(./Images/Attractions/Restaurant_Background.png) no-repeat center;
 	background-size: cover;
 }
 
@@ -395,6 +395,17 @@ nav .menu li a:hover {
 
 #body_login {
 	background: url(./Images/logo/potholeanddonkey.png) no-repeat bottom;
+}
+/*styling for sign up content*/
+#sign_up_form{
+    margin-left: auto;
+    margin-right: auto;
+
+}
+
+#Login_form{
+    margin-left: auto;
+    margin-right: auto;
 }
 
 /* footer */
