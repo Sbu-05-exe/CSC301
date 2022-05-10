@@ -193,10 +193,14 @@ nav .menu li a:hover {
 /* Styling slideshow gallery */
 
 .projector {
-	position: relative; /* anything in the box moves with it */
-	/*width: 30%;*/
-	margin: auto;
+    padding:  10vw;
 }
+
+.introduction {
+    padding:  0 10vw;
+    margin-bottom:  10vh;
+}
+
 
 .slide {
 	display: none;
@@ -212,7 +216,9 @@ nav .menu li a:hover {
 	font-family: Courier;
 	text-align: center;
 	padding: 10px;
-	background-color: var(--quinary);
+	background-color: var(--quinary) ;
+    transform:  translateY(-43px);
+    opacity:  0.8;
 }
 
 @keyframes fade {
@@ -246,8 +252,6 @@ nav .menu li a:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 2rem;
-    padding-bottom: 2rem; 
     text-align: justify;
 }
 
@@ -343,10 +347,10 @@ nav .menu li a:hover {
 }
 
 .column p {
-	text-align: left;		/* Information on each person left-aligned */
+	text-align: justify;		/* Information on each person left-aligned */
 }
 
-#person {
+#meet-the-team-heading {
 	text-align: center;
 	padding: 10px;
 }
@@ -472,7 +476,13 @@ footer h3 {
 following styles will only be applied if a device is greater than 850px in other words
 this is styling for the normal version of the website*/
 
+
 @media (min-width:  851px) {
+
+    main {
+        padding-top:  3rem;
+    }
+
     header {
         /*border:  1px solid red;*/
         display:  flex;
@@ -515,5 +525,32 @@ this is styling for the normal version of the website*/
         padding-left: 5vw;
     }
 
+    .welcome {
+        display:  flex;
+        flex-direction:  row-reverse;
+        justify-content: space-around;
+        padding:  0 3rem;
+    }
 
+    .projector {
+        padding:  0;
+    }
+
+    .projector img {
+        width: 40vw;
+        padding:  0;
+    }
+
+    .introduction {
+        width:  50vw;
+        padding: 0;
+        padding-right:  3rem;
+    }
+
+}
+
+@media (min-width:  1200px) {
+    .projector img {
+        width:  25vw;
+    }
 }
