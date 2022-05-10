@@ -12,6 +12,9 @@ Website I took inspiration from
 
 ### Backlog
 - [x] make mobile friendly menu
+- [x] add menu for normal menu
+- [ ] make dropdown menu
+- [ ] overlay caption onto image
 - [ ] style the about page
 - [ ] style the attractions page
 - [ ] style the restuarant page
