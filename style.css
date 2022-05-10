@@ -35,6 +35,10 @@ main {
     justify-content: space-around;
 }
 
+summary:hover {
+    cursor:  pointer;
+}
+
 /* styling header */
 
 .logo-heading {
@@ -384,6 +388,40 @@ nav .menu li a:hover {
 	column-rule: 2px solid var(--secondary_dark);
 }
 
+.top-attractions {
+    display:  flex;
+    justify-content: center;
+    flex-wrap:  wrap; 
+}
+
+details {
+    background-color:  linen;
+    padding: 1.5rem 3rem;
+    width: 60vw;
+    /*min-width:  300px;*/
+    /*min-height:  400px;*/
+    margin-right: 3vw ;
+    margin-bottom:  3vw;
+    display: flex;
+    flex-direction:  column;
+    border-radius:  10px;
+    box-shadow: 10px 10px 40px rgba(200,200,200,.7);
+}
+
+details img {
+    width:  100%;
+    height:  auto;
+}
+
+details summary {
+    padding:  2rem 0;
+}
+
+.details-heading {
+    padding: 1rem 0;
+}
+
+
 /* Styling background for each page */
 
 #body_index {
@@ -409,18 +447,51 @@ nav .menu li a:hover {
 }
 
 #body_login {
-	background: url(./Images/logo/potholeanddonkey.png) no-repeat bottom;
+	background: url(./Images/logo/potholeanddonkey.png) no-repeat right;
 }
 /*styling for sign up content*/
-#sign_up_form{
-    margin-left: auto;
-    margin-right: auto;
 
+.login {
+    margin-top:  0;
 }
 
-#Login_form{
-    margin-left: auto;
-    margin-right: auto;
+#login-form{
+    display:  flex;
+    justify-content: center;
+    align-items:  center;
+    flex-direction:  column;
+    max-width:  500px;
+    background-color:  var(--tertiary);
+    height:  100vh;
+}
+
+
+.form-section h1, .form-section button {
+    margin-bottom:  1rem;
+}
+
+.form-section a {
+    cursor:  pointer;
+    color:  black;
+    text-decoration:  underline;
+}
+
+.form-section input{
+    margin-bottom:  1rem;
+    padding:  1rem;
+    border: 1px solid;
+    border-width:  0 0 1px 0;
+    background-color:  rgba(255,255,255,0.5);
+    border-radius:  100px;
+}
+
+.form-section button {
+    padding:  1rem;
+    width:  7rem;
+    border:  none;
+    background-color:  black;
+    color:  white;
+    border-radius:  100px;
 }
 
 /* footer */
@@ -549,6 +620,10 @@ this is styling for the normal version of the website*/
         width:  50vw;
         padding: 0;
         padding-right:  3rem;
+    }
+
+    details {
+        width: 20vw;
     }
 
 }
