@@ -447,7 +447,7 @@ details summary {
 }
 
 #body_login {
-	background: url(./Images/logo/potholeanddonkey.png) no-repeat right;
+	background: url(./Images/logo/potholeanddonkey.png) no-repeat center;
 }
 /*styling for sign up content*/
 
@@ -469,6 +469,7 @@ details summary {
 .form-section h1, .form-section button {
     margin-bottom:  1rem;
 }
+
 
 .form-section a {
     cursor:  pointer;
