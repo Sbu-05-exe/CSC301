@@ -26,6 +26,7 @@ header {
     justify-content: space-between; /* make the header elements inline and  */
     background-color: linen;
     padding: 1rem 0;                  /* neatly space elements in the header */z
+    position: sticky;
 }
 
 main {
