@@ -12,8 +12,17 @@ Website I took inspiration from
 
 ### Backlog
 - [x] make mobile friendly menu
-- [ ] style the about page
-- [ ] style the attractions page
+- [x] add menu for normal menu
+- [x] style the about page
+- [x] overlay caption onto image
+- [x] style the attractions page
+- [x] media queries
+- [x] 20 css attributes
+- [x] have at least 2 different responsive design features
+- [ ] slide down a bar
+- [ ] finish drop-down menu
+- [ ] comment layouts for other pages
+- [ ] make dropdown menu
 - [ ] style the restuarant page
 
 

@@ -35,6 +35,10 @@ main {
     justify-content: space-around;
 }
 
+summary:hover {
+    cursor:  pointer;
+}
+
 /* styling header */
 
 .logo-heading {
@@ -43,11 +47,12 @@ main {
     color:  var(--primary);
 }
 
-header>a {
+header .home-logo-link {
     text-decoration: none;
     float:  right; /*putting the hamburger and the menu on the same line*/
     margin-right:  2rem;
 }
+
 /* creating a hamburger icon */
 
 .hamburger-container {
@@ -82,7 +87,6 @@ header>a {
     cursor:  pointer;
 }
 
-
 /*#menu-toggle:checked {
     opacity:  0.2; debugging styling
 }*/
@@ -92,7 +96,7 @@ header>a {
     /*top:  0.73rem;*/
     border-color:  var(--secondary_dark);
     z-index:  10;
-    transform:  rotate(45deg) translate(2px,1px);
+    transform:  rotate(45deg) translateY(4px);
     transform-origin:  0% 100%;
 }
 
@@ -104,7 +108,7 @@ header>a {
     z-index:  10;
     border-color:  var(--secondary_dark);
     transform-origin:  0% 100%;
-    transform:  rotate(-45deg) translate(2px, 0);
+    transform:  rotate(-45deg) translateY(-4px);
     position:  relative;
     color:  white;
 
@@ -115,6 +119,8 @@ header>a {
 #menu-toggle:checked ~ nav {
     transform:  translateX(100vw);
 }
+
+/*styling the menu navigation bar*/
 
 nav {
     height: 100vh;
@@ -133,7 +139,6 @@ nav {
 }
 
 nav .menu {
-    height:  50vh;
     display:  flex;
     flex-direction:  column;
     justify-content: space-around;
@@ -170,10 +175,8 @@ nav .menu li a:hover {
 	min-width: 90px;
 	background-color: var(--quartenary);
 	padding: 10px;
-	/* margin: 10px; */
-	
+	/* margin: 10px; */	
 }
-
 
 .dropdown_content a {
 	display: block;
@@ -191,10 +194,14 @@ nav .menu li a:hover {
 /* Styling slideshow gallery */
 
 .projector {
-	position: relative; /* anything in the box moves with it */
-	/*width: 30%;*/
-	margin: auto;
+    padding:  10vw;
 }
+
+.introduction {
+    padding:  0 10vw;
+    margin-bottom:  10vh;
+}
+
 
 .slide {
 	display: none;
@@ -210,7 +217,9 @@ nav .menu li a:hover {
 	font-family: Courier;
 	text-align: center;
 	padding: 10px;
-	background-color: var(--quinary);
+	background-color: var(--quinary) ;
+    transform:  translateY(-43px);
+    opacity:  0.8;
 }
 
 @keyframes fade {
@@ -244,8 +253,6 @@ nav .menu li a:hover {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding-top: 2rem;
-    padding-bottom: 2rem; 
     text-align: justify;
 }
 
@@ -264,14 +271,20 @@ nav .menu li a:hover {
 	animation-iteration-count: infinite;
 }
 
+.heading-highlight {    
+    /*backround-image: linear-gradient(0deg,#d9f5fb 50%,transparent 50%) tried something but it isn't working*/  
+}
+
 /*@keyframes blinking {
 	from {color: black;}
 	to {color: var(--quinary);} // remind me to uncomment. I just can't focus with this animation blinking
 }*/
 
 #newsletter-form {
+    margin:  auto;
     display: flex;
-    padding: 1rem 0;
+    padding: 2rem 0;
+    max-width:  900px;
 }
 
 #newsletter-form input {
@@ -332,15 +345,21 @@ nav .menu li a:hover {
 	clear: both;
 }
 
+.column img {
+    border-radius:  500px;
+    /*width:  150px;*/
+}
+
 .column h3 {
 	padding: 10px;
 }
 
 .column p {
-	text-align: left;		/* Information on each person left-aligned */
+    padding:  1rem;
+	text-align: justify;		/* Information on each person left-aligned */
 }
 
-#person {
+#meet-the-team-heading {
 	text-align: center;
 	padding: 10px;
 }
@@ -369,6 +388,40 @@ nav .menu li a:hover {
 	column-rule: 2px solid var(--secondary_dark);
 }
 
+.top-attractions {
+    display:  flex;
+    justify-content: center;
+    flex-wrap:  wrap; 
+}
+
+details {
+    background-color:  linen;
+    padding: 1.5rem 3rem;
+    width: 60vw;
+    /*min-width:  300px;*/
+    /*min-height:  400px;*/
+    margin-right: 3vw ;
+    margin-bottom:  3vw;
+    display: flex;
+    flex-direction:  column;
+    border-radius:  10px;
+    box-shadow: 10px 10px 40px rgba(200,200,200,.7);
+}
+
+details img {
+    width:  100%;
+    height:  auto;
+}
+
+details summary {
+    padding:  2rem 0;
+}
+
+.details-heading {
+    padding: 1rem 0;
+}
+
+
 /* Styling background for each page */
 
 #body_index {
@@ -394,18 +447,51 @@ nav .menu li a:hover {
 }
 
 #body_login {
-	background: url(./Images/logo/potholeanddonkey.png) no-repeat bottom;
+	background: url(./Images/logo/potholeanddonkey.png) no-repeat right;
 }
 /*styling for sign up content*/
-#sign_up_form{
-    margin-left: auto;
-    margin-right: auto;
 
+.login {
+    margin-top:  0;
 }
 
-#Login_form{
-    margin-left: auto;
-    margin-right: auto;
+#login-form{
+    display:  flex;
+    justify-content: center;
+    align-items:  center;
+    flex-direction:  column;
+    max-width:  500px;
+    background-color:  var(--tertiary);
+    height:  100vh;
+}
+
+
+.form-section h1, .form-section button {
+    margin-bottom:  1rem;
+}
+
+.form-section a {
+    cursor:  pointer;
+    color:  black;
+    text-decoration:  underline;
+}
+
+.form-section input{
+    margin-bottom:  1rem;
+    padding:  1rem;
+    border: 1px solid;
+    border-width:  0 0 1px 0;
+    background-color:  rgba(255,255,255,0.5);
+    border-radius:  100px;
+}
+
+.form-section button {
+    padding:  1rem;
+    width:  7rem;
+    border:  none;
+    background-color:  black;
+    color:  white;
+    border-radius:  100px;
 }
 
 /* footer */
@@ -460,4 +546,90 @@ footer h3 {
 .gutter {
     padding-left: 10vw;
     padding-right: 10vw;
+}
+
+/*mobile and table device width is usually between 320px and 850px so the 
+following styles will only be applied if a device is greater than 850px in other words
+this is styling for the normal version of the website*/
+
+@media (min-width:  851px) {
+
+    main {
+        padding-top:  3rem;
+    }
+
+    header {
+        /*border:  1px solid red;*/
+        display:  flex;
+        justify-content:  space-between;
+        align-items:  center;
+        box-shadow:  0 5px 20px rgba(200,200,200, 0.7);
+    }
+
+    header > input, header .hamburger-container {
+        display:  none; 
+    }
+
+    /*remove the hamburger menu*/
+
+    nav {
+        position:  inherit; 
+        height: inherit;
+        background-color:  inherit;
+        flex-grow:  5;
+        width:  100%;
+    }
+
+    nav .menu {
+        flex-direction:  row;
+    }
+
+    nav .menu li {
+        font-size:  1rem;
+        padding:  1rem;
+    }
+
+    nav .menu li a:hover {
+        color:  var(--tertiary);
+    }
+
+    .home-logo-link {
+        width:  100%;
+        flex-grow: 1;
+        float:  none;
+        padding-left: 5vw;
+    }
+
+    .welcome {
+        display:  flex;
+        flex-direction:  row-reverse;
+        justify-content: space-around;
+        padding:  0 3rem;
+    }
+
+    .projector {
+        padding:  0;
+    }
+
+    .projector img {
+        width: 40vw;
+        padding:  0;
+    }
+
+    .introduction {
+        width:  50vw;
+        padding: 0;
+        padding-right:  3rem;
+    }
+
+    details {
+        width: 20vw;
+    }
+
+}
+
+@media (min-width:  1200px) {
+    .projector img {
+        width:  25vw;
+    }
 }

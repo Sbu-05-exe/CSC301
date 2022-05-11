@@ -9,86 +9,94 @@
 </head>
 <body id="body_attractions">
     <header>
-        <a href="index.html">
-          <div class="logo-heading">
-            <img width="30px" src="./images/logo/potholeanddonkey_transparent.png" alt="logo">
-            <h2> Visit Makhanda</h2>
-          </div>
-        </a>
-        <input id="menu-toggle" type="checkbox">
-        <div class="hamburger-container">  
-          <span class="top"></span>
-          <span class="middle"></span>
-          <span class="bottom"></span>
+      <a class="home-logo-link" href="index.html">
+        <div class="logo-heading">
+          <img width="30px" src="/Images/logo/potholeanddonkey_transparent.png" alt="logo">
+          <h2> Visit Makhanda</h2>
         </div>
-  
-        <nav><ul class="menu">
-          <li> <a href="index.html"> Home </a></li>
-          <li> <a href="About.html"> About </a></li>
-          <li> <a href="Attractions.html"> Attraction</a></li>
-          <li><a href="Restaurant.html"> Restaurant</a></li>
-          <li><a href="Login.html"> Login </a></li>
-        </nav>
-          <!-- 
-      <div class="dropdown">
-          <li> <a href="Attractions.html"> Attractions </a></li>
-  
-      <div class="dropdown">
-              <li> <a href="Restaurant.html"> Restaurants </a></li>
-              <div class="dropdown_content">
-                  <a href="#">Coffeeshops</a>
-                  <a href="#">Bars</a>
-                  <a href="#">Eateries</a>
-              </div>
-          </div>
-          <li> <a href="Login.html" accesskey="l"> Login </a> </li>
-        </ul></nav> -->
-      </header>
+      </a>
+      <input id="menu-toggle" type="checkbox">
+      <div class="hamburger-container">  
+        <span class="top"></span>
+        <span class="middle"></span>
+        <span class="bottom"></span>
+      </div>
+
+      <nav><ul class="menu">
+        <li> <a href="index.html"> Home </a></li>
+        <li> <a href="About.html"> About </a></li>
+        <li> <a href="Attractions.html"> Attraction</a></li>
+        <li><a href="Restaurant.html"> Restaurant</a></li>
+        <li><a href="Login.html"> Login </a></li>
+      </nav>
+        <!-- 
+    <div class="dropdown">
+        <li> <a href="Attractions.html"> Attractions </a></li>
+
+    <div class="dropdown">
+            <li> <a href="Restaurant.html"> Restaurants </a></li>
+            <div class="dropdown_content">
+                <a href="#">Coffeeshops</a>
+                <a href="#">Bars</a>
+                <a href="#">Eateries</a>
+            </div>
+        </div>
+        <li> <a href="Login.html" accesskey="l"> Login </a> </li>
+      </ul></nav> -->
+    </header>
     <main>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/2Ljb7nohK2Q" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
         <h2>Top 5 Attractions</h2>
-            <details>
-                The national arts festival runs every June, showcasing creative talents in Makhanda. 
+        <section class="top-attractions gutter">
+            <details open>
+                
                 Click <a target="_blank" href="https://nationalartsfestival.co.za/" hreflang="en">here</a> for more info
+
                     <summary>
+                        <span class="details-heading">
                         National Arts Festival
+                    </span>
+                <img src="/Images/Attractions/NAF.jpg" alt="national arts festival">
                     </summary>
             </details>
 
-            <details>
+            <details open>
                 A building that represents the ships that the 1820s settlers came on. Every Rhodes student's
                 journey begins and ends at the Monument with the exception of covid students.
                 <summary>
-                    1820 Settlers Monument
+                    <span class="details-heading">
+                    Settlers Monument
+                    </span>
+                    <img src="Images/Attractions/monument.png" alt="monument">
                 </summary>
             </details>
             
-            <details>
+            <details open>
                 This Museum is held in 7 different buildings. It is the second oldest Museum in South Africa.
                 You can have a coffee in an old prison cell if you're into that sort of thing. 
                 <summary>
                     Museum
                 </summary>            
             </details>
-            <details>
+            <details open>
                 A place to embrace the beautiful fauna and flora of Grahamstown. 
                 Or if you're looking for a fun Saturday morning activity, there is the Parkrun.
                 Click <a target="_blank" href="https://www.ru.ac.za/groundsandgardens/botanicalgardens/" hreflang="en">here</a> 
                 for more info.
                 <br/>
-                <img src="./Images/Attractions/bots.jpg" alt="bot_gardens" height="200px"/>
                 <summary>
                     Botanical Gardens
+                <img src="./Images/Attractions/bots.jpg" alt="bot_gardens" height="200px"/>
                 </summary>
             </details>
-            <details>
+            <details open>
                 One of Makhanda great architecture. It is the cathedral of Saint Michael and Saint George.
                 Founded by John Armstrong. It is also the tallest building in the area and has the tallest spire in South Africa.  
                 <summary>
                     The Cathedral
                 </summary>
             </details>
-
+        </section>
     </main>
     <footer>
     
