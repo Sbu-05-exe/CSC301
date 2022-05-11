@@ -8,27 +8,14 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body id="body_attractions">
-    <header>
+    <header id="header_attraction">
       <a class="home-logo-link" href="index.html">
         <div class="logo-heading">
           <img width="30px" src="./Images/logo/potholeanddonkey_transparent.png" alt="logo">
           <h2> Visit Makhanda</h2>
         </div>
       </a>
-      <input id="menu-toggle" type="checkbox">
-      <div class="hamburger-container">  
-        <span class="top"></span>
-        <span class="middle"></span>
-        <span class="bottom"></span>
-      </div>
 
-      <nav><ul class="menu">
-        <li> <a href="index.html"> Home </a></li>
-        <li> <a href="About.html"> About </a></li>
-        <li> <a href="Attractions.html"> Attraction</a></li>
-        <li><a href="Restaurant.html"> Restaurant</a></li>
-        <li><a href="Login.html"> Login </a></li>
-      </nav>
         <!-- 
     <div class="dropdown">
         <li> <a href="Attractions.html"> Attractions </a></li>
@@ -44,7 +31,14 @@
         <li> <a href="Login.html" accesskey="l"> Login </a> </li>
       </ul></nav> -->
     </header>
-    <main>
+	<div class="sidebar">
+        <a href="index.html"> Home </a>
+        <a href="About.html"> About </a>
+        <a href="Attractions.html"> Attraction</a>
+        <a href="Restaurant.html"> Restaurant</a>
+        <a href="Login.html"> Login </a>
+      </div>
+    <main class="shift_attraction">
 
         <h2>Top 5 Attractions</h2>
         <section class="top-attractions gutter">
@@ -100,7 +94,7 @@
             </details>
         </section>
     </main>
-    <footer>
+    <footer class="shift_attraction">
     
         <div class="footer-content">
             <section class="contact-us">
