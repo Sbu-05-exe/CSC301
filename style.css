@@ -61,49 +61,53 @@ header .home-logo-link {
 /* Sidebar for attractions page */
 
 .sidebar {
-	margin: 0;
-	padding: 0;
-	height: 100%;
-	overflow: auto;
-	position: fixed;
-	top: 65px;
-	background-color: linen;
-	width: 200px;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: auto;
+    position: fixed;
+    top: 65px;
+    background-color: linen;
+    width: 200px;
 }
 
 #header_attraction {                
-	position: fixed;
-	width: 100%;
+    position: fixed;
+    width: 100%;
 }
 
 .sidebar a {
-	display: inline-block;
-	text-align: left;
-	padding: 10px;
-	margin:  0;
+    display: inline-block;
+    text-align: left;
+    padding: 10px;
+    margin:  0;
     text-decoration: none;
     width:  100%;
     text-align: left;
     color: var(--secondary_dark);
-	transition: color 0.3s;
+    transition: color 0.3s;
 }
 
 .sidebar a:hover {
-	background-color: var(--primary);
-	color: linen;
+    background-color: var(--primary);
+    color: linen;
 }
 
 .shift_attraction {
-	margin-top: 65px;
-	margin-left: 200px;
+    margin-top: 65px;
+    margin-left: 200px;
 }
 
 /* Scroll down a bar for restaurants page */
 
 #scroll {
-	position:fixed;
-	display: block;
-	top: -200px;
+    position:fixed;
+    display: block;
+    top: -200px;
+}
+
+.dropdown-content {
+    display: none;
 }
 
 /* creating a hamburger icon */
@@ -214,56 +218,21 @@ nav .menu li {
     width:  100%;
     text-align:  center ;
     color: var(--secondary_dark);
-	transition: color 0.3s;
+    transition: color 0.3s;
 }
 
 nav .menu li a:hover {
     color: linen;
 }
 
-/* Styling dropdown boxes */
 
-.dropdown-content {
-    opacity:  0;
-    top: 10px;
-	position: absolute;
-	min-width: 90px;
-	padding: 10px;
-	/* margin: 10px; */	
-}
-
-.dropdown-content a:first-child {
-    border-top: 1px solid white;
-}
-
-.dropdown-content a {
-	background-color: linen;
-    text-align:  left;
-	display: block;
-    padding:  1rem;
-
-    border: solid var(--primary);
-    border-width:   1px 0px ;
-
-}
-
-.dropdown {
-	position: relative;
-	display: inline-block;
-}
-
-.dropdown:hover .dropdown-content {
-	display: block;
-    opacity:  1;
-    transform:  translateY(1rem);
-    transition:  0.2s ease;
-} 
 
 /* Styling slideshow gallery */
 
 .projector {
-	/* Container for the image being shown */
+    /* Container for the image being shown */
     padding:  10vw;
+    z-index:  -1;
 }
 
 .introduction {
@@ -273,29 +242,29 @@ nav .menu li a:hover {
 
 
 .slide {
-	display: none;
+    display: none;
 }
 
 .slide img {
-	width: 100%;
-	animation-name: fade;
-	animation-duration: 10s; 
+    width: 100%;
+    animation-name: fade;
+    animation-duration: 10s; 
 }
 
 .slide-caption {
-	/* Writing at bottom of image currently showing */
-	font-family: Courier;
-	text-align: center;
-	padding: 10px;
-	background-color: var(--quinary) ;
+    /* Writing at bottom of image currently showing */
+    font-family: Courier;
+    text-align: center;
+    padding: 10px;
+    background-color: var(--quinary) ;
     transform:  translateY(-43px);
     opacity:  0.8;
 }
 
 @keyframes fade {
-	/* Animation that makes the transitions better - looks like fading */
-	0% {opacity: 0}
-	30% {opacity: 1}
+    /* Animation that makes the transitions better - looks like fading */
+    0% {opacity: 0}
+    30% {opacity: 1}
     70% {opacity: 1}
     100% {opacity:  0}
 }
@@ -303,21 +272,21 @@ nav .menu li a:hover {
 /* Styling welcome paragraph */
 
 .wave {
-	height: 30px;
-	animation-name: waving;
-	animation-duration: 2s;
-	animation-iteration-count: 5;
+    height: 30px;
+    animation-name: waving;
+    animation-duration: 2s;
+    animation-iteration-count: 5;
 }
 
 
 @keyframes waving {
-	/*Causes picture to rotate backwards and forwards, like waving */
-	0% {transform: rotate(0.0deg) }
-	10% {transform: rotate(14.0deg) }
-	20% {transform: rotate(-14.0deg) }
-	30% {transform: rotate(14.0deg) }
-	40% {transform: rotate(-14.0deg) }
-	50% {transform: rotate(0.0deg) }
+    /*Causes picture to rotate backwards and forwards, like waving */
+    0% {transform: rotate(0.0deg) }
+    10% {transform: rotate(14.0deg) }
+    20% {transform: rotate(-14.0deg) }
+    30% {transform: rotate(14.0deg) }
+    40% {transform: rotate(-14.0deg) }
+    50% {transform: rotate(0.0deg) }
 }
 
 .welcome {
@@ -337,17 +306,17 @@ nav .menu li a:hover {
 }
 .newsletter h3 {
     text-align: center;
-	animation-name: blinking;
-	animation-duration: 1s;
-	animation-delay: 1s;
-	animation-iteration-count: infinite;
+    animation-name: blinking;
+    animation-duration: 1s;
+    animation-delay: 1s;
+    animation-iteration-count: infinite;
 }
 
 
 @keyframes blinking {
-	/* Changes color of text like it is blinking */
-	from {color: black;}
-	to {color: var(--quinary);} // remind me to uncomment. I just can't focus with this animation blinking
+    /* Changes color of text like it is blinking */
+    from {color: black;}
+    to {color: var(--quinary);} // remind me to uncomment. I just can't focus with this animation blinking
 }
 
 #newsletter-form {
@@ -379,40 +348,40 @@ nav .menu li a:hover {
 /* Styling banner above Top 5 restaurants */
 
 .banner {
-	font-family: Calibri;
-	color: white;
-	background-color: var(--secondary_dark);
-	border-radius: 40px;
-	text-align: center;
-	width: 20%;
-	font-size: 200%;
-	position: relative;
-	animation-name: rush;
-	animation-duration: 2s;
-	animation-fill-mode: forwards;
-	animation-timing-function: ease-out;
+    font-family: Calibri;
+    color: white;
+    background-color: var(--secondary_dark);
+    border-radius: 40px;
+    text-align: center;
+    width: 20%;
+    font-size: 200%;
+    position: relative;
+    animation-name: rush;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
 }
 
 @keyframes rush {
-	from {left: 0%;}
-	to {left: 40%;}
+    from {left: 0%;}
+    to {left: 40%;}
 }
 
 /* Styling for about us page - three column layout with header and footer */
 
 .column {
-	/* Each column is left floated and takes up a third of the page */
-	float: left;
-	width: 33.33%;
-	height: 60vh;
-	padding: 10px;
-	text-align: center;			/* Image and name are centered */
+    /* Each column is left floated and takes up a third of the page */
+    float: left;
+    width: 33.33%;
+    height: 60vh;
+    padding: 10px;
+    text-align: center;         /* Image and name are centered */
 }
 
 .row:after {
-	content: "";
-	display: table;
-	clear: both;
+    content: "";
+    display: table;
+    clear: both;
 }
 
 .column img {
@@ -421,59 +390,59 @@ nav .menu li a:hover {
 }
 
 .column h3 {
-	padding: 10px;
+    padding: 10px;
 }
 
 .column p {
     padding:  1rem;
-	text-align: justify;		/* Information on each person left-aligned */
+    text-align: justify;        /* Information on each person left-aligned */
 }
 
 #meet-the-team-heading {
-	text-align: center;
-	padding: 10px;
+    text-align: center;
+    padding: 10px;
 }
 
 @media screen and (max-width: 600px) {
-	/* If working on a mobile, columns are underneath each other, not next to each other for about page*/
-	.column {
-		width: 100%;
-		height: 30vh;
-	}
-	
-	/* Attractions page will have sidebar now at the top of the page */
-	.sidebar {
+    /* If working on a mobile, columns are underneath each other, not next to each other for about page*/
+    .column {
+        width: 100%;
+        height: 30vh;
+    }
+    
+    /* Attractions page will have sidebar now at the top of the page */
+    .sidebar {
     width: 100%;
     height: auto;
     position: relative;
-	}
-	
-	.sidebar a {
+    }
+    
+    .sidebar a {
     text-align: center;
     float: none;
-	}
-	
-	/* Margin is not left-aligned any more */
-	.shift_attraction {
-	margin-top: 65px;
-	margin-left: 0px;
-	}
+    }
+    
+    /* Margin is not left-aligned any more */
+    .shift_attraction {
+    margin-top: 65px;
+    margin-left: 0px;
+    }
 }
 
 /* Styling authors notes - multicolumn layout (like newspaper) */
 
 #notes {
-	padding: 20px;
-	background-color: white;
-	margin: 10px;
+    padding: 20px;
+    background-color: white;
+    margin: 10px;
 }
 
 .disclaimer {
-	padding: 20px;
-	background-color: white;
-	column-count: 3;
-	column-gap: 10%;
-	column-rule: 2px solid var(--secondary_dark);
+    padding: 20px;
+    background-color: white;
+    column-count: 3;
+    column-gap: 10%;
+    column-rule: 2px solid var(--secondary_dark);
 }
 
 /* Styling of headings for Attractions and Restaurants page */
@@ -555,7 +524,7 @@ details summary {
 /* Styling background for each page */
 
 #body_index {
-	background-color: white;
+    background-color: white;
 }
 
 #body_index main {
@@ -563,17 +532,17 @@ details summary {
 }
 
 #body_about {
-	background: url(./Images/Index/whiteshape.webp);
+    background: url(./Images/Index/whiteshape.webp);
 }
 
 #body_attractions {
-	background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(./Images/Attractions/burlap.jpg) no-repeat center;
-	background-size: cover;
+    background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(./Images/Attractions/burlap.jpg) no-repeat center;
+    background-size: cover;
 }
 
 #body_restaurant {
-	background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(./Images/Attractions/Restaurant_Background.png) no-repeat center;
-	background-size: cover;
+    background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(./Images/Attractions/Restaurant_Background.png) no-repeat center;
+    background-size: cover;
 }
 
 body::-webkit-scrollbar{
@@ -586,11 +555,11 @@ body::-webkit-scrollbar-thumb {
 
 
 #body-signup {
-	background: url(./Images/logo/logo.png);
+    background: url(./Images/logo/logo.png);
 }
 
 #body_login {
-	background: url(./Images/logo/potholeanddonkey.png) no-repeat center;
+    background: url(./Images/logo/potholeanddonkey.png) no-repeat center;
 }
 /*styling for sign up content*/
 
@@ -719,6 +688,44 @@ following styles will only be applied if a device is greater than 850px in other
 this is styling for the normal version of the website*/
 
 @media (min-width:  851px) {
+
+    /* Styling dropdown boxes */
+
+    .dropdown-content {
+        opacity:  0;
+        top: 10px;
+        position: absolute;
+        min-width: 90px;
+        padding: 10px;
+        /* margin: 10px; */ 
+    }
+
+    .dropdown-content a:first-child {
+        border-top: 1px solid white;
+    }
+
+    .dropdown-content a {
+        background-color: linen;
+        text-align:  left;
+        display: block;
+        padding:  1rem;
+
+        border: solid var(--primary);
+        border-width:   1px 0px ;
+
+    }
+
+    .dropdown {
+        position: relative;
+        display: inline-block;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+        opacity:  1;
+        transform:  translateY(1rem);
+        transition:  0.2s ease;
+    } 
 
     main {
         padding-top:  6rem;
