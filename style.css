@@ -1,3 +1,7 @@
+/* Most of the pages follow the normal flow layout, with the 
+exception of the about page which has a three-column layout 
+with a header and a footer */
+
 
 /* CSS variables */
 :root {
@@ -217,7 +221,7 @@ nav .menu li a:hover {
     color: linen;
 }
 
-/* Styling welcome paragraph */
+/* Styling dropdown boxes */
 
 .dropdown-content {
     opacity:  0;
@@ -258,6 +262,7 @@ nav .menu li a:hover {
 /* Styling slideshow gallery */
 
 .projector {
+	/* Container for the image being shown */
     padding:  10vw;
 }
 
@@ -278,6 +283,7 @@ nav .menu li a:hover {
 }
 
 .slide-caption {
+	/* Writing at bottom of image currently showing */
 	font-family: Courier;
 	text-align: center;
 	padding: 10px;
@@ -287,6 +293,7 @@ nav .menu li a:hover {
 }
 
 @keyframes fade {
+	/* Animation that makes the transitions better - looks like fading */
 	0% {opacity: 0}
 	30% {opacity: 1}
     70% {opacity: 1}
@@ -303,14 +310,15 @@ nav .menu li a:hover {
 }
 
 
-/*@keyframes waving {
+@keyframes waving {
+	/*Causes picture to rotate backwards and forwards, like waving */
 	0% {transform: rotate(0.0deg) }
 	10% {transform: rotate(14.0deg) }
 	20% {transform: rotate(-14.0deg) }
 	30% {transform: rotate(14.0deg) }
 	40% {transform: rotate(-14.0deg) }
 	50% {transform: rotate(0.0deg) }
-}*/
+}
 
 .welcome {
     flex-grow: 10;
@@ -335,14 +343,12 @@ nav .menu li a:hover {
 	animation-iteration-count: infinite;
 }
 
-.heading-highlight {    
-    /*backround-image: linear-gradient(0deg,#d9f5fb 50%,transparent 50%) tried something but it isn't working*/  
-}
 
-/*@keyframes blinking {
+@keyframes blinking {
+	/* Changes color of text like it is blinking */
 	from {color: black;}
 	to {color: var(--quinary);} // remind me to uncomment. I just can't focus with this animation blinking
-}*/
+}
 
 #newsletter-form {
     margin:  auto;
@@ -470,11 +476,15 @@ nav .menu li a:hover {
 	column-rule: 2px solid var(--secondary_dark);
 }
 
+/* Styling of headings for Attractions and Restaurants page */
+
 .attractions-heading, .restaurants-heading {
     display:  flex;
     justify-content: center;
     margin-bottom:  2rem;
 }
+
+/* Aligning main body and styling for Attractions and Restaurants */
 
 .top-attractions {
     display:  flex;
@@ -496,6 +506,8 @@ nav .menu li a:hover {
     color:  var(--secondary_dark);
 }
 
+/*Styling of tables */
+
 table {
     border-collapse:  collapse;
     padding:  1rem;
@@ -509,6 +521,8 @@ table td {
 table tr:nth-child(2n + 1) {
     background-color:  rgba(0,0,0,0.2);
 }
+
+/* Styling of summary details */
 
 details {
     background-color:  linen;
