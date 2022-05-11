@@ -211,17 +211,28 @@ nav .menu li a:hover {
 
 /* Styling welcome paragraph */
 
-.dropdown_content {
-	display: none;
+.dropdown-content {
+    opacity:  0;
+    top: 10px;
 	position: absolute;
 	min-width: 90px;
-	background-color: var(--quartenary);
 	padding: 10px;
 	/* margin: 10px; */	
 }
 
-.dropdown_content a {
+.dropdown-content a:first-child {
+    border-top: 1px solid white;
+}
+
+.dropdown-content a {
+	background-color: linen;
+    text-align:  left;
 	display: block;
+    padding:  1rem;
+
+    border: solid var(--primary);
+    border-width:   1px 0px ;
+
 }
 
 .dropdown {
@@ -229,9 +240,12 @@ nav .menu li a:hover {
 	display: inline-block;
 }
 
-.dropdown:hover .dropdown_content {
+.dropdown:hover .dropdown-content {
 	display: block;
-}
+    opacity:  1;
+    transform:  translateY(1rem);
+    transition:  0.2s ease;
+} 
 
 /* Styling slideshow gallery */
 
@@ -477,6 +491,7 @@ nav .menu li a:hover {
 table {
     border-collapse:  collapse;
     padding:  1rem;
+    font-family:  Verdana;
 }
 
 table td {
