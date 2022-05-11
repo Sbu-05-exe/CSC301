@@ -176,12 +176,12 @@ nav {
 
     display:  flex;
     justify-content:  center;
+
     /*display: none;*/
 }
 
 nav .menu {
     display:  flex;
-    /*position:  fixed;*/
     flex-direction:  column;
     justify-content: space-around;
 }
@@ -448,6 +448,12 @@ nav .menu li a:hover {
 	column-rule: 2px solid var(--secondary_dark);
 }
 
+.attractions-heading, .restaurant-heading {
+    display:  flex;
+    justify-content: center;
+    margin-bottom:  2rem;
+}
+
 .top-attractions {
     display:  flex;
     justify-content: center;
@@ -486,6 +492,10 @@ details summary {
 
 #body_index {
 	background-color: white;
+}
+
+#body_index main {
+    padding-top:  9rem;
 }
 
 #body_about {
@@ -647,10 +657,13 @@ this is styling for the normal version of the website*/
 @media (min-width:  851px) {
 
     main {
-        padding-top:  3rem;
+        padding-top:  6rem;
     }
 
     header {
+        z-index:  10;
+        width:  100%;
+        position:  fixed;
         display:  flex;
         justify-content:  space-between;
         align-items:  center;
@@ -664,7 +677,7 @@ this is styling for the normal version of the website*/
     /*remove the hamburger menu*/
 
     nav {
-        position:  inherit; 
+        position:  static; 
         height: inherit;
         background-color:  inherit;
         flex-grow:  5;
