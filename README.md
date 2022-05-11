@@ -19,7 +19,7 @@ Website I took inspiration from
 - [x] media queries
 - [x] 20 css attributes
 - [x] have at least 2 different responsive design features
-- [ ] slide down a bar
+- [x] slide down a bar
 - [ ] finish drop-down menu
 - [ ] comment layouts for other pages
 - [ ] make dropdown menu
@@ -28,7 +28,7 @@ Website I took inspiration from
 
 Emily here:
 Out of the 16 things to do, we still have:
-- responsive sidebar, slide down a bar, finish drop-down menu
+- responsive sidebar, slide down a bar-done, finish drop-down menu
 - Have at least 2 different responsive design features (got at least 1 though)
 - Finish commenting layouts for other pages - mainly normal flow
 - Check we have 20 different CSS attributes (seems likely though)
