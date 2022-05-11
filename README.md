@@ -20,6 +20,8 @@ Website I took inspiration from
 - [x] 20 css attributes
 - [x] have at least 2 different responsive design features
 - [x] slide down a bar
+- [ ] choose fonts
+- [ ] make donkey responsive
 - [ ] finish drop-down menu
 - [ ] comment layouts for other pages
 - [ ] make dropdown menu

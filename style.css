@@ -141,6 +141,7 @@ nav {
 
 nav .menu {
     display:  flex;
+    /*position:  fixed;*/
     flex-direction:  column;
     justify-content: space-around;
 }
@@ -452,7 +453,7 @@ body::-webkit-scrollbar-thumb {
   }
 
 
-#body_signup {
+#body-signup {
 	background: url(./Images/logo/logo.png);
 }
 
@@ -473,6 +474,24 @@ body::-webkit-scrollbar-thumb {
     max-width:  500px;
     background-color:  var(--tertiary);
     height:  100vh;
+    box-shadow:  0px 0px 30px rgba(0,0,0, 0.5) ;
+}
+
+#body-signup .form-section {
+
+    display:  flex;
+    justify-content: center;
+}
+
+#signup-form {
+    width:  50vw;
+    height:  100vh;
+    background-color: var(--tertiary) ;
+    display:  flex;
+    flex-direction:  column;
+    justify-content: center;
+    align-items:  center;
+    box-shadow:  0px 0px 30px rgba(0,0,0, 0.5) ;
 }
 
 
@@ -480,17 +499,17 @@ body::-webkit-scrollbar-thumb {
     margin-bottom:  1rem;
 }
 
-
 .form-section a {
     cursor:  pointer;
     color:  black;
     text-decoration:  underline;
+    margin-bottom:  1rem;
 }
 
 .form-section input{
     margin-bottom:  1rem;
     padding:  1rem;
-    border: 1px solid;
+    border: 1px solid black;
     border-width:  0 0 1px 0;
     background-color:  rgba(255,255,255,0.5);
     border-radius:  100px;
@@ -503,6 +522,10 @@ body::-webkit-scrollbar-thumb {
     background-color:  black;
     color:  white;
     border-radius:  100px;
+}
+
+.radio-group {
+    padding:  1rem;
 }
 
 /* footer */
@@ -570,7 +593,6 @@ this is styling for the normal version of the website*/
     }
 
     header {
-        /*border:  1px solid red;*/
         display:  flex;
         justify-content:  space-between;
         align-items:  center;

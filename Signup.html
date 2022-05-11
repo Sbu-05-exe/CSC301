@@ -7,94 +7,53 @@
     <title>Visiting Makhanda</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body id="body_signup">
-    <main>
-        <section class="form-section">
-        <form action="" id="sign-up-form">
+<body id="body-signup">
+        <section class="form-section" >
+        <form action="" id="signup-form">
             <h1>Signup</h1>
-            <table>
-                <tr>
-                    <td>
-                        <label for="fname">Name:</label>
-                    </td>
-                    <td>
-                        <input size="20" maxlength="50" type="text" id="fname" autofocus required />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="fsurname">Surname:</label>
-                    </td>
-                    <td>
-                        <input size="20" maxlength="50" type="text" id="fsurname"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="femail">Email:</label>
-                    </td>
-                    <td>
-                        <input type="email" id="femail" required />
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="fpassword">Password:</label>
-                    </td>
-                    <td>
-                        <input type="password" id="fpassword"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="fConfirm">Confirm:</label>
-                    </td>
-                    <td>
-                        <input type="password" id="fpassword"/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <br/>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
+            <a href="Login.html"><small>already have an account? </small></a>
+    
+           
 
-                        <input 
-                        value="Traveller" 
-                        id="ftraveller" 
-                        type="radio" 
-                        name="usertype"/>
-                        <label for="ftraveller" >Traveller</label>
-                    </td>   
-                </tr>
-                <tr>
-                    <td>
+                <input size="20" maxlength="50" type="text" id="fname" autofocus required placeholder="Name" />
+       
 
-                        <input 
-                            value="Student" 
-                            id="fstudent" 
-                            type="radio" 
-                            name="usertype"
-							checked />
-                        <label for="fstudent">Student</label>
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td><button type="submit">
-                        Signup
-                    </button></td>
-                </tr>
-            </table>
+                <input size="20" maxlength="50" type="text" id="fsurname" placeholder="Surname" />
+     
+         
+      
+                <input type="email" id="femail" required placeholder="Email"/>
+     
+        
+                <input type="password" id="fpassword" placeholder="Password"/>
+ 
+                <input type="password" id="fpassword"
+                placeholder="Confirm Password"/>
+            
+
+                <section class="radio-group">
+                <input 
+                value="Traveller" 
+                id="ftraveller" 
+                type="radio" 
+                name="usertype"/>
+                <label for="ftraveller" >Traveller</label>
+
+                <input 
+                    value="Student" 
+                    id="fstudent" 
+                    type="radio" 
+                    name="usertype"
+					checked />
+                <label for="fstudent">Student</label>
+
+                </section>
+                <button type="submit">
+                    Signup
+                </button>
 
         </form>
         </section>
-
-        
-    </main>
 
 </body>
 </html>
