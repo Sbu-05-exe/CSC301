@@ -448,7 +448,7 @@ nav .menu li a:hover {
 	column-rule: 2px solid var(--secondary_dark);
 }
 
-.attractions-heading, .restaurant-heading {
+.attractions-heading, .restaurants-heading {
     display:  flex;
     justify-content: center;
     margin-bottom:  2rem;
@@ -458,6 +458,33 @@ nav .menu li a:hover {
     display:  flex;
     justify-content: center;
     flex-wrap:  wrap; 
+}
+
+.top-restaurants{
+    display:  flex;
+    justify-content: center;
+    align-items:  center;
+    flex-direction:  column;
+    /*flex-wrap:  wrap; */
+}
+
+.top-restaurants li{
+    padding:  1rem;
+    font-size:  2rem;
+    color:  var(--secondary_dark);
+}
+
+table {
+    border-collapse:  collapse;
+    padding:  1rem;
+}
+
+table td {
+    padding:  1rem;
+}
+
+table tr:nth-child(2n + 1) {
+    background-color:  rgba(0,0,0,0.2);
 }
 
 details {
@@ -726,9 +753,6 @@ this is styling for the normal version of the website*/
         padding-right:  3rem;
     }
 
-    details {
-        width: 20vw;
-    }
 
 }
 
