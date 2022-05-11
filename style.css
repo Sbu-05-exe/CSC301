@@ -94,6 +94,14 @@ header .home-logo-link {
 	margin-left: 200px;
 }
 
+/* Scroll down a bar for restaurants page */
+
+#scroll {
+	position:fixed;
+	display: block;
+	top: -200px;
+}
+
 /* creating a hamburger icon */
 
 .hamburger-container {
