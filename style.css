@@ -247,8 +247,10 @@ nav .menu li a:hover {
 
 .slide img {
     width: 100%;
+	/*
     animation-name: fade;
     animation-duration: 10s; 
+	*/
 }
 
 .slide-caption {
@@ -260,34 +262,24 @@ nav .menu li a:hover {
     transform:  translateY(-43px);
     opacity:  0.8;
 }
-
+/*
 @keyframes fade {
-    /* Animation that makes the transitions better - looks like fading */
+    /* Animation that makes the transitions better - looks like fading 
     0% {opacity: 0}
     30% {opacity: 1}
     70% {opacity: 1}
     100% {opacity:  0}
 }
+*/
+
 
 /* Styling welcome paragraph */
 
-.wave {
+#wave {
     height: 30px;
     animation-name: waving;
-    animation-duration: 2s;
-    animation-iteration-count: 5;
 }
 
-
-@keyframes waving {
-    /*Causes picture to rotate backwards and forwards, like waving */
-    0% {transform: rotate(0.0deg) }
-    10% {transform: rotate(14.0deg) }
-    20% {transform: rotate(-14.0deg) }
-    30% {transform: rotate(14.0deg) }
-    40% {transform: rotate(-14.0deg) }
-    50% {transform: rotate(0.0deg) }
-}
 
 .welcome {
     flex-grow: 10;
@@ -304,19 +296,10 @@ nav .menu li a:hover {
     background-color: linen;
     flex-grow: 1;
 }
-.newsletter h3 {
+#blinking-text {
     text-align: center;
-    animation-name: blinking;
-    animation-duration: 1s;
-    animation-delay: 1s;
-    animation-iteration-count: infinite;
-}
-
-
-@keyframes blinking {
-    /* Changes color of text like it is blinking */
-    from {color: black;}
-    to {color: var(--quinary);} // remind me to uncomment. I just can't focus with this animation blinking
+	color: black;
+    
 }
 
 #newsletter-form {
@@ -347,7 +330,7 @@ nav .menu li a:hover {
 
 /* Styling banner above Top 5 restaurants */
 
-.banner {
+#banner {
     font-family: Calibri;
     color: white;
     background-color: var(--secondary_dark);
@@ -356,16 +339,8 @@ nav .menu li a:hover {
     width: 20%;
     font-size: 200%;
     position: relative;
-    animation-name: rush;
-    animation-duration: 2s;
-    animation-fill-mode: forwards;
-    animation-timing-function: ease-out;
 }
 
-@keyframes rush {
-    from {left: 0%;}
-    to {left: 40%;}
-}
 
 /* Styling for about us page - three column layout with header and footer */
 

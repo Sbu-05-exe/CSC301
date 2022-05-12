@@ -64,29 +64,8 @@
     	  </div>
 	  
     <div class="test"></div>
-	  <script>
-			let slideIndex = 0;
-			showSlides();
-			
-			function showSlides() {
-				var i = 0;
-				let slides = document.getElementsByClassName("slide");
-				for (i = 0; i < slides.length; i++) {
-					slides[i].style.display = "none";
-				}
-				slideIndex++;
-				if (slideIndex > slides.length) {
-					slideIndex = 1;
-				}
-				if (slideIndex < 1) {
-					slideIndex = slides.length;
-				}
-				slides[slideIndex-1].style.display = "block";
-				setTimeout(showSlides, 10000);
-			}
-	  </script>
 	     <div class="introduction">
-        <h1>Welcome to Makhanda! <img class="wave" src="Images/Index/hand.png" alt="hand"></h1>
+        <h1>Welcome to Makhanda! <img id="wave" src="Images/Index/hand.png" alt="hand"></h1>
         <!-- TODO: make heading -->
         <p title="Welcome message">From newly-arrived students to well-seasoned travellers, Makhanda offers many historical attractions and fine dining establishment for people of all colours, places, and different shoes laces. 
           This small town has magnetic aura that will keep intrigued at every step of the way. From the eccentric weather to the welcoming residents, every tourist is destined to embark on a spirited adventure
@@ -95,7 +74,7 @@
         </div>
       </section>
       <section class="newsletter">
-        <h3 class="gutter">Sign up<color> for our newsletter! </color></h3>
+        <h3 class="gutter" id="blinking-text">Sign up for our newsletter! </h3>
 
         <form id="newsletter-form" action="" method="post">
           <input type="email" placeholder="you@email.com"></input>
@@ -128,5 +107,6 @@
         <small >Copyright &copy; 2022</small>
       </p>
     </footer>
+	<script src="main.js"></script>
   </body> 
 </html>

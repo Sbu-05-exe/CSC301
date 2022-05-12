@@ -1,8 +1,130 @@
-alert("hello world");
 
-const element = document.getElementById();
 
-element.addEventListener("focus", )
+//Global variables for wave animation
+var turn = 0, wave_rep = 0;
+var waving_interval = null;
+var direction = 'right';
+
+//Global variables for rush animation
+var move_banner_interval = null;
+var banner_pos = 0;
+
+
+//Global variable for slideshow
+let slideIndex = 0;
+var slides_interval = null;
+var slide_opacity = 0;
+
+//Waving starts only after all elements are loaded
+window.onload = () => {
+	blinking();
+	waving();
+	moveBanner();
+	showSlides();
+	
+};
+
+
+function waving() {
+	//Start waving
+	waving_interval = setInterval(rotate, 20);
+	
+};
+
+function rotate() {
+	//Picture moves back and forth by 20 degrees
+	if (direction == 'right' && turn <= 20) {
+		turn++;
+	}
+	else if (direction == 'right' && turn > 20) {
+		direction = 'left';
+		turn--;
+		wave_rep++;
+	}
+	else if (direction == 'left' && turn >= -20) {
+		turn--;
+	}
+	else {
+		direction = 'right';
+		turn++;
+	}
+	
+	document.getElementById("wave").style.transform = 'rotate(' + turn + 'deg)';
+	
+	//When image has waved 5 times, stop the animation
+	if (wave_rep == 5) {
+		document.getElementById("wave").style.transform = 'rotate(0deg)';
+		clearInterval(waving_interval);
+	}
+	
+}
+
+function blinking() {
+	//Start blinking of heading color
+	var blinking_interval = setInterval(swapcolor, 1000);
+}
+
+
+function swapcolor() {
+	//If it was black, now make it purple
+	if (document.getElementById("blinking-text").style.color == 'black') {
+		document.getElementById("blinking-text").style.color = 'var(--quinary)';
+	}
+	//If it's purple or empty, make it black
+	else {
+		document.getElementById("blinking-text").style.color = 'black';
+	}
+}
+
+function moveBanner() {
+	//Restaurant banner at top of page moves to center
+	move_banner_interval = setInterval(rush, 20);
+}
+
+
+function rush() {
+	if (banner_pos < 40) {
+		banner_pos++;
+		document.getElementById("banner").style.left = banner_pos + '%';
+	}
+	else {
+		clearInterval(move_banner_interval);
+	}
+}
+
+function showSlides() {
+	//Shows one image at a time for the slideshow
+	var i = 0;
+	let slides = document.getElementsByClassName("slide");
+	for (i = 0; i < slides.length; i++) {
+		slides[i].style.display = "none";
+	}
+	slideIndex++;
+	if (slideIndex > slides.length) {
+		slideIndex = 1;
+	}
+	if (slideIndex < 1) {
+		slideIndex = slides.length;
+	}
+	slides[slideIndex-1].style.display = "block";
+	slides_interval = setInterval(fade, 100);
+	setTimeout(showSlides, 10000);
+	
+}
+
+function fade() {
+	console.log("I'm here");
+	if (slide_opacity < 1) {
+		slide_opacity = slide_opacity + 0.05;
+		console.log(slide_opacity);
+		document.getElementsByClassName("slide")[slideIndex-1].getElementsByTagName("img")[0].style.opacity = slide_opacity;
+	}
+	else {
+		clearInterval(slides_interval);
+	}
+}
+
+//Data validation
 
 const validateEmail = (e) => {
     
@@ -10,10 +132,7 @@ const validateEmail = (e) => {
         // display error message
     }
 
-
 }
-
-
 
 const isEmail = (email) => {
     //string@string.string.[string]
