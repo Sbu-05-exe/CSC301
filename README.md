@@ -11,27 +11,11 @@ Website I took inspiration from
 
 
 ### Backlog
-- [x] make mobile friendly menu
-- [x] add menu for normal menu
-- [x] style the about page
-- [x] overlay caption onto image
-- [x] style the attractions page
-- [x] media queries
-- [x] 20 css attributes
-- [x] have at least 2 different responsive design features
-- [x] slide down a bar
-- [x] choose fonts
-- [x] style the restuarant page
-- [x] finish drop-down menu
-- [ ] comment layouts for other pages
-- [ ] make donkey responsive
-
-
-Emily here:
-Out of the 16 things to do, we still have:
-- responsive sidebar, slide down a bar-done, finish drop-down menu
-- Have at least 2 different responsive design features (got at least 1 though)
-- Finish commenting layouts for other pages - mainly normal flow
-- Check we have 20 different CSS attributes (seems likely though)
-- What are CSS list links? We need 3 of those, format tables, format forms
-- Media queries
+- [x] Add behaviour to slideshow/gallery
+- [ ] Use 8 Navigator objects
+- [ ] Manipulate DOM 25 times
+- [ ] Modify backgrounds with javascript
+- [ ] Make improvement to column layouts using Javascript
+- [ ] Make sure every input on each form is validated
+- [ ] We get 50% to creativity
+- [ ] Change all forms to javascript form?
