@@ -116,13 +116,39 @@ function fade() {
 	console.log("I'm here");
 	if (slide_opacity < 1) {
 		slide_opacity = slide_opacity + 0.05;
-		console.log(slide_opacity);
 		document.getElementsByClassName("slide")[slideIndex-1].getElementsByTagName("img")[0].style.opacity = slide_opacity;
 	}
 	else {
 		clearInterval(slides_interval);
 	}
 }
+
+//Toggle to dark mode
+
+var dark_mode_check = document.getElementsByClassName("toggle_bar")[0].getElementsByTagName("input")[0];
+var is_dark = false;
+const original_back = document.body.id;
+console.log(original_back);
+dark_mode_check.addEventListener('click', toggleMode);
+const grey_subsection = document.querySelectorAll('.grey_subsection');
+
+function toggleMode() {
+	grey_subsection.forEach(e => {
+		console.log(e);
+		e.classList.toggle('dark_grey_mode');
+	});
+	if (is_dark) {
+		document.body.id = original_back;
+		console.log(original_back);
+		is_dark = false;
+	}
+	else {
+		document.body.id = 'dark_mode';
+		console.log(original_back);
+		is_dark = true;
+	}
+}
+
 
 //Data validation
 

@@ -406,7 +406,7 @@ nav .menu li a:hover {
 
 /* Styling authors notes - multicolumn layout (like newspaper) */
 
-#notes {
+.notes {
     padding: 20px;
     background-color: white;
     margin: 10px;
@@ -497,10 +497,11 @@ details summary {
 
 
 /* Styling background for each page */
-
+/*
 #body_index {
     background-color: white;
 }
+*/
 
 #body_index main {
     padding-top:  9rem;
@@ -656,6 +657,57 @@ footer h3 {
 .gutter {
     padding-left: 10vw;
     padding-right: 10vw;
+}
+
+/*Styling for toggle bar for light and dark mode - heavily inspired by W3Schools */
+
+.toggle_bar {
+	position: relative;
+	display: inline-block;
+	width: 100px;
+	height: 50px;
+	background-color: white;
+	margin: 10px;
+}
+
+.toggle_bar input {
+	/* Get tick to disappear */
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.slider {
+	position: absolute;
+	top: 5px;
+	left: 15px;
+	right: 0;
+	bottom: 0;
+	width: 20px;
+	height: 40px;
+	background-color: black;
+}
+
+input:checked + .slider {
+	left: 65px;
+}
+
+input:checked + .toggle_bar {
+	background-color: black;
+}
+
+.round {
+	border-radius: 30px;
+}
+
+
+#dark_mode {
+	background-color: black;
+	color: white;
+}
+
+.grey_subsection.dark_grey_mode {
+	background-color: grey;
 }
 
 /*mobile and table device width is usually between 320px and 850px so the 
