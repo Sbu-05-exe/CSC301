@@ -4,82 +4,69 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Visiting Makhanda - Attractions</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body id="body_attractions">
-    <header id="header_attraction">
+    <header>
       <a class="home-logo-link" href="index.html">
         <div class="logo-heading">
           <img width="30px" src="./Images/logo/potholeanddonkey_transparent.png" alt="logo">
           <h2> Visit Makhanda</h2>
         </div>
       </a>
-    </header>
-	<div class="sidebar">
-        <a href="index.html"> Home </a>
-        <a href="About.html"> About </a>
-        <a href="Attractions.html"> Attraction</a>
-        <a href="Restaurant.html"> Restaurant</a>
-        <a href="Login.html"> Login </a>
+      <input id="menu-toggle" type="checkbox">
+      <div class="hamburger-container">  
+        <span class="top"></span>
+        <span class="middle"></span>
+        <span class="bottom"></span>
       </div>
-    <main class="shift_attraction">
 
-        <div class="attractions-heading">
+      <nav><ul class="menu">
+        <li> <a href="index.html"> Home </a></li>
+        <li> <a href="About.html"> About </a></li>
+        <li > <a  href="Attractions.html"> Attractions
+        <li><a href="Login.html"> Login </a></li>
+        </ul>
+      </nav>
+    </header>
+    <main> 
+<!-- 
+        <h1 id="attractions-heading">Attractions</h1> -->
+        <section class="form-section">
+            <form action="" id="attraction-form">
+                <section class="search-section">
+                    <input size="50" type="text" placeholder="where do you want to go?">
+                   <i class="search icon"></i>
+                </section>
+
+                <section class="search-filters-section">
+                    <label for="Sort-By-Dropdown"> Sort by
+                        <select name="" id="Sort-By-Dropdown">
+                            <option value="0">Default</option>
+                            <option value="1">Popularity</option>
+                            <option value="2">Rating</option>
+                        </select>
+                    </label>
+                    <label for="">
+                        Filter by 
+                        <select name="Type" id="Attraction-Type-Dropdown">
+                            <option value="0">All</option>
+                            <option value="1">Restuarant</option>
+                            <option value="2">Attraction</option>
+                        </select>
+    <!-- 
+                        <select name="SubType" id="Attraction-SubType-Dropdown">
+                        </select> -->
+                    </label>
+                </section>
+
+                    
+            </form>
+        </section>
+        <section class="search-results">
             
-            <h2>Top 5 Attractions</h2>
-        </div>
-        <section class="top-attractions gutter">
-            <details open>
-                
-                Click <a target="_blank" href="https://nationalartsfestival.co.za/" hreflang="en">here</a> for more info
-
-                    <summary>
-                        <span class="details-heading">
-                        National Arts Festival
-                    </span>
-                <img src="./Images/Attractions/NAF.jpg" alt="national arts festival">
-                    </summary>
-            </details>
-
-            <details open>
-                A building that represents the ships that the 1820s settlers came on. Every Rhodes student's
-                journey begins and ends at the Monument with the exception of covid students.
-                <summary>
-                    <span class="details-heading">
-                    Settlers Monument
-                    </span>
-                    <img src="./Images/Attractions/monument.JPG" alt="monument">
-                </summary>
-            </details>
-            
-            <details open>
-                This Museum is held in 7 different buildings. It is the second oldest Museum in South Africa.
-                You can have a coffee in an old prison cell if you're into that sort of thing. 
-                <summary>
-                    Museum
-                    <img src="./Images/Attractions/museum.jpg" alt="museum">
-                </summary>            
-            </details>
-            <details open>
-                A place to embrace the beautiful fauna and flora of Grahamstown. 
-                Or if you're looking for a fun Saturday morning activity, there is the Parkrun.
-                Click <a target="_blank" href="https://www.ru.ac.za/groundsandgardens/botanicalgardens/" hreflang="en">here</a> 
-                for more info.
-                <br/>
-                <summary>
-                    Botanical Gardens
-                <img src="./Images/Attractions/bots.jpg" alt="bot_gardens" height="200px"/>
-                </summary>
-            </details>
-            <details open>
-                One of Makhanda great architecture. It is the cathedral of Saint Michael and Saint George.
-                Founded by John Armstrong. It is also the tallest building in the area and has the tallest spire in South Africa.  
-                <summary>
-                    The Cathedral
-                    <img src="./Images/Attractions/cathedral.png" alt="cathedral">
-                </summary>
-            </details>
         </section>
     </main>
     <footer class="shift_attraction">
@@ -106,4 +93,5 @@
         </p>
         </footer>
 </body>
+<script src="main.js"></script>
 </html>
