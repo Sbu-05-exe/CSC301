@@ -15,14 +15,133 @@ let slideIndex = 0;
 var slides_interval = null;
 var slide_opacity = 0;
 
+//Global variables for dark mode
+var is_dark = false;
+var dark_mode_check;
+var original_back;
+var grey_subsection;
+
 //Waving starts only after all elements are loaded
 window.onload = () => {
-	blinking();
-	waving();
-	moveBanner();
-	showSlides();
+	console.log(document.body.id);
+	if (document.body.id == 'body_index') {
+		blinking();
+		waving();
+		showSlides();
+	}
+	if (document.body.id == 'body_restaurant') {
+		moveBanner();
+	}
 	
+	if (document.body.id == 'body_login') {
+		checkLogin();
+	}
+	
+	if (document.body.id == 'body-signup') {
+		checkSignup();
+	}
+	
+	//Toggle to dark mode
+	dark_mode_check = document.getElementsByClassName("toggle_bar")[0].getElementsByTagName("input")[0];
+	original_back = document.body.id;
+	dark_mode_check.addEventListener('click', toggleMode);
+	grey_subsection = document.querySelectorAll('.grey_subsection');
+
+
+
 };
+
+//Basic validation
+
+function checkLogin() {
+	//Checks whether login form has valid information in it
+	document.getElementById("login-form").onsubmit = function(e) {
+		console.log("In check");
+		const username = document.getElementById("fusername").value;
+		const login_pass = document.getElementById("fpassword").value;
+		//Checks that each input is not empty, sends alert if they are
+		if (!username) {
+			e.preventDefault();
+			alert("Username is required.");
+		}
+		else if (!login_pass) {
+			e.preventDefault();
+			alert("Password is required.");
+		}
+		else {
+			//If the username is too short or uses unsupported characters, send alert
+			if (!isUserName(username)) {
+				e.preventDefault();
+				alert("Username must be at least two characters and must not use special characters or numbers.");
+			}
+		}
+	}
+}
+
+function checkSignup() {
+	//Checks whether signup form has valid information in it
+	document.getElementById("signup-form").onsubmit = function(e) {
+		console.log("In check");
+		const username = document.getElementById("fname").value;
+		const email = document.getElementById("femail").value;
+		const signup_pass = document.getElementById("fpassword").value;
+		const confirm_pass = document.getElementById("f_confirm_password").value;
+		//Checks that each input is not empty, sends alert if they are
+		if (!username) {
+			e.preventDefault();
+			alert("Userame is required.");
+		}
+		else if (!email) {
+			e.preventDefault();
+			alert("Email is required.");
+		}
+		else if (!signup_pass) {
+			e.preventDefault();
+			alert("Password is required.");
+		}
+		else if (!confirm_pass) {
+			e.preventDefault();
+			alert("Confirm Password is required.");
+		}
+		else {
+			//If the username is too short or uses unsupported characters, send alert
+			if (!isUserName(username)) {
+				e.preventDefault();
+				alert("Username must be at least two characters and must not use special characters or numbers.");
+			}
+			//Send alert if passwords do not match
+			else if (signup_pass != confirm_pass) {
+				e.preventDefault();
+				alert("Passwords do not match.");
+			}
+			//Send alert if password not sufficiently strong
+			else if (!isStrongPassword(signup_pass)) {
+				e.preventDefault();
+				alert("Password is not strong enough - make sure you use at least three letters, one number and one special character, and is at least 6 characters long.");
+			}
+		}
+	}
+}
+
+//Dark mode
+
+function toggleMode() {
+	//Turns light subsections grey
+	
+	grey_subsection.forEach(e => {
+		e.classList.toggle('dark_grey_mode');
+	});
+	//If it was in dark mode, make the background light again (how it originally was)
+	if (is_dark) {
+		document.body.id = original_back;
+		is_dark = false;
+	}
+	//If it was in light mode, make the background dark
+	else {
+		document.body.id = 'dark_mode';
+		is_dark = true;
+	}
+}
 
 
 function waving() {
@@ -30,6 +149,7 @@ function waving() {
 	waving_interval = setInterval(rotate, 20);
 	
 };
+
 
 function rotate() {
 	//Picture moves back and forth by 20 degrees
@@ -114,10 +234,10 @@ function showSlides() {
 }
 
 function fade() {
+	//Causes the image in the slideshow to fade in
 	console.log("I'm here");
 	if (slide_opacity < 1) {
 		slide_opacity = slide_opacity + 0.05;
-		console.log(slide_opacity);
 		document.getElementsByClassName("slide")[slideIndex-1].getElementsByTagName("img")[0].style.opacity = slide_opacity;
 	}
 	else {
@@ -127,42 +247,10 @@ function fade() {
 	
 }
 
-//Toggle to dark mode
 
-var dark_mode_check = document.getElementsByClassName("toggle_bar")[0].getElementsByTagName("input")[0];
-var is_dark = false;
-const original_back = document.body.id;
-console.log(original_back);
-dark_mode_check.addEventListener('click', toggleMode);
-const grey_subsection = document.querySelectorAll('.grey_subsection');
-
-function toggleMode() {
-	grey_subsection.forEach(e => {
-		console.log(e);
-		e.classList.toggle('dark_grey_mode');
-	});
-	if (is_dark) {
-		document.body.id = original_back;
-		console.log(original_back);
-		is_dark = false;
-	}
-	else {
-		document.body.id = 'dark_mode';
-		console.log(original_back);
-		is_dark = true;
-	}
-}
 
 
 //Data validation
-
-const validateEmail = (e) => {
-    
-    if ( isEmail(e.target.innerText)) {
-        // display error message
-    }
-
-}
 
 const isEmail = (email) => {
     //string@string.string.[string]
@@ -171,15 +259,17 @@ const isEmail = (email) => {
 
 }
 
-let isUserName = (name) => {
+const isUserName = (name) => {
     // username has to begin with letter and then contain numbers or letters
-    return /[A-Za-z](\w|_)*/.test(name);
+	var isUsername = /[A-Za-z](\w|_)*/.test(name);
+	console.log(isUsername);
+	if (name.length < 2) {
+		isUsername = false;
+	}
+	return isUsername;
 
 }
 
-const isName = (name) => {
-    return name.length > 1
-}
 
 const isStrongPassword = (pass) => {
 

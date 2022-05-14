@@ -572,7 +572,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 
-.form-section h1, .form-section button {
+.form-section h1, #login_btn {
     margin-bottom:  1rem;
 }
 
@@ -592,7 +592,7 @@ body::-webkit-scrollbar-thumb {
     border-radius:  100px;
 }
 
-.form-section button {
+#login_btn {
     padding:  1rem;
     width:  7rem;
     border:  none;
