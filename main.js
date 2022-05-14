@@ -107,8 +107,9 @@ function showSlides() {
 		slideIndex = slides.length;
 	}
 	slides[slideIndex-1].style.display = "block";
-	slides_interval = setInterval(fade, 100);
 	setTimeout(showSlides, 10000);
+	console.log("I'm here too");
+	slides_interval = setInterval(fade, 100);
 	
 }
 
@@ -116,11 +117,14 @@ function fade() {
 	console.log("I'm here");
 	if (slide_opacity < 1) {
 		slide_opacity = slide_opacity + 0.05;
+		console.log(slide_opacity);
 		document.getElementsByClassName("slide")[slideIndex-1].getElementsByTagName("img")[0].style.opacity = slide_opacity;
 	}
 	else {
+		slide_opacity = 0;
 		clearInterval(slides_interval);
 	}
+	
 }
 
 //Toggle to dark mode
