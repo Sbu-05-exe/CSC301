@@ -27,7 +27,10 @@ window.onload = () => {
 	if (document.body.id == 'body_index') {
 		blinking();
 		waving();
+		checkIndex();
 		showSlides();
+		checkNav();
+		
 	}
 	if (document.body.id == 'body_restaurant') {
 		moveBanner();
@@ -35,10 +38,13 @@ window.onload = () => {
 	
 	if (document.body.id == 'body_login') {
 		checkLogin();
+		document.getElementById("login_signup").accessKey = "s";
 	}
 	
 	if (document.body.id == 'body-signup') {
 		checkSignup();
+		setupRadio();
+		setupReset();
 	}
 	
 	//Toggle to dark mode
@@ -50,6 +56,55 @@ window.onload = () => {
 
 
 };
+
+//Setting up event listener for signup form
+function setupReset() {
+	var signup_form = document.getElementById("signup-form");
+	signup_form.addEventListener("reset", signupReset);
+}
+
+function signupReset() {
+	window.alert("You reset the form.");
+}
+
+//Setting up event listeners for radio buttons
+function setupRadio() {
+	console.log("Got into setupRadio");
+	var traveller_radio = document.getElementById("fstudent");
+	var student_radio = document.getElementById("ftraveller");
+	traveller_radio.addEventListener("mouseover", checkRadio);
+	student_radio.addEventListener("mouseover", checkRadio);
+}
+
+function checkRadio() {
+	//If mouse moves over radio button, it will automatically be selected
+	console.log("Got into checkRadio");
+	this.click();
+}
+
+
+function checkNav() {
+	var nav_click = document.getElementById("nav_btn");
+	nav_click.addEventListener('click', navInfo);
+	
+}
+
+function navInfo() {
+	//Provides information on the navigator object
+	var info = "The app name of the navigator is: " + navigator.appName;
+	info = info + "\n" + "The navigator app code name is: " + navigator.appCodeName;
+	info = info + "\n" + "The app version is: " + navigator.version;
+	info = info + "\n" + "Cookies enabled: " + navigator.cookieEnabled;
+	info = info + "\n" + "User agent: " + navigator.userAgent;
+	info = info + "\n" + "Language: " + navigator.language;
+	info = info + "\n" + "Platform: " + navigator.platform;
+	info = info + "\n" + "Plugins: " + navigator.plugins;
+	//Use navigator method to tell user if they have Java plugin enabled
+	if (navigator.javaEnabled()) {
+		info = info + "\n" + "Java Applets are enabled";
+	}
+	window.alert(info);
+}
 
 //Basic validation
 
@@ -90,38 +145,67 @@ function checkSignup() {
 		if (!username) {
 			e.preventDefault();
 			alert("Userame is required.");
+			document.getElementById("fname").focus();
 		}
 		else if (!email) {
 			e.preventDefault();
 			alert("Email is required.");
+			document.getElementById("femail").focus();
 		}
 		else if (!signup_pass) {
 			e.preventDefault();
 			alert("Password is required.");
+			document.getElementById("fpassword").focus();
 		}
 		else if (!confirm_pass) {
 			e.preventDefault();
 			alert("Confirm Password is required.");
+			document.getElementById("f_confirm_password").focus();
 		}
 		else {
 			//If the username is too short or uses unsupported characters, send alert
 			if (!isUserName(username)) {
 				e.preventDefault();
 				alert("Username must be at least two characters and must not use special characters or numbers.");
+				document.getElementById("fname").focus();
+			}
+			//Send alert if email is invalid
+			else if (!isEmail(email)) {
+				e.preventDefault();
+				alert("Invalid email");
+				document.getElementById("femail").focus();
 			}
 			//Send alert if passwords do not match
 			else if (signup_pass != confirm_pass) {
 				e.preventDefault();
 				alert("Passwords do not match.");
+				document.getElementById("fpassword").focus();
 			}
 			//Send alert if password not sufficiently strong
 			else if (!isStrongPassword(signup_pass)) {
 				e.preventDefault();
 				alert("Password is not strong enough - make sure you use at least three letters, one number and one special character, and is at least 6 characters long.");
+				document.getElementById("fpassword").focus();
+			}
+			else {
 			}
 		}
 	}
 }
+
+
+function checkIndex() {
+	document.getElementById("newsletter-form").onsubmit = function(e) {
+		const index_email = document.getElementById("email_text").value;
+		//Send alert if email is invalid
+		if (!isEmail(index_email)) {
+			e.preventDefault();
+			alert("Invalid email");
+		}
+	}
+}
+
+
 
 //Dark mode
 
@@ -135,11 +219,13 @@ function toggleMode() {
 	if (is_dark) {
 		document.body.id = original_back;
 		is_dark = false;
+		document.getElementById("toggle_status").innerHTML = "You are in light mode."
 	}
 	//If it was in light mode, make the background dark
 	else {
 		document.body.id = 'dark_mode';
 		is_dark = true;
+		document.getElementById("toggle_status").innerHTML = "You are in dark mode."
 	}
 }
 
@@ -175,6 +261,8 @@ function rotate() {
 	if (wave_rep == 5) {
 		document.getElementById("wave").style.transform = 'rotate(0deg)';
 		clearInterval(waving_interval);
+		//Image is deleted
+		document.getElementById("wave").remove();
 	}
 	
 }
@@ -228,14 +316,12 @@ function showSlides() {
 	}
 	slides[slideIndex-1].style.display = "block";
 	setTimeout(showSlides, 10000);
-	console.log("I'm here too");
 	slides_interval = setInterval(fade, 100);
 	
 }
 
 function fade() {
 	//Causes the image in the slideshow to fade in
-	console.log("I'm here");
 	if (slide_opacity < 1) {
 		slide_opacity = slide_opacity + 0.05;
 		document.getElementsByClassName("slide")[slideIndex-1].getElementsByTagName("img")[0].style.opacity = slide_opacity;
@@ -253,9 +339,8 @@ function fade() {
 //Data validation
 
 const isEmail = (email) => {
-    //string@string.string.[string]
-
-    return email.includes("@") && email.includes(".") 
+	//Regex from: https://www.w3resource.com/javascript/form/email-validation.php
+    return (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email));
 
 }
 
