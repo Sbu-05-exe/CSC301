@@ -226,6 +226,7 @@ function toggleDarkMode() {
 		document.body.id = original_back;
 		is_dark = false;
 		body.classList.remove('darkmode');
+		document.getElementById("#toggle-icon").className = "sun large icon";
 		// document.getElementById("toggle_status").innerHTML = "You are in light mode."
 	}
 	//If it was in light mode, make the background dark
@@ -234,7 +235,7 @@ function toggleDarkMode() {
 		is_dark = true;
 
 		body.classList.add('darkmode');
-
+		document.getElementById("#toggle-icon").className = "moon large icon";
 		// document.getElementById("toggle_status").innerHTML = "You are in dark mode."
 	}
 }
