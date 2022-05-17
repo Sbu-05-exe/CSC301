@@ -226,7 +226,7 @@ function toggleDarkMode() {
 		document.body.id = original_back;
 		is_dark = false;
 		body.classList.remove('darkmode');
-		document.getElementById("#slider-color").style.backgroundColor = "var(--tertiary)";
+		document.getElementById("#submit-color").style.backgroundColor = "var(--tertiary)";
 		document.getElementById("#toggle-icon").className = "sun large icon";
 	}
 	//If it was in light mode, make the background dark
@@ -234,7 +234,7 @@ function toggleDarkMode() {
 		document.body.id = 'dark_mode';
 		is_dark = true;
 		body.classList.add('darkmode');
-		document.getElementById("#slider-color").style.backgroundColor = "var(--primary)";
+		document.getElementById("#submit-color").style.backgroundColor = "var(--primary)";
 		document.getElementById("#toggle-icon").className = "moon large icon";
 	}
 }
