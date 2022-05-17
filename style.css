@@ -523,6 +523,10 @@ nav .menu li .active {
     border-radius:  100px 0px;
 }
 
+.darkmode .attraction-thumbnail img{
+    border: 3px solid var(--primary);
+}
+
 .attraction-description {
     /*flex-grow:  1;*/
     width:  30rem;
@@ -609,9 +613,6 @@ details summary {
     padding-top:  10rem;
 }
 
-#body_about {
-    /*background: url(./Images/Index/whiteshape.webp);*/
-}
 
 #body_attractions {
     /*background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(./Images/Attractions/burlap.jpg) no-repeat center;*/
@@ -827,7 +828,11 @@ footer h3 {
 
 .toggle_bar {
     /* padding: 1rem; */
-    border: 2px solid var(--tertiary)
+    border: 2px solid var(--tertiary);
+}
+
+.darkmode .toggle_bar{
+    border: 2px solid var(--primary);
 }
 
 .slider {
@@ -842,6 +847,9 @@ footer h3 {
 	width: 40px;
 	height: 40px;
 	background-color: var(--tertiary);
+}
+.darkmode .slider{
+    background-color: var(--primary);
 }
 
 input:checked + .slider {
