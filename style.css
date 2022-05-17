@@ -446,14 +446,6 @@ nav .menu li .active {
 
 /* Styling the attractions page*/
 
-/*align heading to center of page*/
-#attractions-heading {
-    /*border:  1px solid red;*/
-    display:  flex;
-    justify-content:  center;
-    padding:  1rem 0;
-}
-
 /*styling the dropdown element*/
 .form-section select {
     padding:  1rem;
@@ -470,13 +462,23 @@ nav .menu li .active {
 #attraction-form {
     display:  flex;
     justify-content: space-around;
-    /*align-items:  center;*/
-
-    /*border-radius:  100px;*/
+    align-items:  center;
     padding-top:  1rem;
+    padding-bottom: 1rem;
     background-color: var(--tertiary);
     margin-bottom:  2rem;
-    /*border:  1px solid red;*/
+    /* border:  1px solid red */
+}
+
+
+.search-filters-section {
+    display: flex;
+
+    flex-direction: row;
+}
+.search-filters-section label {
+    /* border:1px solid red; */
+    flex-direction: row !important;
 }
 
 .darkmode #attraction-form {
@@ -485,8 +487,8 @@ nav .menu li .active {
 }
 
 /*spacing out the elements on the form*/
-#attraction-form label{
-    margin-left:  1rem;
+#attraction-form label:first-child{
+    margin-right:  1rem;
 }
 
 #attraction-form search {
@@ -676,11 +678,30 @@ body::-webkit-scrollbar-thumb {
     margin-bottom:  1rem;
 }
 
+.form-section label {
+    display: flex;
+    flex-direction: column;
+}
+
 .form-section a {
     cursor:  pointer;
     color:  black;
     text-decoration:  underline;
     margin-bottom:  1rem;
+}
+
+.error {
+    color: red;
+    text-align:center;
+    margin-bottom: 1rem;
+}
+
+.hide-error {
+    display: none;
+}
+
+.show-error {
+    display: inherit;
 }
 
 .form-section input{
@@ -786,6 +807,10 @@ footer h3 {
 	height: 50px;
 	background-color: white;
 	/* margin: 10px; */
+}
+
+.toggle_bar:hover {
+    cursor: pointer;
 }
 
 .toggle .sun {
