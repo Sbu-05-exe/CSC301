@@ -19,3 +19,17 @@ Website I took inspiration from
 - [ ] Make sure every input on each form is validated
 - [ ] We get 50% to creativity
 - [ ] Change all forms to javascript form?
+
+- [ ] merge restuarants and attractions into one page
+- [ ] style new attractions page
+- [ ] add filter for search results
+- [ ] add loading animation for search results
+- [ ] add icons on attractions 
+- [ ] remove drop downs
+- [ ] add form validation
+- [ ] add darkmode
+
+### optional features
+- [ ] add a reviews page
+- [ ] make attractions page responsive
+- [ ] decide on fonts

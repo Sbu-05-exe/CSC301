@@ -58,46 +58,6 @@ header .home-logo-link {
     margin-right:  2rem;
 }
 
-/* Sidebar for attractions page */
-
-.sidebar {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    overflow: auto;
-    position: fixed;
-    top: 65px;
-    background-color: linen;
-    width: 200px;
-}
-
-#header_attraction {                
-    position: fixed;
-    width: 100%;
-}
-
-.sidebar a {
-    display: inline-block;
-    text-align: left;
-    padding: 10px;
-    margin:  0;
-    text-decoration: none;
-    width:  100%;
-    text-align: left;
-    color: var(--secondary_dark);
-    transition: color 0.3s;
-}
-
-.sidebar a:hover {
-    background-color: var(--primary);
-    color: linen;
-}
-
-.shift_attraction {
-    margin-top: 65px;
-    margin-left: 200px;
-}
-
 /* Scroll down a bar for restaurants page */
 
 #scroll {
@@ -420,13 +380,84 @@ nav .menu li a:hover {
     column-rule: 2px solid var(--secondary_dark);
 }
 
-/* Styling of headings for Attractions and Restaurants page */
+/* Styling the attractions page*/
 
-.attractions-heading, .restaurants-heading {
+/*align heading to center of page*/
+#attractions-heading {
+    /*border:  1px solid red;*/
     display:  flex;
-    justify-content: center;
-    margin-bottom:  2rem;
+    justify-content:  center;
+    padding:  1rem 0;
 }
+
+/*styling the dropdown element*/
+.form-section select {
+    padding:  1rem;
+    border:  none;
+    margin-left:  1rem;
+    background-color:  rgba(255,255,255, 0.3);
+}
+
+#Attraction-SubType-Dropdown {
+    display: hidden;
+    /*border:  1px solid red;*/
+}
+
+#attraction-form {
+    display:  flex;
+    justify-content: space-around;
+    /*align-items:  center;*/
+
+    /*border-radius:  100px;*/
+    padding-top:  1rem;
+    background-color: var(--tertiary);
+    margin-bottom:  2rem;
+    /*border:  1px solid red;*/
+}
+
+/*spacing out the elements on the form*/
+#attraction-form label{
+    margin-left:  1rem;
+}
+
+#attraction-form search {
+    border:  1px solid red;
+}
+
+.attraction-container {
+    display:  flex;
+    justify-content:  center;
+    margin-bottom:  1rem;
+}
+
+/*Styling th attrations page*/
+.attraction {
+    /*width:  1080px;*/
+    display:  flex;
+    flex-direction:  row;
+    justify-self: center;
+}
+
+.attraction-thumbnail-container {
+
+    width:  30rem;
+    height:  20rem;
+    overflow: hidden;
+    /*flex-grow:  1;*/
+}
+
+.attraction-thumbnail img {
+    border: 3px solid var(--tertiary);
+    width:  100%;
+    border-radius:  100px 0px;
+}
+
+.attraction-description {
+    /*flex-grow:  1;*/
+    width:  30rem;
+    padding:  1rem;
+}
+
 
 /* Aligning main body and styling for Attractions and Restaurants */
 
@@ -508,16 +539,16 @@ details summary {
 }
 
 #body_about {
-    background: url(./Images/Index/whiteshape.webp);
+    /*background: url(./Images/Index/whiteshape.webp);*/
 }
 
 #body_attractions {
-    background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(./Images/Attractions/burlap.jpg) no-repeat center;
+    /*background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(./Images/Attractions/burlap.jpg) no-repeat center;*/
     background-size: cover;
 }
 
 #body_restaurant {
-    background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(./Images/Attractions/Restaurant_Background.png) no-repeat center;
+    /*background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(./Images/Attractions/Restaurant_Background.png) no-repeat center;*/
     background-size: cover;
 }
 
