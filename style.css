@@ -470,12 +470,79 @@ nav .menu li .active {
     /* border:  1px solid red */
 }
 
+#attraction-form label p {
+    display: flex;
+    height: 100%;
+    align-items: center;
+
+}
+
+.search-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.search-button {
+    background-color: linen;
+    height: 40px;
+    width: 40px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 1rem;
+    transition: all 0.3s ease;
+    border: solid ;
+    border-width: 0 0px 3px 0px;
+}
+
+.darkmode .search-button {
+    background-color: var(--primary);
+    border-color: linen;
+}
+
+.search-button:hover {
+    cursor: pointer;
+    /* color: var(--tertiary); */
+    /* border: 3px solid linen; */
+    /* color: linen; */
+    border-color: linen;
+    background-color: var(--primary);
+}
+
+.darkmode .search-button:hover {
+    border-color: var(--primary);
+    background-color: var(--linen);
+}
+
+
+
+
+.search-button:hover .icon {
+    color: linen;
+}
+
+.darkmode search-button:hover .icon {
+    color: var(--primary);
+}
+
+.search-button .icon {
+    transform: translateY(-3px);
+    /* color: var(--primary); */
+}
+
+.darkmode .search-button .icon {
+    color: linen;
+}
+
 
 .search-filters-section {
     display: flex;
-
     flex-direction: row;
+
+
 }
+
 .search-filters-section label {
     /* border:1px solid red; */
     flex-direction: row !important;
@@ -491,8 +558,8 @@ nav .menu li .active {
     margin-right:  1rem;
 }
 
-#attraction-form search {
-    border:  1px solid red;
+#attraction-form input {
+    margin-bottom: 0;
 }
 
 .attraction-container {
