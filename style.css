@@ -13,6 +13,28 @@ with a header and a footer */
     --quinary: #DAD4EF; /* Languid lavender */
 }
 
+.primary-background {
+    background-color: var(--primary);
+}
+
+.linen-background {
+    background-color: linen;
+}
+
+.secondary-background {
+    background-color: var(--secondary);
+}
+.tertiary-background {
+    background-color: var(--tertiary);
+}
+.quartenary-background {
+    background-color: var(--quartenary);
+}
+
+.quinary-background {    
+    background-color: var(--quinary);
+}
+
 /* styling general elements */
 * {
   margin: 0;
@@ -28,9 +50,14 @@ body {
 
 header {
     justify-content: space-between; /* make the header elements inline and  */
-    background-color: linen;
     padding: 1rem 0;                  /* neatly space elements in the header */
     position: sticky;
+    background-color: linen;
+}
+
+.darkmode header {
+    /* background-color: var(--tertiary); */
+    background-color: var(--secondary_dark);
 }
 
 main {
@@ -40,16 +67,24 @@ main {
     justify-content: space-around;
 }
 
-summary:hover {
-    cursor:  pointer;
-}
-
 /* styling header */
 
 .logo-heading {
     display:  flex;
     align-items:  center;
     color:  var(--primary);
+
+}
+
+.logo-heading h2 {
+    margin-top: auto;
+    margin-bottom:auto;
+    /* align-self: flex-start; */
+}
+
+.darkmode h2 {
+    /* color: var(--tertiary); */
+    color: white;
 }
 
 header .home-logo-link {
@@ -111,7 +146,7 @@ header .home-logo-link {
 #menu-toggle:checked ~ .hamburger-container .top {
     /*position: relative;*/
     /*top:  0.73rem;*/
-    border-color:  var(--secondary_dark);
+    border-color:  var(--primary_dark);
     z-index:  10;
     transform:  rotate(45deg) translateY(4px);
     transform-origin:  0% 100%;
@@ -123,7 +158,7 @@ header .home-logo-link {
 
 #menu-toggle:checked ~ .hamburger-container .bottom {
     z-index:  10;
-    border-color:  var(--secondary_dark);
+    border-color:  var(--primary_dark);
     transform-origin:  0% 100%;
     transform:  rotate(-45deg) translateY(-4px);
     position:  relative;
@@ -177,14 +212,26 @@ nav .menu li {
     text-decoration: none;
     width:  100%;
     text-align:  center ;
-    color: var(--secondary_dark);
+    color: var(--primary_dark);
+    padding: 0.5rem;
     transition: color 0.3s;
 }
 
-nav .menu li a:hover {
-    color: linen;
+.darkmode .menu a {
+    color: white;
 }
 
+nav .menu li a:hover {
+    color: linen;   
+    border-bottom: 2px solid var(--tertiary);
+    /* border: 1px solid red; */
+}
+
+
+.darkmode .menu li a:hover {
+    color: linen;
+    border-bottom: 2px solid white;
+}
 
 
 /* Styling slideshow gallery */
@@ -293,7 +340,7 @@ nav .menu li a:hover {
 #banner {
     font-family: Calibri;
     color: white;
-    background-color: var(--secondary_dark);
+    background-color: var(--primary_dark);
     border-radius: 40px;
     text-align: center;
     width: 20%;
@@ -377,7 +424,7 @@ nav .menu li a:hover {
     background-color: white;
     column-count: 3;
     column-gap: 10%;
-    column-rule: 2px solid var(--secondary_dark);
+    column-rule: 2px solid var(--primary_dark);
 }
 
 /* Styling the attractions page*/
@@ -413,6 +460,11 @@ nav .menu li a:hover {
     background-color: var(--tertiary);
     margin-bottom:  2rem;
     /*border:  1px solid red;*/
+}
+
+.darkmode #attraction-form {
+    background-color: var(--primary);
+    color: black;
 }
 
 /*spacing out the elements on the form*/
@@ -698,7 +750,12 @@ footer h3 {
 	width: 100px;
 	height: 50px;
 	background-color: white;
-	margin: 10px;
+	/* margin: 10px; */
+}
+
+.toggle .sun {
+    color: linen;
+    transform: translate(1px, -1px);
 }
 
 .toggle_bar input {
@@ -708,19 +765,27 @@ footer h3 {
 	height: 0;
 }
 
+.toggle_bar {
+    /* padding: 1rem; */
+    border: 2px solid var(--tertiary)
+}
+
 .slider {
 	position: absolute;
-	top: 5px;
-	left: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+	top: 3px;
+	left: 3px;
 	right: 0;
 	bottom: 0;
-	width: 20px;
+	width: 40px;
 	height: 40px;
-	background-color: black;
+	background-color: var(--tertiary);
 }
 
 input:checked + .slider {
-	left: 65px;
+	transform: translateX(50px);
 }
 
 input:checked + .toggle_bar {
@@ -794,9 +859,10 @@ this is styling for the normal version of the website*/
         width:  100%;
         position:  fixed;
         display:  flex;
+        height: 6rem;
         justify-content:  space-between;
         align-items:  center;
-        box-shadow:  0 5px 20px rgba(200,200,200, 0.7);
+        box-shadow:  0 5px 20px rgba(0,0,0, 0.2);
     }
 
     header > input, header .hamburger-container {
@@ -815,6 +881,8 @@ this is styling for the normal version of the website*/
 
     nav .menu {
         flex-direction:  row;
+        justify-content:center;
+        align-items: center;
     }
 
     nav .menu li {
@@ -824,6 +892,10 @@ this is styling for the normal version of the website*/
 
     nav .menu li a:hover {
         color:  var(--tertiary);
+    }
+
+    .darkmode nav .menu li a:hover {
+        /* color: var(--teriary)    */
     }
 
     .home-logo-link {

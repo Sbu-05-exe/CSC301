@@ -1,12 +1,11 @@
-
 //Global variables for wave animation
-var turn = 0, wave_rep = 0;
-var waving_interval = null;
-var direction = 'right';
+let turn = 0, waveRep = 0;
+let waving_interval = null;
+let direction = 'right';
 
 //Global variables for rush animation
-var move_banner_interval = null;
-var banner_pos = 0;
+let move_banner_interval = null;
+let banner_pos = 0;
 
 
 //Global variable for slideshow
@@ -15,10 +14,17 @@ var slides_interval = null;
 var slide_opacity = 0;
 
 //Global variables for dark mode
-var is_dark = false;
-var dark_mode_check;
-var original_back;
-var grey_subsection;
+let is_dark = false;
+let dark_mode_check;
+let original_back;
+let grey_subsection;
+
+
+// declaring all elements that need to be interacted with
+const searchResults = document.querySelector(".search-results");
+const searchInput = document.getElementById("#");
+const body = document.getElementsByTagName("body")[0];
+// const root = document.querySelectory(':root');
 
 //Waving starts only after all elements are loaded
 window.onload = () => {
@@ -49,7 +55,7 @@ window.onload = () => {
 	//Toggle to dark mode
 	dark_mode_check = document.getElementsByClassName("toggle_bar")[0].getElementsByTagName("input")[0];
 	original_back = document.body.id;
-	dark_mode_check.addEventListener('click', toggleMode);
+	dark_mode_check.addEventListener('click', toggleDarkMode);
 	grey_subsection = document.querySelectorAll('.grey_subsection');
 
 
@@ -208,23 +214,28 @@ function checkIndex() {
 
 //Dark mode
 
-function toggleMode() {
+function toggleDarkMode() {
 	//Turns light subsections grey
 	
 	grey_subsection.forEach(e => {
 		e.classList.toggle('dark_grey_mode');
 	});
+
 	//If it was in dark mode, make the background light again (how it originally was)
 	if (is_dark) {
 		document.body.id = original_back;
 		is_dark = false;
-		document.getElementById("toggle_status").innerHTML = "You are in light mode."
+		body.classList.remove('darkmode');
+		// document.getElementById("toggle_status").innerHTML = "You are in light mode."
 	}
 	//If it was in light mode, make the background dark
 	else {
 		document.body.id = 'dark_mode';
 		is_dark = true;
-		document.getElementById("toggle_status").innerHTML = "You are in dark mode."
+
+		body.classList.add('darkmode');
+
+		// document.getElementById("toggle_status").innerHTML = "You are in dark mode."
 	}
 }
 
@@ -244,7 +255,7 @@ function rotate() {
 	else if (direction == 'right' && turn > 20) {
 		direction = 'left';
 		turn--;
-		wave_rep++;
+		waveRep++;
 	}
 	else if (direction == 'left' && turn >= -20) {
 		turn--;
@@ -257,7 +268,7 @@ function rotate() {
 	document.getElementById("wave").style.transform = 'rotate(' + turn + 'deg)';
 	
 	//When image has waved 5 times, stop the animation
-	if (wave_rep == 5) {
+	if (waveRep == 5) {
 		document.getElementById("wave").style.transform = 'rotate(0deg)';
 		clearInterval(waving_interval);
 		//Image is deleted
@@ -616,6 +627,8 @@ const places = [
 		description: "A building that represents the ships that the 1820s settlers came on. Every Rhodes student's journey begins and ends at the Monument with the exception of covid students."
 	}
 
+
+
 	// {
 	// 	name: 
 	// }
@@ -624,9 +637,6 @@ const places = [
 // TODO: add a like count for each
 
 
-// declaring all elements that need to be interacted with
-const searchResults = document.querySelector(".search-results");
-const searchInput = document.getElementById("#")
 
 
 const getAttractionResults = (attractions) => {
