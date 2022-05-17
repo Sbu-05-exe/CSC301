@@ -611,11 +611,10 @@ details summary {
     padding-top:  10rem;
 }
 
-
 #body_attractions {
     /*background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(./Images/Attractions/burlap.jpg) no-repeat center;*/
     background-size: cover;
-}
+}*/
 
 #body_restaurant {
     /*background: linear-gradient(rgba(255,255,255,.7), rgba(255,255,255,.7)), url(./Images/Attractions/Restaurant_Background.png) no-repeat center;*/
