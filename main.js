@@ -286,7 +286,7 @@ function blinking() {
 function swapcolor() {
 	//If it was black, now make it purple
 	if (document.getElementById("blinking-text").style.color == 'black') {
-		document.getElementById("blinking-text").style.color = 'var(--quinary)';
+		document.getElementById("blinking-text").style.color = 'var(--tertiary)';
 	}
 	//If it's purple or empty, make it black
 	else {
@@ -326,7 +326,7 @@ function showSlides() {
 	}
 	slides[slideIndex-1].style.display = "block";
 	setTimeout(showSlides, 10000);
-	slides_interval = setInterval(fade, 100);
+	slides_interval = setInterval(fade, 20);
 	
 }
 

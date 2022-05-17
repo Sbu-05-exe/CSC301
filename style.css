@@ -67,6 +67,10 @@ main {
     justify-content: space-around;
 }
 
+.darkmode main {
+    background-color: rgba(--teriary, 0.4);
+}
+
 /* styling header */
 
 .logo-heading {
@@ -227,6 +231,10 @@ nav .menu li a:hover {
     /* border: 1px solid red; */
 }
 
+nav .menu li .active {
+    color: var(--tertiary);
+    border-bottom: 2px solid var(--tertiary);
+}
 
 .darkmode .menu li a:hover {
     color: linen;
@@ -303,6 +311,11 @@ nav .menu li a:hover {
     background-color: linen;
     flex-grow: 1;
 }
+
+.darkmode .newsletter {
+    background-color: #444;
+}
+
 #blinking-text {
     text-align: center;
 	color: black;
@@ -333,6 +346,10 @@ nav .menu li a:hover {
     flex-grow: 3;
     border: none;
     background-color: var(--tertiary)
+}
+
+.darkmode #newsletter-form button {
+    background-color: var(--tertiary);
 }
 
 /* Styling banner above Top 5 restaurants */
@@ -587,7 +604,7 @@ details summary {
 */
 
 #body_index main {
-    padding-top:  9rem;
+    padding-top:  10rem;
 }
 
 #body_about {
@@ -693,10 +710,19 @@ body::-webkit-scrollbar-thumb {
 footer {
     background-color: var(--primary);
 }
+/* 
+.darkmode footer {
+    background-color: linen;
+} */
+
 footer a {
     text-decoration: none;
     color: lightgrey;
 }
+
+/* .darkmode footer a {
+    color: var(--secondary_dark);
+} */
 
 footer a:hover {
 
@@ -709,6 +735,10 @@ footer section {
     padding: 1rem 2rem;
     color: white;
 }
+
+/* .darkmode footer section {
+    color: black;
+} */
 
 footer h3 {
     color: linen;
@@ -736,6 +766,11 @@ footer h3 {
     background-color: var(--secondary_dark);
     text-align: center; 
 }
+
+/* .darkmode .copy-symbol {
+    background-color: var(--tertiary);
+    color: black;
+} */
 
 .gutter {
     padding-left: 10vw;
@@ -892,10 +927,6 @@ this is styling for the normal version of the website*/
 
     nav .menu li a:hover {
         color:  var(--tertiary);
-    }
-
-    .darkmode nav .menu li a:hover {
-        /* color: var(--teriary)    */
     }
 
     .home-logo-link {
