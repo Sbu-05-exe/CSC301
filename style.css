@@ -521,6 +521,10 @@ nav .menu li .active {
     border-radius:  100px 0px;
 }
 
+.darkmode .attraction-thumbnail img{
+    border: 3px solid var(--primary);
+}
+
 .attraction-description {
     /*flex-grow:  1;*/
     width:  30rem;
