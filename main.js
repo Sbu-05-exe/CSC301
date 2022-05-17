@@ -533,6 +533,7 @@ function toggleDarkMode() {
 		body.classList.add('darkmode');
 		document.getElementById("#submit-color").style.backgroundColor = "var(--primary)";
 		document.getElementById("#toggle-icon").className = "moon large icon";
+		document.getElementById("#main-padding").style.paddingTop = "10rem";
 	}
 }
 
