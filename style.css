@@ -454,6 +454,28 @@ nav .menu li .active {
     background-color:  rgba(255,255,255, 0.3);
 }
 
+
+/*I got this loader animation code from W3 school*/
+.loader {
+    border: 8px solid #ddd; 
+    border-top: 8px solid var(--tertiary);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    animation: spin 1s linear infinite;
+}
+
+.darkmode .loader {
+    border: 8px solid #a3a3a3  ;
+    border-top:  8px solid var(--secondary_dark);
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg) }
+    100% { transform: rotate(360deg) }
+}
+
+
 #Attraction-SubType-Dropdown {
     display: hidden;
     /*border:  1px solid red;*/
@@ -475,6 +497,11 @@ nav .menu li .active {
     height: 100%;
     align-items: center;
 
+}
+
+.search-results {
+    /*border:  1px solid red;*/
+    flex-grow:  1;
 }
 
 .search-section {
@@ -565,6 +592,8 @@ nav .menu li .active {
 .attraction-container {
     display:  flex;
     justify-content:  center;
+    align-items:  center;
+    /*height:  100%;*/
     margin-bottom:  1rem;
 }
 
@@ -729,6 +758,11 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
 }
 
+.invalid-input {
+    border:  solid red !important;
+    border-width:  0 0 3px 0 !important;
+} 
+
 #signup-form {
     width:  50vw;
     height:  100vh;
@@ -748,6 +782,13 @@ body::-webkit-scrollbar-thumb {
 .form-section label {
     display: flex;
     flex-direction: column;
+}
+
+.radio-label {
+    display:  flex;
+    /*align-items:  center;*/
+    /*border:  1px solid red;*/
+    flex-direction: row !important;
 }
 
 .form-section a {
@@ -780,7 +821,7 @@ body::-webkit-scrollbar-thumb {
     border-radius:  100px;
 }
 
-#login_btn {
+#login_btn, #signup-button {
     padding:  1rem;
     width:  7rem;
     border:  none;

@@ -1,5 +1,5 @@
 
-const places = [
+let places = [
 	{	
 		name: "The Rat and Parrot" ,
 		type:  {
@@ -7,7 +7,8 @@ const places = [
 			subtype: "fast casual"
 		},
 		thumbnail: "TheRatAndParrot1.png",
-		rating: "4.2",
+		rating: 4.2,
+		reviews: 4,
 
 		description: " A great place to eat out with friends and celebrate finishing big tests or assignments. Awesome food, and great atmosphere.",
 		extra: `<table border="1px">
@@ -41,7 +42,9 @@ const places = [
 			title: "restuarant",
 			subtype: "fine dining",
 		},
-		rating: "3.9",
+		rating: 3.9,
+		reviews: 143,
+
 
 		thumbnail: "Gino's.jpg",
 		description: ` If you want to impress that special person by breaking the bank. This is the place to go. `,
@@ -101,7 +104,9 @@ const places = [
 			title: "restuarant",
 			subtype: "cafe"
 		},
-		rating: "4.2",
+		rating: 4.2,
+		reviews: 43,
+
 
 		thumbnail: "RedCafe1.jpg",
 		description: "A great place to grab a quick lunch between lectures and tutorials or practicals.",
@@ -139,7 +144,7 @@ const places = [
 			subtype: "cafe"
 		},
 
-		rating: "4.8",
+		rating: 4.8,
 
 		thumbnail: "MajorFrasers.jpg",
 		description: " A chilled place to hang with friends and grab a coffee. A popular place to eat among families. A nice place to have a farewell meal that marks your leaving the nest.",
@@ -171,7 +176,7 @@ const places = [
 			title: "attraction",
 			subtype: "entertainment"
 		},
-		rating: "5.0",
+		rating: 5.0,
 		thumbnail:"NAF.png",
 		description: "The national arts festival is an annual ceremony that... "
 	}, {
@@ -180,7 +185,9 @@ const places = [
 			title: "attraction",
 			subtype: "heritage"
 		},
-		rating: "4.0",
+		rating: 4.0,
+		reviews: 12,
+
 
 		thumbnail: "museum.jpg",
 		description: "This Museum is held in 7 different buildings. It is the second oldest Museum in South Africa. You can have a coffee in an old prison cell if you're into that sort of thing. "
@@ -190,7 +197,7 @@ const places = [
 			title: "attraction",
 			subtype: "wildlife/nature"
 		}, 
-		rating: "4.7",
+		rating: 4.7,
 
 		thumbnail: "Bots1.jpg",
 		description: "The Botanical Gardens, also known as bots, is embodiment of Grahamstowns fauna and flora. These tranquil gardens make for fun picnics and engaging walks. Every Saturday there is also a parkrun for those who enjoy exercising outdoors."
@@ -200,7 +207,9 @@ const places = [
 			title: "attraction",
 			subtype: "heritage"
 		},
-		rating: "3.7",
+		rating: 3.7,
+		reviews: 403,
+
 
 		thumbnail: "cathedral.png",
 		description: " One of Makhanda great architecture. It is the cathedral of Saint Michael and Saint George. Founded by John Armstrong. It is also the tallest building in the area and has the tallest spire in South Africa.  "
@@ -210,7 +219,9 @@ const places = [
 			title: "attraction",
 			subtype: "heritage"
 		},
-		rating: "3.9",
+		rating: 3.9,
+		reviews: 5,
+
 
 		thumbnail: "monument.jpg", 
 		description: "A building that represents the ships that the 1820s settlers came on. Every Rhodes student's journey begins and ends at the Monument with the exception of covid students."
@@ -248,7 +259,6 @@ let grey_subsection;
 
 // declaring all elements that need to be interacted with
 const searchResults = document.querySelector(".search-results");
-const searchInput = document.getElementById("#");
 const body = document.getElementsByTagName("body")[0];
 
 // const root = document.querySelectory(':root');
@@ -303,15 +313,36 @@ window.onload = () => {
 		checkSignup();
 		setupRadio();
 		setupReset();
+
 	}
 
 	if (document.body.id == "body-attractions") {
+
+		let timeid = 0;
+
+		const searchInput = document.getElementById("search-input");
+		const attractionTypeDropdown = document.getElementById("Attraction-Type-Dropdown");
+		const sortbyTypeDropdown = document.getElementById("Sort-By-Dropdown");
+
+		const resetPlaces = [...places]; 
 		const getAttractionResults = (attractions) => {
 			// This function uses an html template that a place object uses to display infromation and 
 			// then inserts it into the attractions page.
 		
 			// I'm a ware that putting html in javascript is not a good idea but this is the
 			// easiest way to do it
+
+			if (attractions.length != 0) {
+				// console.log(resetPlaces);
+				places = attractions;
+			} else {
+				places = [];
+				if (searchInput.value.length ==0) {
+					places = resetPlaces;
+					attractions = resetPlaces;
+				}
+				// console.log(resetPlaces);
+			}
 		
 			const placesHTML = attractions.map( place => {
 		
@@ -331,20 +362,63 @@ window.onload = () => {
 							
 						</div>`
 			})
-		
-			searchResults.innerHTML = placesHTML.join(" ")
+
+
+
+			clearTimeout(timeid);
+
+			searchResults.innerHTML = `<div class="gutter attraction-container">
+			 <div class="loader"> </div> </div>`
+
+			timeid = setTimeout(() => {
+
+				if (searchResults.length == 0) {
+					searchResults.innerHTML = `<div class="gutter attraction-container" >No Results Found</div>` 
+				} else {
+					searchResults.innerHTML = placesHTML.join(" ");
+				}
+			}, Math.random() * 1000 )
+
+			// searchResults.innerHTML = searchResults.length == 0 ?  : placesHTML.join(" ")
+			// searchResults.innerHTML = placesHTML.join(" ")
 		
 		}
-		
-		const onFilterByName = (e) => {
-				
-			console.log(e)
-			// return places.filter(place => place.name.includes(substring));
-		
+
+		const sortByAttractionType = (value) => {
+			if (value == 0) {
+				return resetPlaces;
+
+			} else {
+
+				const options = ["",  "reviews","rating"];
+				const key = options[value];
+				console.log("sorting by " + key );
+				return places.sort((place1, place2) => place1[key] - place2[key]);
+			}
 		}
+
+		const filterByAttractionType = (value) => {
+
+			if (value == 0) {
+				return resetPlaces;
+			} else {
+
+				const options = ["", "restuarant", "attraction"];
+				const key = options[value];
+
+				console.log("filtering by " + key)
+				return places.filter(place => place.type.title.toUpperCase() == key.toUpperCase())
+			}
+		}
+		
+		const filterByAttractionName = (substring) => {
+			return places.filter(place => place.name.toUpperCase().includes(substring.toUpperCase()));
+		} // onFilterByName
 		
 		getAttractionResults(places);
-		
+		searchInput.addEventListener("input", (e) => getAttractionResults(filterByAttractionName(e.target.value)));
+		sortbyTypeDropdown.addEventListener("change", (e) => getAttractionResults(sortByAttractionType(e.target.value)))
+		attractionTypeDropdown.addEventListener("change", (e) => getAttractionResults(filterByAttractionType(e.target.value)));
 	}
 	
 	//Toggle to dark mode
@@ -363,10 +437,6 @@ window.onload = () => {
 function setupReset() {
 	var signup_form = document.getElementById("signup-form");
 	signup_form.addEventListener("reset", signupReset);
-}
-
-function signupReset() {
-	window.alert("You reset the form.");
 }
 
 //Setting up event listeners for radio buttons
@@ -421,6 +491,7 @@ function checkLogin() {
 			e.preventDefault();
 			alert("Username is required.");
 		}
+
 		else if (!login_pass) {
 			e.preventDefault();
 			alert("Password is required.");
@@ -438,58 +509,61 @@ function checkLogin() {
 function checkSignup() {
 	//Checks whether signup form has valid information in it
 	document.getElementById("signup-form").onsubmit = function(e) {
+		e.preventDefault();
 		console.log("In check");
-		const username = document.getElementById("fname").value;
-		const email = document.getElementById("femail").value;
-		const signup_pass = document.getElementById("fpassword").value;
-		const confirm_pass = document.getElementById("f_confirm_password").value;
+		const username = document.getElementById("fname");
+		const email = document.getElementById("femail");
+		const signupPass = document.getElementById("fpassword");
+		const confirmPass = document.getElementById("fconfirm");
+
+
 		//Checks that each input is not empty, sends alert if they are
-		if (!username) {
-			e.preventDefault();
+		if (!username.value) {
 			alert("Userame is required.");
-			document.getElementById("fname").focus();
+			// username.classList.add('invalid-input');
+			username.classList.add("invalid-input")
+			username.focus();
 		}
-		else if (!email) {
+		else if (!email.value) {
 			e.preventDefault();
 			alert("Email is required.");
-			document.getElementById("femail").focus();
+			email.classList.add('invalid-input')
+			email.focus();
 		}
-		else if (!signup_pass) {
-			e.preventDefault();
+		else if (!signupPass.value) {
 			alert("Password is required.");
-			document.getElementById("fpassword").focus();
+			signupPass.focus();
+			signupPass.classList.add('invalid-input')
 		}
-		else if (!confirm_pass) {
-			e.preventDefault();
+		else if (!confirmPass.value) {
 			alert("Confirm Password is required.");
-			document.getElementById("f_confirm_password").focus();
+			confirmPass.focus();
+			confirmPass.classList.add('invalid-input')
 		}
 		else {
 			//If the username is too short or uses unsupported characters, send alert
 			if (!isUserName(username)) {
-				e.preventDefault();
 				alert("Username must be at least two characters and must not use special characters or numbers.");
-				document.getElementById("fname").focus();
+				username.focus();
+				username.classList.add('invalid-input')
 			}
 			//Send alert if email is invalid
 			else if (!isEmail(email)) {
-				e.preventDefault();
 				alert("Invalid email");
-				document.getElementById("femail").focus();
+				email.focus();
+				email.classList.add('invalid-input')
 			}
 			//Send alert if passwords do not match
-			else if (signup_pass != confirm_pass) {
-				e.preventDefault();
+			else if (signupPass != confirm_pass) {
 				alert("Passwords do not match.");
-				document.getElementById("fpassword").focus();
+				password.focus();
+				password.classList.add('invalid-input')
 			}
 			//Send alert if password not sufficiently strong
-			else if (!isStrongPassword(signup_pass)) {
-				e.preventDefault();
+			else if (!isStrongPassword(signupPass)) {
 				alert("Password is not strong enough - make sure you use at least three letters, one number and one special character, and is at least 6 characters long.");
-				document.getElementById("fpassword").focus();
-			}
-			else {
+				password.classList.add('invalid-input')
+				confirmPass.focus();
 			}
 		}
 	}
@@ -498,10 +572,10 @@ function checkSignup() {
 
 function checkIndex() {
 	document.getElementById("newsletter-form").onsubmit = function(e) {
+		e.preventDefault();
 		const index_email = document.getElementById("email_text").value;
 		//Send alert if email is invalid
 		if (!isEmail(index_email)) {
-			e.preventDefault();
 			alert("Invalid email");
 		}
 	}

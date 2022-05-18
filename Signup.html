@@ -16,7 +16,6 @@
            
                 <label for="fname">
                     <input size="20" maxlength="50" type="text" id="fname" autofocus  placeholder="Username" />
-                    <p>error</p>
                 </label>
        
                 <input type="text" id="femail" placeholder="Email"/>
@@ -24,31 +23,33 @@
         
                 <input type="password" id="fpassword" placeholder="Password"/>
  
-                <input type="password" id="f_confirm_password"
+                <input type="password" id="fconfirm"
                 placeholder="Confirm Password"/>
 
                 <section class="radio-group">
+                
+                <label class="radio-label" for="ftraveller" > 
                 <input 
                 value="Traveller" 
                 id="ftraveller" 
                 type="radio" 
                 name="usertype"
-				/>
-                <label for="ftraveller" >Traveller</label>
+                />Traveller</label>
 
-                <input 
-                    value="Student" 
-                    id="fstudent" 
-                    type="radio" 
-                    name="usertype"
-					checked />
-                <label for="fstudent">Student</label>
-				
-
+                <label class="radio-label" for="fstudent">
+                    <input 
+                        value="Student" 
+                        id="fstudent" 
+                        type="radio" 
+                        name="usertype"
+    					checked />
+                    Student
+                </label>
+			
                 </section>
-                <button type="submit">
-                    Signup
-                </button>
+                <input id="signup-button" type="submit" value="Sign Up">
+
+                </input>
 				<button type="reset">
                     Reset form
                 </button>
