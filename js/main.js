@@ -350,7 +350,7 @@ window.onload = () => {
 							<div class="attraction">
 								<div class="attraction-thumbnail-container">
 								<figure class="attraction-thumbnail">
-									<img src="./Images/Attractions/${place.thumbnail}" alt="picture of ${place.name}">
+									<img src="../Images/Attractions/${place.thumbnail}" alt="picture of ${place.name}">
 								<figure/>
 								</div>	
 								<section class="attraction-description">
