@@ -13,7 +13,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 echo "Connected successfully";
-
+//SQL for creating table
 $sqlCreateAttractionsTable = "CREATE TABLE Attractions (
                               AttractionId INT(6) NOT NULL UNSIGNED AUTO_INCREMENT PRIMARY KEY,
                               Title VARCHAR(30) DEFAULT 'Title',
