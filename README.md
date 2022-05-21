@@ -12,6 +12,8 @@ Website I took inspiration from
 
 ### Backlog
 - [x] add a reviews page
+- [ ] write the validation code for processing sign up information
+- [ ] write php code for processing sign up page ( all that is needed to sanitise the data and write an SQL query to add a new record to the users table)
 - [ ] add a profile page (must display the information of a user and let them be able to update and change their information including adding a display photo)
 - [ ] style the profile page (Sibu will take care of styling)
 - [ ] write php for processing login page (I left comments to help anyone who wants to tackle it in the processLogin.php file)
