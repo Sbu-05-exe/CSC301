@@ -1,5 +1,5 @@
 <?php
-// $servername = "Z:\Apache24\htdocs\Practicals\G20D9300\WebTech-Practical\php\info.php";
+
 $servername = "cs3-dev.ict.ru.ac.za";
 $username = "G20D9300";
 $password = "G20D9300";

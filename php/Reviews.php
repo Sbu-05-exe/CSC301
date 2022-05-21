@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <title>Visiting Makhanda - Attractions</title>
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/main.js"></script>
 </head>
 <body id="body-attractions">
     <header>
@@ -23,9 +24,9 @@
 
       <nav><ul class="menu">
         <li> <a href="../index.html"> Home </a></li>
-        <li> <a href="./About.html"> About </a></li>
-        <li > <a class="active"  href="./Attractions.html"> Attractions
-        <li><a href="./Login.html"> Login </a></li>
+        <li> <a href="../html/About.html"> About </a></li>
+        <li > <a href="../html/Attractions.html"> Attractions </a></li>
+        <li> <a href="../html/Login.html"> Login </a></li>
         <section class="toggle">
             <label class="toggle_bar round">
                 <input type="checkbox">
@@ -36,7 +37,47 @@
       </nav>
     </header>
 
-    <main></main>
+    <main>
+
+        <div class="gutter attraction-container">
+          <div class="attraction">
+            <div class="attraction-thumbnail-container">
+            <figure class="attraction-thumbnail">
+              
+              <img src="<?php echo "../Images/Attractions/" . $_GET["thumbnail"] ?>" alt="picture of <?php echo $_GET["title"] ?>">
+            <figure/>
+            </div>	
+            <section class="attraction-description">
+              <?php 
+                echo "<h3>" . $_GET["title"]. "</h3>";
+                echo "<p>" . $_GET["description"] . "</p>";
+              ?>
+
+            </section>
+          </div>
+        </div>
+
+        <!-- run query to find all reviews associated with this page -->  
+
+        <!-- loop through this with php -->
+        <section class="gutter reviews-container">
+          
+          <div class="user-thumbnail-container">
+            <img src="defaultthumbnail" alt="display photo of user">
+          </div>
+          <div class="comment-container">
+            <p class="comment-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis, illum? Aspernatur rem eligendi rerum cum, error consectetur natus dolor iusto. </p>
+            <p class="comment-date">5th May</p>
+          </div>
+        </section>
+        <!-- if person has not commented then add this form to their page to add a comment-->
+        <section class="gutter add-comment>"/>
+          <form action="processReview.php" method="POST">
+            <textarea name="fcomment" id="fcomment" cols="60" rows="5"></textarea>
+          </form>
+        </section>
+
+    </main>
 
 <footer class="shift_attraction">
     
@@ -54,10 +95,9 @@
         <h3>Terms and Conditions</h3>
         <p>Click <a href="terms_and_conds.txt">here</a> for our terms and conditions.</p>
         </section>
-    </div>
-
+    </div> 
     <p class="copy-symbol">
         
-        <small >Copyright &copy; 2022</small>
+      <small >Copyright &copy; 2022</small>
     </p>
 </footer>
