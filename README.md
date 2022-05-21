@@ -11,25 +11,10 @@ Website I took inspiration from
 
 
 ### Backlog
-- [x] Add behaviour to slideshow/gallery
-- [ ] Use 8 Navigator objects
-- [ ] Manipulate DOM 25 times
-- [ ] Modify backgrounds with javascript
-- [ ] Make improvement to column layouts using Javascript
-- [ ] Make sure every input on each form is validated
-- [ ] We get 50% to creativity
-- [ ] Change all forms to javascript form?
-
-- [ ] merge restuarants and attractions into one page
-- [ ] style new attractions page
-- [ ] add filter for search results
-- [ ] add loading animation for search results
-- [ ] add icons on attractions 
-- [ ] remove drop downs
-- [ ] add form validation
-- [ ] add darkmode
+- [ ] add a reviews page
+- [ ] write classes in php
+- [ ] write query to save data
 
 ### optional features
-- [ ] add a reviews page
 - [ ] make attractions page responsive
 - [ ] decide on fonts
