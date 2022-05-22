@@ -10,10 +10,13 @@
 <body id="body-signup">
 		<?php
 		include('validation.php');
+		//Opens the connection to the database
+		include('connection.php');
 		
-		$fname = $firstname = $surname = $email = $fpassword = $cpassword = "";
+		$fname = $firstname = $surname = $email = $fpassword = $cpassword = $radio = "";
 		$fname_error = $firstname_error = $surname_error = $email_error = $fpassword_error = $cpassword_error = "";
 		$isSanitized = true;
+		$canInsert = true;
 		if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			//Check whether each required field is empty or not
 			if (empty($_POST["fname"])) {
@@ -92,12 +95,50 @@
 					$isSanitized = false;
 				}
 			}
+			$radio = $_POST["usertype"];
 			if ($isSanitized) {
-				echo "It is sanitized";
-				//Will make a SQL statement to pass to another php file that will add user to database
+				$usernameStmt = $conn->prepare("SELECT UserId FROM users WHERE Username=?");
+				$usernameStmt->bind_param("s", $fname);
+				$usernameStmt->execute();
+				$usernameResult = $usernameStmt->get_result();
+				$userData = $usernameResult->fetch_assoc();
+				if ($userData) {
+					$fname_error = "Username already exists.";
+					$canInsert = false;
+				}
+				$usernameStmt->close();
+				
+				$emailStmt = $conn->prepare("SELECT UserId FROM users WHERE Email=?");
+				$emailStmt->bind_param("s", $email);
+				$emailStmt->execute();
+				$emailResult = $emailStmt->get_result();
+				$emailData = $emailResult->fetch_assoc();
+				if ($emailData) {
+					$email_error = "Email already used.";
+					$canInsert = false;
+				}
+				$emailStmt->close();
+				
+				if ($canInsert) {
+					//Prepare statement in advance with parameters, to prevent SQL injection
+					$userInsertStmt = $conn->prepare("INSERT INTO users (Username, FirstName, LastName, Email, PasswordHash) VALUES (?, ?, ?, ?, ?)");
+					$userInsertStmt->bind_param("sssss", $fname, $firstname, $surname, $email, $fpassword);
+					//Insert user into database
+					$userInsertStmt->execute();
+				
+					//Close the statement and database connection
+					$userInsertStmt->close();
+					$conn->close();
+					
+					//Go to login page since signup successful
+					header("Location: Login.php");
+				}
+				//Close the database connection
+				$conn->close();
 			}
 			else {
-				echo "It is not sanitized";
+				//Close the database connection
+				$conn->close();
 			}
 		}
 		?>
@@ -106,24 +147,24 @@
             <h1>Signup</h1>
             <a href="Login.html"><small>already have an account? </small></a>
     
-                <input size="20" maxlength="50" type="text" id="fname" name="fname" autofocus  placeholder="Username" />
-				<div> * <?php echo $fname_error; ?> </div>
+                <input size="20" maxlength="50" type="text" id="fname" name="fname" autofocus  value="<?php if(isSet($_POST["fname"])) echo $_POST["fname"] ?>" placeholder="Username" />
+				<div class="error"> * <?php echo $fname_error; ?> </div>
 
-                <input type="text" id="fnames" name="firstname" placeholder="Name"/> <!--added this for the sql table-->
-				<div> * <?php echo $firstname_error; ?> </div>
+                <input type="text" id="fnames" name="firstname" value="<?php if(isSet($_POST["firstname"])) echo $_POST["firstname"] ?>" placeholder="Name"/> <!--added this for the sql table-->
+				<div class="error"> * <?php echo $firstname_error; ?> </div>
 
-                <input type="text" id="fsurname" name="surname" placeholder="Surname"/> <!--added this for the sql table-->
-				<div> * <?php echo $surname_error; ?> </div>
+                <input type="text" id="fsurname" name="surname" value="<?php if(isSet($_POST["surname"])) echo $_POST["surname"] ?>" placeholder="Surname"/> <!--added this for the sql table-->
+				<div class="error"> * <?php echo $surname_error; ?> </div>
                 
-                <input type="text" id="femail" name="email" placeholder="Email"/>
-				<div> * <?php echo $email_error; ?> </div>
+                <input type="text" id="femail" name="email" value="<?php if(isSet($_POST["email"])) echo $_POST["email"] ?>" placeholder="Email"/>
+				<div class="error"> * <?php echo $email_error; ?> </div>
      
         
                 <input type="password" id="fpassword" name="fpassword" placeholder="Password"/>
-				<div> * <?php echo $fpassword_error; ?> </div>
+				<div class="error"> * <?php echo $fpassword_error; ?> </div>
  
                 <input type="password" id="fconfirm" name="cpassword" placeholder="Confirm Password"/>
-				<div> * <?php echo $cpassword_error; ?> </div>
+				<div class="error"> * <?php echo $cpassword_error; ?> </div>
 
                 <section class="radio-group">
                 

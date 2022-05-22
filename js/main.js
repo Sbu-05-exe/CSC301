@@ -279,7 +279,7 @@ window.onload = () => {
 	}
 	
 	if (document.body.id == 'body_login') {
-		checkLogin();
+		/*checkLogin();
 		document.getElementById("login_signup").accessKey = "s";	
 		const usernameInput = document.getElementById("fusername");
 		const passwordInput = document.getElementById("fpassword");
@@ -306,11 +306,12 @@ window.onload = () => {
 
 		// usernameInput.addEventListener('focusout', (e) => console.log("focusing out of username"));
 		// passwordInput.addEventListener('focusout', (e) => console.log("focusing out of password"));
+		*/
 		
 	}
 	
 	if (document.body.id == 'body-signup') {
-		checkSignup();
+		//checkSignup();
 		setupRadio();
 		setupReset();
 
@@ -350,13 +351,11 @@ window.onload = () => {
 							<div class="attraction">
 								<div class="attraction-thumbnail-container">
 								<figure class="attraction-thumbnail">
-									<a href="../php/Reviews.php?title=${place.name}&thumbnail=${place.thumbnail}&description=${place.description}">
 									<img src="../Images/Attractions/${place.thumbnail}" alt="picture of ${place.name}">
-									</a>
 								<figure/>
 								</div>	
 								<section class="attraction-description">
-									<a href="../php/Reviews.php?title=${place.name}&thumbnail=${place.thumbnail}&description=${place.description}" > <h3>${place.name}</h3> </a>
+									<h3>${place.name}</h3>
 									<p>${place.description} </p>
 		
 								</section>
@@ -482,6 +481,7 @@ function navInfo() {
 
 //Basic validation
 
+/*
 function checkLogin() {
 	//Checks whether login form has valid information in it
 	document.getElementById("login-form").onsubmit = function(e) {
@@ -507,16 +507,19 @@ function checkLogin() {
 		}
 	}
 }
+*/
+
+/*
 
 function checkSignup() {
 	//Checks whether signup form has valid information in it
 	document.getElementById("signup-form").onsubmit = function(e) {
 		e.preventDefault();
 		console.log("In check");
-		const username = document.getElementById("fname");
-		const email = document.getElementById("femail");
-		const signupPass = document.getElementById("fpassword");
-		const confirmPass = document.getElementById("fconfirm");
+		const username = document.getElementById("fname").value;
+		const email = document.getElementById("femail").value;
+		const signupPass = document.getElementById("fpassword").value;
+		const confirmPass = document.getElementById("fconfirm").value;
 
 
 		//Checks that each input is not empty, sends alert if they are
@@ -544,32 +547,33 @@ function checkSignup() {
 		}
 		else {
 			//If the username is too short or uses unsupported characters, send alert
-			if (!isUserName(username.value)) {
+			if (!isUserName(username)) {
 				alert("Username must be at least two characters and must not use special characters or numbers.");
 				username.focus();
 				username.classList.add('invalid-input')
 			}
 			//Send alert if email is invalid
-			else if (!isEmail(email.value)) {
+			else if (!isEmail(email)) {
 				alert("Invalid email");
 				email.focus();
-				email.classList.add('invalid-input');
+				email.classList.add('invalid-input')
 			}
 			//Send alert if passwords do not match
-			else if (signupPass.value != confirmPass.value) {
+			else if (signupPass != confirm_pass) {
 				alert("Passwords do not match.");
 				password.focus();
 				password.classList.add('invalid-input')
 			}
 			//Send alert if password not sufficiently strong
-			else if (!isStrongPassword(signupPass.value)) {
+			else if (!isStrongPassword(signupPass)) {
 				alert("Password is not strong enough - make sure you use at least three letters, one number and one special character, and is at least 6 characters long.");
-				confirmPass.classList.add('invalid-input')
+				password.classList.add('invalid-input')
 				confirmPass.focus();
 			}
 		}
 	}
 }
+*/
 
 
 function checkIndex() {

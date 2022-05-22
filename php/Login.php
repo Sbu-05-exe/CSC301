@@ -6,28 +6,61 @@ include('connection.php');
 include('validation.php');
 
 $error = "";
+$username = $password = $username_error = $fpassword_error = "";
+$isSanitized = true;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-    $username = $_POST["fusername"];
-    $password = $_POST["fpassword"];
+	//Check that username is entered
+	if (empty($_POST["fusername"])) {
+		$username_error = "Username is required.";
+		$isSanitized = false;
+	}
+	else {
+		$username = $_POST["fusername"];
+		//Check if username has correct type
+		if (!isUser($username)) {
+			$username_error = "Username must be numbers, letters or underscores, and two or more characters long.";
+			$isSanitized = false;
+		}
+		$username = sanitize($username);
+	}
+    //Check that password is entered
+    if (empty($_POST["fpassword"])) {
+		$fpassword_error = "Password is required.";
+		$isSanitized = false;
+	}
+	else {
+		$password = $_POST["fpassword"];
+				
+	}
+    if ($isSanitized) {
+		//Check whether user in database
+		$userSelectStmt = $conn->prepare("SELECT UserId FROM users WHERE Username=? AND PasswordHash=?");
+		$userSelectStmt->bind_param("ss", $username, $password);
+		$userSelectStmt->execute();
+		$userResult = $userSelectStmt->get_result();
+		$result = $userResult->fetch_assoc();
     
-    $sql = "SELECT * FROM users 
-            WHERE username = '$username'  AND passwordHash = '$password'";
+		if ($result) {
+			// the user exists
+			header("Location: index.php");
     
+		} else {
+			// the email or password is incorrect
+			$error = "Invalid username or password";
     
-    $result = $conn->query($sql);
-    
-    if ($result->num_rows == 1 ) {
-        // the user exists
-        header("Location: index.php");
-    
-    } else {
-        // the email or password is inccorrect
-        $error = "Invalid username or password";
-    
-    }
+		}
+		//Close the statement and database connection
+		$userSelectStmt->close();
+		$conn->close();
+	}
+	else {
+		//Close the database connection
+		$conn->close();
+	}
 }
+
+
 
 ?>
 
@@ -57,12 +90,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <input id="fusername" placeholder="Enter username" type="text" name="fusername">
                     <p class="error hide-error"> please enter username </p>
                 </label>
-                
+                <div class="error"> * <?php echo $username_error; ?> </div>
+				
                 <label for="fpassword">
 
                     <input id="fpassword" type="password" placeholder="Enter password" name="fpassword">
                     <p class="error hide-error"> please enter passowrd</p>
                 </label>
+				<div class="error"> * <?php echo $fpassword_error; ?> </div>
 
                 <input type="submit" id="login_btn" value="sign in">
                 <a id="login_signup" href="Signup.html"> <small>Haven't registered?</small></a>

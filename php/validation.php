@@ -65,8 +65,6 @@
 				continue;
 
 			}
-			// if the character that has been entered is not a number, character or a valid special character or a space then the user
-			// has entered in an invalid character hence we return false; 
 
 			return false;
 
