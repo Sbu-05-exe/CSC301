@@ -33,8 +33,9 @@ $sqlCreateUsersTable = "CREATE TABLE Users (
                         FirstName VARCHAR(30) NOT NULL,
                         LastName VARCHAR(30) NOT NULL,
                         Email VARCHAR (255) NOT NULL,
-                        PasswordHash BINARY(50) NOT NULL 
+                        PasswordHash VARCHAR(50) NOT NULL 
                         )";
+                        // PasswordHash BINARY(50) NOT NULL (this is the goal but for now i'm not really worried about security practicies)
 
    /*this isn't right need to come up with a better Type */ 
 
@@ -91,9 +92,9 @@ function dropTable($tablename) {
   echo "<br/>";
 }
 
-createTable($sqlCreateAttractionsTable, "Attractions");
-createTable($sqlCreateUsersTable, "Users");
-createTable($sqlCreateReviewTable, "Reviews");
+// createTable($sqlCreateAttractionsTable, "Attractions");
+// createTable($sqlCreateUsersTable, "Users");
+// createTable($sqlCreateReviewTable, "Reviews");
 // dropTable("Attractions")
 // dropTable("Users")
 // dropTable("Reviews)
