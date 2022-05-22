@@ -544,27 +544,27 @@ function checkSignup() {
 		}
 		else {
 			//If the username is too short or uses unsupported characters, send alert
-			if (!isUserName(username)) {
+			if (!isUserName(username.value)) {
 				alert("Username must be at least two characters and must not use special characters or numbers.");
 				username.focus();
 				username.classList.add('invalid-input')
 			}
 			//Send alert if email is invalid
-			else if (!isEmail(email)) {
+			else if (!isEmail(email.value)) {
 				alert("Invalid email");
 				email.focus();
-				email.classList.add('invalid-input')
+				email.classList.add('invalid-input');
 			}
 			//Send alert if passwords do not match
-			else if (signupPass != confirm_pass) {
+			else if (signupPass.value != confirmPass.value) {
 				alert("Passwords do not match.");
 				password.focus();
 				password.classList.add('invalid-input')
 			}
 			//Send alert if password not sufficiently strong
-			else if (!isStrongPassword(signupPass)) {
+			else if (!isStrongPassword(signupPass.value)) {
 				alert("Password is not strong enough - make sure you use at least three letters, one number and one special character, and is at least 6 characters long.");
-				password.classList.add('invalid-input')
+				confirmPass.classList.add('invalid-input')
 				confirmPass.focus();
 			}
 		}
