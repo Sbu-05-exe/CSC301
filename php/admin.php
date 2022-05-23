@@ -28,7 +28,8 @@ $sqlCreateUsersTable = "CREATE TABLE Users (
                         Name VARCHAR(30) NOT NULL,
                         Surname VARCHAR(30) NOT NULL,
                         Email NVARCHAR (255) NOT NULL,
-                        Password VARCHAR(50) NOT NULL /*this isn't right need to come up with a better Type */
+                        Password VARCHAR(50) NOT NULL, /*this isn't right need to come up with a better Type */
+                        UserType BIT(1) NOT NULL
                         )";
 
 $sqlCreatereviewTable = "CREATE TABLE Review (
