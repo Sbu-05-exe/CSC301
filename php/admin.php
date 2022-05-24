@@ -1,4 +1,3 @@
-102 lines (79 sloc) 3.4 KB
 <?php
 
 $servername = "cs3-dev.ict.ru.ac.za";
@@ -24,9 +23,12 @@ $sqlCreateAttractionsTable = "CREATE TABLE Attractions (
                               AttractionID INT(6) NOT NULL AUTO_INCREMENT PRIMARY KEY,
                               Title VARCHAR(30),
                               Descriptions VARCHAR(280),
-                              Likes INT(255),
-                              CHECK (Likes >-1)
+                              Type VARCHAR(20), 
+                              SubType VARCHAR(20),
+                              thumbnail VARCHAR(50)
                               )";
+
+                              // The group column would be either restuarant or attraction
 
 $sqlCreateUsersTable = "CREATE TABLE Users (
                         UserID INT(6) NOT NULL AUTO_INCREMENT PRIMARY KEY,
@@ -34,7 +36,7 @@ $sqlCreateUsersTable = "CREATE TABLE Users (
                         FirstName VARCHAR(30) NOT NULL,
                         LastName VARCHAR(30) NOT NULL,
                         Email VARCHAR (255) NOT NULL,
-                        PasswordHash VARCHAR(50) NOT NULL 
+                        Password VARCHAR(50) NOT NULL 
                         )";
                         // PasswordHash BINARY(50) NOT NULL (this is the goal but for now i'm not really worried about security practicies)
 
@@ -96,8 +98,50 @@ function dropTable($tablename) {
 // createTable($sqlCreateAttractionsTable, "Attractions");
 // createTable($sqlCreateUsersTable, "Users");
 // createTable($sqlCreateReviewTable, "Reviews");
-// dropTable("Attractions")
-// dropTable("Users")
-// dropTable("Reviews)
+
+
+// PLEASE DO NOT UNCOMMENT THE FOLLOWING CODE WITHOUT GIVING ME OR SOMEONE A HEADSUP!
+
+// dropTable("Attractions");
+// dropTable("Users");
+// dropTable("Reviews");
+
+function importJSONdata() {
+  $json = file_get_contents("../js/attraction.json");
+  
+  $json_data = json_decode($json, true);
+  
+  global $conn;
+  // print_r($json_data);
+  foreach ($json_data as $item) {
+    $name =  $item["name"];
+    $info = $item["type"]; 
+    $type = $info["title"];
+    $subtype = $info["subtype"];
+    $thumbnail = $item["thumbnail"];
+    // this is information you would query from users
+    // $reviews =  $item["reviews"];
+    // $rating = $item["rating"];
+    $description = $item["description"];
+  
+    $userInsertStmt = $conn->prepare("INSERT INTO attractions (title, thumbnail, type, subtype, descriptions) VALUES (?, ?, ?, ?, ?)");
+    $userInsertStmt->bind_param("sssss", $name, $thumbnail, $type, $subtype, $description);
+    $userInsertStmt->execute();
+  
+    // echo "inserted " . $name;
+    // echo "<br/>";
+  }
+  
+  // print_r($json_data);
+}
+
+// importJSONdata();
+
+// import function works
+
+
+
+
+$conn->close();
 
 ?>
