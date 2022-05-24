@@ -20,6 +20,9 @@ Website I took inspiration from
 - [ ] populate attractions table with data (create queries to insert attractions information. TIP: PHP can store JSON objects so we could try write a loop to add all the attractions information to the comments page)
 - [ ] style comments and form on reviews page (sibu will take care of this again)
 
+- [ ] add sysadmin, DB admin etc. section to database and set all signup people as student/traveller
+- [ ] add sessions so that information about person can be seen when reviewing etc.
+
 I'll try leave the styling until last because that stuff generally takes me a while. The focus is on getting php and backend related code to work.
 
 ### optional features
