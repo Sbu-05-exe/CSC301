@@ -34,7 +34,7 @@
 			return false;
 		}
 
-		$specialChars = "!@#$%^&*()";
+		$specialChars = "@#$%^&!*()";
 		$letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvxyz";
 		$numberChar = "0123456789";
 		$letterCount = 0; 
@@ -44,17 +44,17 @@
 		
 		//Count each type of character in password
 		foreach ($chars as $char) {
-			if (strpos($letters, $char)) {
+			if (str_contains($letters, $char)) {
 				$letterCount++;
 				continue;
 			}
 
-			if (strpos($numberChar, $char)) {
+			if (str_contains($numberChar, $char)) {
 				$numberCount++;
 				continue;
 			}
 
-			if (strpos($specialChars, $char)) {
+			if (str_contains($specialChars, $char)) {
 				$specialCharCount++;
 				continue;
 			}
@@ -66,7 +66,6 @@
 
 			}
 
-			echo "Invalid character" . $char;
 			return false;
 
 		}
