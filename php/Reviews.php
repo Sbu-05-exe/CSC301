@@ -39,6 +39,15 @@
 
     <main>
 
+      <?php 
+        include('connection.php');
+        include('validation.php');
+
+        $sql = "SELECT * FROM attractions WHERE AttractionID = ?";
+        $selectState->bind_param("ss", $_GET["id"]);
+        $userSelectStmt->execute();
+      ?>
+
         <div class="gutter attraction-container">
           <div class="attraction">
             <div class="attraction-thumbnail-container">

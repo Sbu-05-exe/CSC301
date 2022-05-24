@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="../css/style.css">
 </head>
 <body id="body-attractions">
+    <?php
+        include("connection.php");
+    ?>
     <header>
       <a class="home-logo-link" href="../index.php">
         <div class="logo-heading">
@@ -71,11 +74,42 @@
                         </select> -->
                     </label>
                 </section>
-
-                    
             </form>
         </section>
         <section class="search-results">
+            <?php
+
+                $sql = "SELECT * FROM attractions";
+                $result = $conn->query($sql);
+
+                while ($row = $result->fetch_assoc()) {
+
+                    echo '<div class="gutter attraction-container">
+                                <div class="attraction">
+                                    <div class="attraction-thumbnail-container">
+                                    <figure class="attraction-thumbnail">
+                                        <a href="../php/Reviews.php?id=" '. $row["AttractionID"] .'>
+                                        <img src="../Images/Attractions/' . $row["thumbnail"] . '" alt="picture of ' . $row["Title"] .  '">
+                                        </a>
+                                    <figure/>
+                                    </div>	
+                                    <section class="attraction-description">
+                                    <a href="../php/Reviews.php?id=' . $row["AttractionID"] . ' ">
+    
+                                        <h3>' . $row["Title"] . ' </h3>
+                                        </a>
+                                        <p>' . $row["Descriptions"] . '</p>
+            
+                                    </section>
+                                </div>
+                                
+                            </div>';
+                }
+
+        
+            ?>
+
+
             
         </section>
     </main>
@@ -102,6 +136,6 @@
             <small >Copyright &copy; 2022</small>
         </p>
     </footer>
-    <script src="../js/main.js"></script>
+    <!-- <script src="../js/main.js"></script> -->
 </body>
 </html>
