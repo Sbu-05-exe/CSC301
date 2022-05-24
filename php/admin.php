@@ -36,7 +36,8 @@ $sqlCreateUsersTable = "CREATE TABLE Users (
                         FirstName VARCHAR(30) NOT NULL,
                         LastName VARCHAR(30) NOT NULL,
                         Email VARCHAR (255) NOT NULL,
-                        Password VARCHAR(50) NOT NULL 
+                        Password VARCHAR(50) NOT NULL,
+						ImgRef VARCHAR(255) DEFAULT 'placeholder.png'
                         )";
                         // PasswordHash BINARY(50) NOT NULL (this is the goal but for now i'm not really worried about security practicies)
 

@@ -121,8 +121,8 @@
 				
 				if ($canInsert) {
 					//Prepare statement in advance with parameters, to prevent SQL injection
-					$userInsertStmt = $conn->prepare("INSERT INTO users (Username, FirstName, LastName, Email, PasswordHash) VALUES (?, ?, ?, ?, ?)");
-					$userInsertStmt->bind_param("sssss", $fname, $firstname, $surname, $email, $fpassword);
+					$userInsertStmt = $conn->prepare("INSERT INTO users (Username, Name, Surname, Email, Password, UserType) VALUES (?, ?, ?, ?, ?, ?)");
+					$userInsertStmt->bind_param("sssssb", $fname, $firstname, $surname, $email, $fpassword, $radio);
 					//Insert user into database
 					$userInsertStmt->execute();
 				
@@ -145,7 +145,7 @@
         <section class="form-section" >
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" id="signup-form">
             <h1>Signup</h1>
-            <a href="Login.html"><small>already have an account? </small></a>
+            <a href="Login.php"><small>already have an account? </small></a>
     
                 <input size="20" maxlength="50" type="text" id="fname" name="fname" autofocus  value="<?php if(isSet($_POST["fname"])) echo $_POST["fname"] ?>" placeholder="Username" />
 				<div class="error"> * <?php echo $fname_error; ?> </div>

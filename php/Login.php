@@ -1,5 +1,7 @@
 
 <?php
+//Start the session
+session_start();
 
 // Create connection
 include('connection.php');
@@ -35,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
     if ($isSanitized) {
 		//Check whether user in database
-		$userSelectStmt = $conn->prepare("SELECT UserId FROM users WHERE Username=? AND Password=?");
+		$userSelectStmt = $conn->prepare("SELECT UserId, ImgRef FROM users WHERE Username=? AND Password=?");
 		$userSelectStmt->bind_param("ss", $username, $password);
 		$userSelectStmt->execute();
 		$userResult = $userSelectStmt->get_result();
@@ -43,6 +45,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
 		if ($result) {
 			// the user exists
+			// create a session so the user is logged in on all pages
+			$_SESSION['ID'] = $result['UserId'];
+			$_SESSION['img'] = $result['ImgRef'];
+			
 			header("Location: ../index.php");
     
 		} else {
