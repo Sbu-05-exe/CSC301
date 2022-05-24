@@ -287,6 +287,12 @@ nav .menu li .active {
 }
 */
 
+/* Styling thumbnail for each user */
+
+#user_thumbnail {
+	width: 50px;
+}
+
 
 /* Styling welcome paragraph */
 
@@ -728,7 +734,7 @@ body::-webkit-scrollbar-thumb {
   }
 
 
-#body-signup {
+#body-signup, #body-profile {
     background: url(./Images/logo/logo.png);
 }
 
@@ -763,7 +769,7 @@ body::-webkit-scrollbar-thumb {
     border-width:  0 0 3px 0 !important;
 } 
 
-#signup-form {
+#signup-form, #profile-form {
     width:  50vw;
     height:  100vh;
     background-color: var(--tertiary) ;
@@ -829,7 +835,7 @@ body::-webkit-scrollbar-thumb {
     border-radius:  100px;
 }
 
-#login_btn, #signup-button {
+#login_btn, #signup-button, #edit-button {
     padding:  1rem;
     width:  7rem;
     border:  none;
