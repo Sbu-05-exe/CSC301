@@ -1,3 +1,7 @@
+<?php
+	session_start();
+?>
+
 <!doctype html> 
 <html> 
   <head> 
@@ -35,6 +39,7 @@
 		</ul>
       </nav>
     </header>
+	<a href="./php/profile.php"><img id="user_thumbnail" style="width:300px;" src="<?php if (isset($_SESSION['img'])) {echo './Images/thumbnails/' . $_SESSION['img'];} ?>" ></a>
     <main id = "#main-padding">
       <section class="welcome">
     	  <div class="projector">
