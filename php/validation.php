@@ -44,28 +44,27 @@
 		
 		//Count each type of character in password
 		foreach ($chars as $char) {
-			if (strpos($letters, $char)) {
+			if (strpos($letters, $char)>=0) {
 				$letterCount++;
 				continue;
 			}
 
-			if (strpos($numberChar, $char)) {
+			if (strpos($numberChar, $char)>=0) {
 				$numberCount++;
 				continue;
 			}
 
-			if (strpos($specialChars, $char)) {
+			if (strpos($specialChars, $char)>=0) {
 				$specialCharCount++;
 				continue;
 			}
 
 
 			if (preg_match("/\w/", $char)) {
-
 				continue;
 
 			}
-
+			echo "this character is returning false".$char;
 			return false;
 
 		}

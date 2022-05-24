@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
     if ($isSanitized) {
 		//Check whether user in database
-		$userSelectStmt = $conn->prepare("SELECT UserId FROM users WHERE Username=? AND PasswordHash=?");
+		$userSelectStmt = $conn->prepare("SELECT UserId FROM users WHERE Username=? AND Password=?");
 		$userSelectStmt->bind_param("ss", $username, $password);
 		$userSelectStmt->execute();
 		$userResult = $userSelectStmt->get_result();

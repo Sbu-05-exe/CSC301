@@ -76,6 +76,7 @@
 				$isSanitized = false;
 			}
 			else {
+				echo "did I get here";
 				$fpassword = $_POST["fpassword"];
 				//Checks if password is strong
 				if (!isStrongPassword($fpassword)) {
@@ -121,7 +122,7 @@
 				
 				if ($canInsert) {
 					//Prepare statement in advance with parameters, to prevent SQL injection
-					$userInsertStmt = $conn->prepare("INSERT INTO users (Username, FirstName, LastName, Email, PasswordHash) VALUES (?, ?, ?, ?, ?)");
+					$userInsertStmt = $conn->prepare("INSERT INTO users (Username, Name, Surname, Email, Password, UserType) VALUES (?, ?, ?, ?, ?, 0)");
 					$userInsertStmt->bind_param("sssss", $fname, $firstname, $surname, $email, $fpassword);
 					//Insert user into database
 					$userInsertStmt->execute();
