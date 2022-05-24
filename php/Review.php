@@ -8,7 +8,7 @@
 </head>
 <body id="body-attractions">
     <header>
-      <a class="home-logo-link" href="../index.html">
+      <a class="home-logo-link" href="../index.php">
         <div class="logo-heading">
             <img width="30px" src="../Images/logo/potholeanddonkey_transparent.png" alt="logo">
             <h2> Visit Makhanda</h2>

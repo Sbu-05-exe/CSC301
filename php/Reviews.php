@@ -9,7 +9,7 @@
 </head>
 <body id="body-attractions">
     <header>
-      <a class="home-logo-link" href="../index.html">
+      <a class="home-logo-link" href="../index.php">
         <div class="logo-heading">
             <img width="30px" src="../Images/logo/potholeanddonkey_transparent.png" alt="logo">
             <h2> Visit Makhanda</h2>
@@ -23,10 +23,10 @@
       </div>
 
       <nav><ul class="menu">
-        <li> <a href="../index.html"> Home </a></li>
-        <li> <a href="../html/About.html"> About </a></li>
-        <li > <a href="../html/Attractions.html"> Attractions </a></li>
-        <li> <a href="../html/Login.html"> Login </a></li>
+        <li> <a href="../index.php"> Home </a></li>
+        <li> <a href="About.php"> About </a></li>
+        <li > <a href="Attractions.php"> Attractions </a></li>
+        <li> <a href="Login.php"> Login </a></li>
         <section class="toggle">
             <label class="toggle_bar round">
                 <input type="checkbox">

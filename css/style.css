@@ -804,6 +804,14 @@ body::-webkit-scrollbar-thumb {
     margin-bottom: 1rem;
 }
 
+.backend-error {
+    /* border: 1px solid red; */
+    /* background-color: black; */
+    color: red;
+    padding: 0.5rem;
+    border-radius: 100px;
+}
+
 .hide-error {
     display: none;
 }
