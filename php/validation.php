@@ -66,6 +66,7 @@
 
 			}
 
+			echo "Invalid character" . $char;
 			return false;
 
 		}

@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}
     if ($isSanitized) {
 		//Check whether user in database
-		$userSelectStmt = $conn->prepare("SELECT UserId FROM users WHERE Username=? AND PasswordHash=?");
+		$userSelectStmt = $conn->prepare("SELECT UserId FROM users WHERE Username=? AND Password=?");
 		$userSelectStmt->bind_param("ss", $username, $password);
 		$userSelectStmt->execute();
 		$userResult = $userSelectStmt->get_result();
@@ -43,7 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
 		if ($result) {
 			// the user exists
-			header("Location: index.php");
+			header("Location: ../index.php");
     
 		} else {
 			// the email or password is incorrect
@@ -100,7 +100,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				<div class="error"> * <?php echo $fpassword_error; ?> </div>
 
                 <input type="submit" id="login_btn" value="sign in">
-                <a id="login_signup" href="Signup.html"> <small>Haven't registered?</small></a>
+                <a id="login_signup" href="Signup.php"> <small>Haven't registered?</small></a>
         </section>
         </form>
     <footer>

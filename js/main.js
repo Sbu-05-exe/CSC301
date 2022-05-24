@@ -351,11 +351,16 @@ window.onload = () => {
 							<div class="attraction">
 								<div class="attraction-thumbnail-container">
 								<figure class="attraction-thumbnail">
+									<a href="../php/Reviews.php?title=${place.name}&thumbnail=${place.thumbnail}&description=${place.description}">
 									<img src="../Images/Attractions/${place.thumbnail}" alt="picture of ${place.name}">
+									</a>
 								<figure/>
 								</div>	
 								<section class="attraction-description">
+								<a href="../php/Reviews.php?title=${place.name}&thumbnail=${place.thumbnail}&description=${place.description}">
+
 									<h3>${place.name}</h3>
+									</a>
 									<p>${place.description} </p>
 		
 								</section>
