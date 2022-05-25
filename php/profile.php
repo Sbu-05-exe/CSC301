@@ -17,6 +17,21 @@
 		//Opens the connection to the database
 		include('connection.php');
 		
+		//Load original values into input boxes
+		if(!isset($_SESSION['ID'])) {
+			die('Your session id could not be found. Please log in again.');
+		}
+		else {
+			$sql = 'SELECT * FROM users WHERE UserId=' . $_SESSION['ID'];
+			$result = $conn->query($sql);
+			if ($result->num_rows != 1) {
+				die('Id is not in database. Please contact admin.');
+			}
+			else {
+				$data = $result->fetch_assoc();
+			}
+		}
+		
 		$fname = $firstname = $surname = $email = $fpassword = $cpassword = $radio = "";
 		$fname_error = $firstname_error = $surname_error = $email_error = $fpassword_error = $cpassword_error = "";
 		$isSanitized = true;
@@ -137,7 +152,7 @@
 					$conn->close();
 					
 					//Go to login page since signup successful
-					header("Location: Login.php");
+					header("Location: ../index.php");
 				}
 				//Close the database connection
 				$conn->close();
@@ -161,16 +176,16 @@
 				
 				
     
-                <input size="20" maxlength="50" type="text" id="fname" name="fname" autofocus  value="<?php if(isSet($_POST["fname"])) echo $_POST["fname"] ?>" placeholder="Username" />
+                <input size="20" maxlength="50" type="text" id="fname" name="fname" autofocus  value="<?php if(isSet($_POST["fname"])) {echo $_POST["fname"];} else {echo $data['Username'];} ?>" placeholder="Username" />
 				<div class="error"> * <?php echo $fname_error; ?> </div>
 
-                <input type="text" id="fnames" name="firstname" value="<?php if(isSet($_POST["firstname"])) echo $_POST["firstname"] ?>" placeholder="Name"/> <!--added this for the sql table-->
+                <input type="text" id="fnames" name="firstname" value="<?php if(isSet($_POST["firstname"])) {echo $_POST["firstname"];} else {echo $data['Name'];} ?>" placeholder="Name"/> <!--added this for the sql table-->
 				<div class="error"> * <?php echo $firstname_error; ?> </div>
 
-                <input type="text" id="fsurname" name="surname" value="<?php if(isSet($_POST["surname"])) echo $_POST["surname"] ?>" placeholder="Surname"/> <!--added this for the sql table-->
+                <input type="text" id="fsurname" name="surname" value="<?php if(isSet($_POST["surname"])) {echo $_POST["surname"];} else {echo $data['Surname'];}?>" placeholder="Surname"/> <!--added this for the sql table-->
 				<div class="error"> * <?php echo $surname_error; ?> </div>
                 
-                <input type="text" id="femail" name="email" value="<?php if(isSet($_POST["email"])) echo $_POST["email"] ?>" placeholder="Email"/>
+                <input type="text" id="femail" name="email" value="<?php if(isSet($_POST["email"])) {echo $_POST["email"];} else {echo $data['Email'];}?>" placeholder="Email"/>
 				<div class="error"> * <?php echo $email_error; ?> </div>
      
         
