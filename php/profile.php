@@ -219,11 +219,12 @@
                 <input id="edit-button" type="submit" value="Edit">
 
                 </input>
-				<button type="reset">
-                    Reset form
-                </button>
 
         </form>
+
+		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+			<input id="log-out" type="submit" value="log out">
+		</form>
         </section>
 		<script src="../js/main.js"></script>
 </body>

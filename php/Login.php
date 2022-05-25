@@ -47,6 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			// the user exists
 			// create a session so the user is logged in on all pages
 			$_SESSION['ID'] = $result['UserId'];
+			$_SESSION['loggedin'] = true;
 			$_SESSION['img'] = $result['ImgRef'];
 			
 			header("Location: ../index.php");

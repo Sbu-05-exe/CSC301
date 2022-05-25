@@ -28,8 +28,15 @@
       <nav><ul class="menu">
         <li> <a href="./index.php"> Home </a></li>
         <li> <a href="./php/About.php"> About </a></li>
-        <li > <a  href="./php/Attractions.php"> Attractions
-        <li><a href="./php/Login.php"> Login </a></li>
+        <li > <a  href="./php/Attractions.php"> Attractions </a> </li>
+        <?php
+          if ($_SESSION["loggedin"]) {
+            echo '<li><a href="./php/Profile.php"> Profile </a></li>' ;
+          } else {
+            echo '<li><a href="./php/Login.php"> Login </a></li>';
+          } 
+          ?>
+          
         <section class="toggle">
             <label class="toggle_bar round">
                 <input type="checkbox">
@@ -39,7 +46,7 @@
 		</ul>
       </nav>
     </header>
-	<a href="./php/profile.php"><img id="user_thumbnail" style="width:300px;" src="<?php if (isset($_SESSION['img'])) {echo './Images/thumbnails/' . $_SESSION['img'];} ?>" ></a>
+	<!-- <a href="./php/profile.php"><img id="user_thumbnail" style="width:300px;" src="<?php if (isset($_SESSION['img'])) {echo './Images/thumbnails/' . $_SESSION['img'];} ?>" ></a> -->
     <main id = "#main-padding">
       <section class="welcome">
     	  <div class="projector">

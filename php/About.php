@@ -25,9 +25,21 @@
       <nav><ul class="menu">
         <li> <a href="../index.php"> Home </a></li>
         <li> <a href="./About.php"> About </a></li>
-        <li > <a  href="./Attractions.php"> Attractions
-        <li><a href="./Login.php"> Login </a></li>
-           <section class="toggle">
+        <li > <a  href="./Attractions.php"> Attractions </a> </li>
+        <?php
+          if (isset($_SESSION["loggedin"])) {
+
+            if ($_SESSION["loggedin"]) {
+              echo '<li><a href="./Profile.php"> Profile </a></li>' ;
+            }
+            echo '<li><a href="./Login.php"> Login </a></li>';
+
+          } else {
+            echo '<li><a href="./Login.php"> Login </a></li>';
+          } 
+          ?>
+          
+        <section class="toggle">
             <label class="toggle_bar round">
                 <input type="checkbox">
                 <span id="#slider-color" class="slider round"><i id="#toggle-icon" class="sun large icon"></i></span>
