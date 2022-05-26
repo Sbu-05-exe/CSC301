@@ -1,12 +1,40 @@
+<?php
+
+  include('connection.php');
+  include('validation.php');
+
+  session_start();
+  if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    
+    // sql to sanitize 
+    $review = $_POST["freview"];
+
+    $rating = $_POST["frating"];
+    $date = date("Y-m-d");
+    $attractionid = $_GET["id"];
+
+    $userid = $_SESSION["ID"];
+
+    $insertReview = $conn->prepare("INSERT INTO Reviews (UserID, AttractionID, Rating, ReviewDescription, DateEntered, DateUpdated) Values (?,?,?,?,?,?)");
+    $insertReview->bind_param("ssssss",$userid, $attractionid, $rating, $review, $date, $date);
+    $insertReview->execute();
+
+
+
+  }
+?>
+
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <title>Visiting Makhanda - Attractions</title>
-    <link rel="stylesheet" href="../css/style.css">
-    <script src="../js/main.js"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" integrity="sha512-8bHTC73gkZ7rZ7vpqUQThUDhqcNFyYi2xgDgPDHc+GXVGHXq+xPjynxIopALmOPqzo9JZj0k6OqqewdGO3EsrQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Visiting Makhanda - Attractions</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <script src="../js/main.js"></script>
 </head>
+
 <body id="body-attractions">
     <header>
       <a class="home-logo-link" href="../index.php">
@@ -40,12 +68,20 @@
     <main>
 
       <?php 
-        include('connection.php');
-        include('validation.php');
 
-        $sql = "SELECT * FROM attractions WHERE AttractionID = ?";
-        $selectState->bind_param("ss", $_GET["id"]);
-        $userSelectStmt->execute();
+
+        $_id = $_GET["id"];
+
+        // get the attraction
+        $queryAttraction = $conn->prepare("SELECT * FROM attractions WHERE AttractionID = ?");
+        $queryAttraction->bind_param("s", $_id);
+        $queryAttraction->execute();
+
+        $result = $queryAttraction->get_result()->fetch_assoc();
+
+        if (!$result) {
+          header("Location: Attractions.php "); // if the users tries to see an attraction that does not exist take them out
+        }
       ?>
 
         <div class="gutter attraction-container">
@@ -53,36 +89,57 @@
             <div class="attraction-thumbnail-container">
             <figure class="attraction-thumbnail">
               
-              <img src="<?php echo "../Images/Attractions/" . $_GET["thumbnail"] ?>" alt="picture of <?php echo $_GET["title"] ?>">
+              <img src="<?php echo "../Images/Attractions/" . $result["thumbnail"] ?>" alt="picture of <?php echo $result["Title"] ?>">
             <figure/>
             </div>	
             <section class="attraction-description">
               <?php 
-                echo "<h3>" . $_GET["title"]. "</h3>";
-                echo "<p>" . $_GET["description"] . "</p>";
+                echo "<h3>" . $result["Title"]. "</h3>";
+                echo "<p>" . $result["Descriptions"] . "</p>";
               ?>
-
             </section>
           </div>
         </div>
 
         <!-- run query to find all reviews associated with this page -->  
 
+        <?php
+          $queryReviews = $conn->prepare("SELECT * FROM Reviews WHERE AttractionID = ? ");
+          $queryReviews->bind_param("s", $_id);
+          $queryReviews->execute();
+
+          $cursor = $queryReviews->get_result();
+          while ($row = $cursor->fetch_assoc()) {
+            // get review based off this
+            echo '<section class="gutter reviews-container">
+              
+              <div class="user-thumbnail-container">
+                <img class="user-thumbnail" src="defaultthumbnail" alt="display photo of user">
+              </div>
+              <div class="comment-container">
+                <p class="comment-text"> ' . $row["ReviewDescription"] . ' </p>
+                <p class="comment-date"> ' . $row["DateUpdated"] . ' </p>
+              </div>
+            </section>';
+            
+          }
+        ?>
+
         <!-- loop through this with php -->
-        <section class="gutter reviews-container">
-          
-          <div class="user-thumbnail-container">
-            <img src="defaultthumbnail" alt="display photo of user">
-          </div>
-          <div class="comment-container">
-            <p class="comment-text"> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis, illum? Aspernatur rem eligendi rerum cum, error consectetur natus dolor iusto. </p>
-            <p class="comment-date">5th May</p>
-          </div>
-        </section>
         <!-- if person has not commented then add this form to their page to add a comment-->
-        <section class="gutter add-comment>"/>
-          <form action="processReview.php" method="POST">
-            <textarea name="fcomment" id="fcomment" cols="60" rows="5"></textarea>
+        <section class="gutter add-comment form-section"/>
+          <form id="review-form" action="" method="POST">
+            <div class="form-input" >
+              <label for="freview">
+                <p>Review: </p>
+                <textarea name="freview" id="freview" cols="60" rows="5"></textarea>
+              </label>
+              <label for="frating">
+                <p>Rating:</p>
+                <input name="frating" id="frating"  min="0" max="5" type="number">
+              </label>
+            </div>
+            <input type="submit" id="add-review-button" value="add comment">
           </form>
         </section>
 
@@ -109,4 +166,4 @@
         
       <small >Copyright &copy; 2022</small>
     </p>
-</footer>
+  </footer>

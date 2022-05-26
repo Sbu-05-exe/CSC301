@@ -848,6 +848,95 @@ body::-webkit-scrollbar-thumb {
     padding:  1rem;
 }
 
+/* Styling the reviews page */
+
+
+/* centering the review/comments */
+.reviews-container {
+    display: flex;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+
+/* centering the thumbnail*/
+.user-thumbnail-container {
+    /* border: 1px solid orange; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* make the thumbnail rounds */
+.user-thumbnail {
+    border-radius: 100px;
+}
+
+
+.comment-container {
+    /* border: 1px solid blue; */
+    display: flex;
+    flex-direction: column;
+    width: 500px; 
+    text-align: justify;
+    padding: 1rem;
+}
+
+/* float the data to the right of the element */
+.comment-date {
+    color: #666666;
+    align-self: flex-end;
+}
+
+/* styling the form on the reviews page */
+
+#review-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-input {
+    display: flex;
+    justify-content: center;
+    max-width: 500px;
+    /* border: 1px solid red; */
+}
+
+.form-input label:first-child {
+    margin-right: 1rem;
+}
+
+textarea {
+    resize: none;
+}
+
+#freview  {
+    border: none;
+    box-shadow:  0 0px 20px rgba(0,0,0, 0.3);
+    border-radius: 20px;
+    padding: 20px;
+    outline: none;
+}
+
+#frating {
+    width: 80px;
+    border-radius: 0;
+    outline: none;
+}
+
+#add-review-button {
+    background-color: black;
+    color: white;
+    margin: 1rem;
+}
+
+.darkmode #add-review-button {
+    background-color: var(--primary);
+    color: white;
+}
+
+
 /* footer */
 
 footer {

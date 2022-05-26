@@ -30,7 +30,7 @@
         <li> <a href="./php/About.php"> About </a></li>
         <li > <a  href="./php/Attractions.php"> Attractions </a> </li>
         <?php
-          if ($_SESSION["loggedin"]) {
+          if (isset($_SESSION["ID"])) {
             echo '<li><a href="./php/Profile.php"> Profile </a></li>' ;
           } else {
             echo '<li><a href="./php/Login.php"> Login </a></li>';

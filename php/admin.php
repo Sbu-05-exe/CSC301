@@ -47,8 +47,12 @@ $sqlCreateReviewTable = "CREATE TABLE Reviews (
                          ReviewID INT(6) NOT NULL AUTO_INCREMENT PRIMARY KEY,
                          UserID INT(6) NOT NULL,
                          AttractionID INT(6) NOT NULL,
-                         ReviewDescription VARCHAR(300) 
+                         ReviewDescription VARCHAR(300),
+                         DateEntered DATE NOT NULL,
+                         DateUpdated DATE NOT NULL,
+                         Rating INT(1)  
                          )";
+// we can have a check to see that ratings are between bounds 1 - 5
 
                             // FOREIGN KEY (UserID) REFERENCES Users(UserID),
 
@@ -96,22 +100,10 @@ function dropTable($tablename) {
   echo "<br/>";
 }
 
-// createTable($sqlCreateAttractionsTable, "Attractions");
-// createTable($sqlCreateUsersTable, "Users");
-// createTable($sqlCreateReviewTable, "Reviews");
-
-
-// PLEASE DO NOT UNCOMMENT THE FOLLOWING CODE WITHOUT GIVING ME OR SOMEONE A HEADSUP!
-
-// dropTable("Attractions");
-// dropTable("Users");
-// dropTable("Reviews");
-
 function importJSONdata() {
   $json = file_get_contents("../js/attraction.json");
   
   $json_data = json_decode($json, true);
-  
   global $conn;
   // print_r($json_data);
   foreach ($json_data as $item) {
@@ -124,22 +116,32 @@ function importJSONdata() {
     // $reviews =  $item["reviews"];
     // $rating = $item["rating"];
     $description = $item["description"];
-  
+
     $userInsertStmt = $conn->prepare("INSERT INTO attractions (title, thumbnail, type, subtype, descriptions) VALUES (?, ?, ?, ?, ?)");
     $userInsertStmt->bind_param("sssss", $name, $thumbnail, $type, $subtype, $description);
     $userInsertStmt->execute();
-  
+
     // echo "inserted " . $name;
     // echo "<br/>";
   }
-  
+
   // print_r($json_data);
 }
 
+
+// header("Location : " . $_SERVER["HTTP_REFERER"]);
+// createTable($sqlCreateAttractionsTable, "Attractions");
+// createTable($sqlCreateUsersTable, "Users");
+// createTable($sqlCreateReviewTable, "Reviews");
+
+
+// PLEASE DO NOT UNCOMMENT THE FOLLOWING CODE WITHOUT GIVING ME OR SOMEONE A HEADSUP!
+
+// dropTable("Attractions");
+// dropTable("Users");
+// dropTable("Reviews");
+
 // importJSONdata();
-
-// import function works
-
 
 
 

@@ -421,10 +421,10 @@ window.onload = () => {
 			return places.filter(place => place.name.toUpperCase().includes(substring.toUpperCase()));
 		} // onFilterByName
 		
-		getAttractionResults(places);
-		searchInput.addEventListener("input", (e) => getAttractionResults(filterByAttractionName(e.target.value)));
-		sortbyTypeDropdown.addEventListener("change", (e) => getAttractionResults(sortByAttractionType(e.target.value)))
-		attractionTypeDropdown.addEventListener("change", (e) => getAttractionResults(filterByAttractionType(e.target.value)));
+		// getAttractionResults(places);
+		// searchInput.addEventListener("input", (e) => getAttractionResults(filterByAttractionName(e.target.value)));
+		// sortbyTypeDropdown.addEventListener("change", (e) => getAttractionResults(sortByAttractionType(e.target.value)))
+		// attractionTypeDropdown.addEventListener("change", (e) => getAttractionResults(filterByAttractionType(e.target.value)));
 	}
 	
 	//Toggle to dark mode

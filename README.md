@@ -23,6 +23,12 @@ Website I took inspiration from
 - [ ] add sysadmin, DB admin etc. section to database and set all signup people as student/traveller
 - [ ] add sessions so that information about person can be seen when reviewing etc.
 
+- [x] drop the reviews tables
+- [x] add a date column to review table
+- [x] create the review table
+- [] get the add review query to work
+- [] display add comment/review section if users has been logged in
+
 I'll try leave the styling until last because that stuff generally takes me a while. The focus is on getting php and backend related code to work.
 
 ### optional features
