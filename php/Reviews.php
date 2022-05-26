@@ -110,11 +110,14 @@
 
           $cursor = $queryReviews->get_result();
           while ($row = $cursor->fetch_assoc()) {
+
+            // write a conditional to determine whether the comment belongs to the logged in user or not 
+
             // get review based off this
             echo '<section class="gutter reviews-container">
               
               <div class="user-thumbnail-container">
-                <img class="user-thumbnail" src="defaultthumbnail" alt="display photo of user">
+                <img class="user-thumbnail" src="../Images/thumbnails/placeholder.png" alt="display photo of user">
               </div>
               <div class="comment-container">
                 <p class="comment-text"> ' . $row["ReviewDescription"] . ' </p>
