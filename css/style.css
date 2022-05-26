@@ -635,9 +635,7 @@ nav .menu li .active {
     padding:  1rem;
 }
 
-
 /* Aligning main body and styling for Attractions and Restaurants */
-
 .top-attractions {
     display:  flex;
     justify-content: center;
@@ -871,7 +869,6 @@ body::-webkit-scrollbar-thumb {
     border-radius: 100px;
 }
 
-
 .comment-container {
     /* border: 1px solid blue; */
     display: flex;
@@ -906,6 +903,14 @@ body::-webkit-scrollbar-thumb {
 .form-input label:first-child {
     margin-right: 1rem;
 }
+
+.user-thumbnail {
+    width: 50px;
+}
+
+/*  */
+
+
 
 textarea {
     resize: none;

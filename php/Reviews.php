@@ -109,7 +109,16 @@
           $queryReviews->execute();
 
           $cursor = $queryReviews->get_result();
+
+          $display_form = true;
+
           while ($row = $cursor->fetch_assoc()) {
+            if (isset($_SESSION)) {
+              if ($_SESSION["ID"] == $row["UserID"]) {
+                // the use has commented so don't display the form
+                $display_form = false;
+              }
+            }
 
             // write a conditional to determine whether the comment belongs to the logged in user or not 
 
@@ -130,21 +139,27 @@
 
         <!-- loop through this with php -->
         <!-- if person has not commented then add this form to their page to add a comment-->
-        <section class="gutter add-comment form-section"/>
-          <form id="review-form" action="" method="POST">
-            <div class="form-input" >
-              <label for="freview">
-                <p>Review: </p>
-                <textarea name="freview" id="freview" cols="60" rows="5"></textarea>
-              </label>
-              <label for="frating">
-                <p>Rating:</p>
-                <input name="frating" id="frating"  min="0" max="5" type="number">
-              </label>
-            </div>
-            <input type="submit" id="add-review-button" value="add comment">
-          </form>
-        </section>
+
+        <?php
+          if ($display_form) {
+
+            echo '<section class="gutter add-comment form-section"/>
+              <form id="review-form" action="" method="POST">
+                <div class="form-input" >
+                  <label for="freview">
+                    <p>Review: </p>
+                    <textarea name="freview" id="freview" cols="60" rows="5"></textarea>
+                  </label>
+                  <label for="frating">
+                    <p>Rating:</p>
+                    <input name="frating" id="frating"  min="0" max="5" type="number">
+                  </label>
+                </div>
+                <input type="submit" id="add-review-button" value="add comment">
+              </form>
+            </section>';
+          }
+        ?>
 
     </main>
 
