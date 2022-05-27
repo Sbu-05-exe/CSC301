@@ -20,8 +20,6 @@
     $insertReview->execute();
 
     header("Location: ./Reviews.php?=" . $attractionid);
-
-
   }
 ?>
 
@@ -129,7 +127,7 @@
             echo '<section class="gutter reviews-container">
               
               <div class="user-thumbnail-container">
-                <img class="user-thumbnail" src="../Images/thumbnails/placeholder.png" alt="display photo of user">
+                <img class="user-thumbnail" src="../Images/thumbnails/' . $row["ImgRef"] . '" alt="display photo of user">
                 ' . $row["Username"] . '
               </div>
               <div class="comment-container">

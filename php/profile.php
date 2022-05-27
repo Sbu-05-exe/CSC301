@@ -12,6 +12,8 @@
 	<link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body id="body-profile">
+
+	
     <?php
 		include('validation.php');
 		//Opens the connection to the database
@@ -157,75 +159,90 @@
 				//Close the database connection
 				$conn->close();
 			}
-			else {
+			else { 
 				//Close the database connection
 				$conn->close();
 			}
 		}
 		?>
-        <section class="form-section" >
-		<form action="upload_img.php" method="post" enctype="multipart/form-data">
-			<img id="user_thumbnail" style="height:100px;" src="<?php if (isset($_SESSION['img'])) {echo '../Images/thumbnails/' . $_SESSION['img'];} ?>" >
-			<input type="file" name="imgref" id="imgref">
-			<input type="submit" name="upload_img" value="Edit image">
-		</form>
-        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" id="profile-form">
-            <h1>Profile</h1>
-            <a href="../index.php"><small>Home</small></a>
-			
+
+	<main>
+	<section class="form-section" >
+		<div class="flex-row">
+			<form id="image-form" action="upload_img.php" method="post" enctype="multipart/form-data">
+				<img id="user_thumbnail" style="height:100px;" src="<?php if (isset($_SESSION['img'])) {echo '../Images/thumbnails/' . $_SESSION['img'];} ?>" >
+				<input type="file" name="imgref" id="imgref">
+				<input type="submit" name="upload_img" value="Edit image">
+			</form>
+			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" id="profile-form">
+				<h1>Profile</h1>
+				<a href="../index.php"><small>Home</small></a>
 				
-				
-    
-                <input size="20" maxlength="50" type="text" id="fname" name="fname" autofocus  value="<?php if(isSet($_POST["fname"])) {echo $_POST["fname"];} else {echo $data['Username'];} ?>" placeholder="Username" />
-				<div class="error"> * <?php echo $fname_error; ?> </div>
+					
 
-                <input type="text" id="fnames" name="firstname" value="<?php if(isSet($_POST["firstname"])) {echo $_POST["firstname"];} else {echo $data['Name'];} ?>" placeholder="Name"/> <!--added this for the sql table-->
-				<div class="error"> * <?php echo $firstname_error; ?> </div>
+					<label for="">
+						<input size="20" maxlength="50" type="text" id="fname" name="fname" autofocus  value="<?php if(isSet($_POST["fname"])) {echo $_POST["fname"];} else {echo $data['Username'];} ?>" placeholder="Username" />
+						<div class="error"> * <?php echo $fname_error; ?> </div>
+					</label>
 
-                <input type="text" id="fsurname" name="surname" value="<?php if(isSet($_POST["surname"])) {echo $_POST["surname"];} else {echo $data['Surname'];}?>" placeholder="Surname"/> <!--added this for the sql table-->
-				<div class="error"> * <?php echo $surname_error; ?> </div>
-                
-                <input type="text" id="femail" name="email" value="<?php if(isSet($_POST["email"])) {echo $_POST["email"];} else {echo $data['Email'];}?>" placeholder="Email"/>
-				<div class="error"> * <?php echo $email_error; ?> </div>
-     
-        
-                <input type="password" id="fpassword" name="fpassword" placeholder="Password"/>
-				<div class="error"> * <?php echo $fpassword_error; ?> </div>
- 
-                <input type="password" id="fconfirm" name="cpassword" placeholder="Confirm Password"/>
-				<div class="error"> * <?php echo $cpassword_error; ?> </div>
+					<label for="">
+						<input type="text" id="fnames" name="firstname" value="<?php if(isSet($_POST["firstname"])) {echo $_POST["firstname"];} else {echo $data['Name'];} ?>" placeholder="Name"/> <!--added this for the sql table-->
+						<div class="error"> * <?php echo $firstname_error; ?> </div>
+					</label>
 
-                <section class="radio-group">
-                
-                <label class="radio-label" for="ftraveller" > 
-                <input 
-                value="Traveller" 
-                id="ftraveller" 
-                type="radio" 
-                name="usertype"
-                />Traveller</label>
+					<label for="">
+						<input type="text" id="fsurname" name="surname" value="<?php if(isSet($_POST["surname"])) {echo $_POST["surname"];} else {echo $data['Surname'];}?>" placeholder="Surname"/> <!--added this for the sql table-->
+						<div class="error"> * <?php echo $surname_error; ?> </div>
+					</label>
 
-                <label class="radio-label" for="fstudent">
-                    <input 
-                        value="Student" 
-                        id="fstudent" 
-                        type="radio" 
-                        name="usertype"
-    					checked />
-                    Student
-                </label>
+					<label for="">
+						<input type="text" id="femail" name="email" value="<?php if(isSet($_POST["email"])) {echo $_POST["email"];} else {echo $data['Email'];}?>" placeholder="Email"/>
+						<div class="error"> * <?php echo $email_error; ?> </div>
+					</label>
+						
+					<label for="">
+						<input type="password" id="fpassword" name="fpassword" placeholder="Password"/>
+						<div class="error"> * <?php echo $fpassword_error; ?> </div>
+					</label>
 			
-                </section>
-                <input id="edit-button" type="submit" value="Edit">
+					<label for="">
+						<input type="password" id="fconfirm" name="cpassword" placeholder="Confirm Password"/>
+						<div class="error"> * <?php echo $cpassword_error; ?> </div>
+					</label>
 
-                </input>
+					<section class="radio-group">
+					
+					<label class="radio-label" for="ftraveller" > 
+					<input 
+					value="Traveller" 
+					id="ftraveller" 
+					type="radio" 
+					name="usertype"
+					/>Traveller</label>
 
-        </form>
+					<label class="radio-label" for="fstudent">
+						<input 
+							value="Student" 
+							id="fstudent" 
+							type="radio" 
+							name="usertype"
+							checked />
+						Student
+					</label>
+				
+					</section>
+					<input id="edit-button" type="submit" value="Edit">
 
-		<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-			<input id="log-out" type="submit" value="log out">
-		</form>
-        </section>
-		<script src="../js/main.js"></script>
+					</input>
+
+			</form>
+
+			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
+				<input id="log-out" type="submit" value="log out">
+			</form>
+			</div>
+	</section>
+	</main>
+	<script src="../js/main.js"></script>
 </body>
 </html>
