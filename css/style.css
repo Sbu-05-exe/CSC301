@@ -861,6 +861,7 @@ body::-webkit-scrollbar-thumb {
 .user-thumbnail-container {
     /* border: 1px solid orange; */
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }

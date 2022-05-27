@@ -1,3 +1,8 @@
+<?php
+
+  session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,12 +34,10 @@
         <?php
           if (isset($_SESSION["loggedin"])) {
 
-            if ($_SESSION["loggedin"]) {
               echo '<li><a href="./Profile.php"> Profile </a></li>' ;
-            }
-            echo '<li><a href="./Login.php"> Login </a></li>';
 
           } else {
+            echo "you're not logged in";
             echo '<li><a href="./Login.php"> Login </a></li>';
           } 
           ?>

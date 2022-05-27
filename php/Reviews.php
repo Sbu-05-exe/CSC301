@@ -19,6 +19,7 @@
     $insertReview->bind_param("ssssss",$userid, $attractionid, $rating, $review, $date, $date);
     $insertReview->execute();
 
+    header("Location: ./Reviews.php?=" . $attractionid);
 
 
   }
@@ -104,7 +105,7 @@
         <!-- run query to find all reviews associated with this page -->  
 
         <?php
-          $queryReviews = $conn->prepare("SELECT * FROM Reviews WHERE AttractionID = ? ");
+          $queryReviews = $conn->prepare("SELECT * FROM Reviews AS R, Users AS U WHERE R.UserID = U.UserID AND AttractionID = ? ");
           $queryReviews->bind_param("s", $_id);
           $queryReviews->execute();
 
@@ -113,11 +114,13 @@
           $display_form = true;
 
           while ($row = $cursor->fetch_assoc()) {
-            if (isset($_SESSION)) {
+            if (isset($_SESSION["ID"])) {
               if ($_SESSION["ID"] == $row["UserID"]) {
                 // the use has commented so don't display the form
                 $display_form = false;
               }
+            } else {
+              $display_form = false;
             }
 
             // write a conditional to determine whether the comment belongs to the logged in user or not 
@@ -127,6 +130,7 @@
               
               <div class="user-thumbnail-container">
                 <img class="user-thumbnail" src="../Images/thumbnails/placeholder.png" alt="display photo of user">
+                ' . $row["Username"] . '
               </div>
               <div class="comment-container">
                 <p class="comment-text"> ' . $row["ReviewDescription"] . ' </p>

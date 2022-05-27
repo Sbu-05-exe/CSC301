@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,8 +32,16 @@
       <nav><ul class="menu">
         <li> <a href="../index.php"> Home </a></li>
         <li> <a href="./About.php"> About </a></li>
-        <li > <a class="active"  href="./Attractions.php"> Attractions
-        <li><a href="./Login.php"> Login </a></li>
+        <li > <a class="active"  href="./Attractions.php"> Attractions </a> </li>
+
+        <?php
+        if (isset($_SESSION["ID"])) {
+            echo '<li><a href="./php/Profile.php"> Profile </a></li>' ;
+        } else {
+            echo '<li><a href="./php/Login.php"> Login </a></li>';
+        } 
+        ?>
+        
         <section class="toggle">
             <label class="toggle_bar round">
                 <input type="checkbox">
