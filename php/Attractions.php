@@ -36,12 +36,12 @@
 
         <?php
         if (isset($_SESSION["ID"])) {
-            echo '<li><a href="./php/Profile.php"> Profile </a></li>' ;
+            echo '<li><a href="./Profile.php"> Profile </a></li>' ;
         } else {
-            echo '<li><a href="./php/Login.php"> Login </a></li>';
+            echo '<li><a href="./Login.php"> Login </a></li>';
         } 
         ?>
-        
+
         <section class="toggle">
             <label class="toggle_bar round">
                 <input type="checkbox">
