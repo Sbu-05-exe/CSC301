@@ -20,7 +20,7 @@ $isSanitized = true;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	//Check that the person has not been blocked, based on whether they entered an incorrect password or username 5 times or more in the last hour
-	if (!mustBlock()) {
+	if (true/*!mustBlock()*/) {
 		//Check that username is entered
 		if (empty($_POST["fusername"])) {
 			$username_error = "Username is required.";
@@ -66,22 +66,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			$nameSelectStmt->close();
 			if ($isValidUsername) {
 				//Check whether user in database
-				$userSelectStmt = $conn->prepare("SELECT UserId, ImgRef FROM users WHERE Username=? AND Password=?");
-				$userSelectStmt->bind_param("ss", $username, $password);
+
+				$userSelectStmt = $conn->prepare("SELECT UserId, ImgRef, PasswordHash FROM users WHERE Username=?");
+				$userSelectStmt->bind_param("s", $username);
 				$userSelectStmt->execute();
 				$userResult = $userSelectStmt->get_result();
 				$result = $userResult->fetch_assoc();
-    
-				if ($result) {
+
+				 $database_hash = $result["PasswordHash"];
+				$password_hash = hash('sha256', $password);
+
+				if ($result && trim($database_hash) == trim($password_hash)) {
 					// the user exists
 					// create a session so the user is logged in on all pages
 					$_SESSION['ID'] = $result['UserId'];
 					$_SESSION['loggedin'] = true;
 					$_SESSION['img'] = $result['ImgRef'];
 					$_SESSION['addr'] = $_SERVER['REMOTE_ADDR'];
-			
+					
 					header("Location: ../index.php");
-    
+					
 				} else {
 					// the email or password is incorrect
 					$error = "Invalid username or password";
@@ -108,8 +112,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		$error = "You have been locked out. Please wait an hour before trying again.";
 	}
 }
-
-
 
 ?>
 

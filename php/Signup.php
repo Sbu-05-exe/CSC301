@@ -77,6 +77,7 @@
 			}
 			else {
 				$fpassword = $_POST["fpassword"];
+			
 				//Checks if password is strong
 				if (!isStrongPassword($fpassword)) {
 					$fpassword_error = "Password must be at least 6 characters long, and contain 3 letters, a number and a special character.";
@@ -95,7 +96,13 @@
 					$isSanitized = false;
 				}
 			}
-			$radio = $_POST["usertype"];
+			
+			if ($_POST["usertype"] == "Student") {
+				$radio = true;
+			} else {
+				$radio = false;
+			}
+
 			if ($isSanitized) {
 				$usernameStmt = $conn->prepare("SELECT UserId FROM users WHERE Username=?");
 				$usernameStmt->bind_param("s", $fname);
@@ -120,9 +127,11 @@
 				$emailStmt->close();
 				
 				if ($canInsert) {
+					$hashed_password = hash('sha256', $fpassword); // hashing the password before storing
+					$radio = false;
 					//Prepare statement in advance with parameters, to prevent SQL injection
-					$userInsertStmt = $conn->prepare("INSERT INTO users (Username, Name, Surname, Email, Password, UserType) VALUES (?, ?, ?, ?, ?, ?)");
-					$userInsertStmt->bind_param("sssssb", $fname, $firstname, $surname, $email, $fpassword, $radio);
+					$userInsertStmt = $conn->prepare("INSERT INTO users (Username, Name, Surname, Email, Password, UserType, PasswordHash) VALUES (?, ?, ?, ?, ?, ?, ?)");
+					$userInsertStmt->bind_param("sssssss", $fname, $firstname, $surname, $email, $fpassword, $radio, $hashed_password);
 					//Insert user into database
 					$userInsertStmt->execute();
 				

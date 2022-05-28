@@ -143,8 +143,51 @@ function importJSONdata() {
 
 // importJSONdata();
 
+function makeUpdatePasswordQuery($row) {
+  return "UPDATE Users SET PasswordHash=' "
+   . hash('sha256', $row["Password"])
+   . "' WHERE UserID=" . $row["UserId"]   ;
+  // return "UPDATE Users SET PasswordHash=" . password_hash($row["Password"], PASSWORD_BCRYPT) . ";";
+}
 
+
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+  // echo "were getting somewhere";
+  // $sql = $_POST["sql"];
+  // echo $sql;
+  $results = $conn->query("SELECT * FROM Users;"); 
+
+  echo "<table>";
+  while ($row = $results->fetch_assoc()) {
+
+    if ($conn->query(makeUpdatePasswordQuery($row))) {
+      // echo "hashed " . $row["Username"] . "'s password successfully";
+
+    } else {
+      echo "failed to hash password for " . $row["Username"];
+      echo "<br/> " . $conn->error;
+    }      
+    echo "
+      <tr>
+        <td> " . $row["Username"] . " </td>
+        <td> " . $row["Password"] . " </td>
+        <td> " . $row["PasswordHash"] . " </td>
+      </tr>
+
+    ";
+
+  }
+  echo "</table>";
+}
 
 $conn->close();
 
 ?>
+
+<form action="" method="POST">
+  <!-- <textarea name="sql" id="sql" cols="30" rows="10">
+
+  </textarea> -->
+  <input type="submit" value="RUN"></input>
+</form>

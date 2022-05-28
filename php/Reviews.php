@@ -102,7 +102,7 @@
             </div>	
             <section class="attraction-description">
               <?php 
-                echo "<h3>" . $result["Title"]. "</h3>";
+                echo "<h3>" . $result["Title"] . "</h3>";
                 echo "<p>" . $result["Descriptions"] . "</p>";
               ?>
             </section>
