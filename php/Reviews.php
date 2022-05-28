@@ -53,7 +53,16 @@
         <li> <a href="../index.php"> Home </a></li>
         <li> <a href="About.php"> About </a></li>
         <li > <a href="Attractions.php"> Attractions </a></li>
-        <li> <a href="Login.php"> Login </a></li>
+        <?php
+          if (isset($_SESSION["loggedin"])) {
+
+              echo '<li><a href="./Profile.php"> Profile </a></li>' ;
+
+          } else {
+            // echo "you're not logged in";
+            echo '<li><a href="./Login.php"> Login </a></li>';
+          } 
+          ?>
         <section class="toggle">
             <label class="toggle_bar round">
                 <input type="checkbox">
@@ -109,15 +118,23 @@
 
           $cursor = $queryReviews->get_result();
 
-          $display_form = true;
+          if (isset($_SESSION["ID"])) {
+            $display_form = true;
+          } else {
+            $display_form = false;
+          };
+
 
           while ($row = $cursor->fetch_assoc()) {
             if (isset($_SESSION["ID"])) {
               if ($_SESSION["ID"] == $row["UserID"]) {
                 // the use has commented so don't display the form
                 $display_form = false;
+              } else {
+                // echo "why are you here";
               }
             } else {
+              echo "session is not set";
               $display_form = false;
             }
 
@@ -144,7 +161,6 @@
 
         <?php
           if ($display_form) {
-
             echo '<section class="gutter add-comment form-section"/>
               <form id="review-form" action="" method="POST">
                 <div class="form-input" >

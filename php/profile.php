@@ -1,5 +1,5 @@
 <?php
-	session_start();
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -231,14 +231,13 @@
 					</label>
 				
 					</section>
-					<input id="edit-button" type="submit" value="Edit">
-
+						<input id="edit-button" type="submit" value="Edit">
 					</input>
 
 			</form>
 
-			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-				<input id="log-out" type="submit" value="log out">
+			<form id="log-out-form" action="<?php echo htmlspecialchars("processLogout.php");?>" method="POST">
+				<input id="log-out" type="submit" value="log out"></input>
 			</form>
 			</div>
 	</section>

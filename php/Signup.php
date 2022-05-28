@@ -146,25 +146,36 @@
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" id="signup-form">
             <h1>Signup</h1>
             <a href="Login.php"><small>already have an account? </small></a>
-    
-                <input size="20" maxlength="50" type="text" id="fname" name="fname" autofocus  value="<?php if(isSet($_POST["fname"])) echo $_POST["fname"] ?>" placeholder="Username" />
-				<div class="error"> * <?php echo $fname_error; ?> </div>
 
-                <input type="text" id="fnames" name="firstname" value="<?php if(isSet($_POST["firstname"])) echo $_POST["firstname"] ?>" placeholder="Name"/> <!--added this for the sql table-->
-				<div class="error"> * <?php echo $firstname_error; ?> </div>
+				<label for="">
+					<input size="20" maxlength="50" type="text" id="fname" name="fname" autofocus  value="<?php if(isSet($_POST["fname"])) echo $_POST["fname"] ?>" placeholder="Username" />
+					<div class="error"> * <?php echo $fname_error; ?> </div>
+				</label>
 
-                <input type="text" id="fsurname" name="surname" value="<?php if(isSet($_POST["surname"])) echo $_POST["surname"] ?>" placeholder="Surname"/> <!--added this for the sql table-->
-				<div class="error"> * <?php echo $surname_error; ?> </div>
-                
-                <input type="text" id="femail" name="email" value="<?php if(isSet($_POST["email"])) echo $_POST["email"] ?>" placeholder="Email"/>
-				<div class="error"> * <?php echo $email_error; ?> </div>
+				<label for="">
+					<input type="text" id="fnames" name="firstname" value="<?php if(isSet($_POST["firstname"])) echo $_POST["firstname"] ?>" placeholder="Name"/> <!--added this for the sql table-->
+					<div class="error"> * <?php echo $firstname_error; ?> </div>
+				</label>
+
+				<label for="">
+					<input type="text" id="fsurname" name="surname" value="<?php if(isSet($_POST["surname"])) echo $_POST["surname"] ?>" placeholder="Surname"/> <!--added this for the sql table-->
+					<div class="error"> * <?php echo $surname_error; ?> </div>
+				</label>
+
+                <label for="">
+					<input type="text" id="femail" name="email" value="<?php if(isSet($_POST["email"])) echo $_POST["email"] ?>" placeholder="Email"/>
+					<div class="error"> * <?php echo $email_error; ?> </div>
+				</label>
      
-        
-                <input type="password" id="fpassword" name="fpassword" placeholder="Password"/>
-				<div class="error"> * <?php echo $fpassword_error; ?> </div>
- 
-                <input type="password" id="fconfirm" name="cpassword" placeholder="Confirm Password"/>
-				<div class="error"> * <?php echo $cpassword_error; ?> </div>
+				<label for="">
+					<input type="password" id="fpassword" name="fpassword" placeholder="Password"/>
+					<div class="error"> * <?php echo $fpassword_error; ?> </div>
+				</label>
+				
+				<label for="">
+					<input type="password" id="fconfirm" name="cpassword" placeholder="Confirm Password"/>
+					<div class="error"> * <?php echo $cpassword_error; ?> </div>
+				</label>
 
                 <section class="radio-group">
                 

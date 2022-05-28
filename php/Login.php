@@ -26,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 		}
 		$username = sanitize($username);
 	}
+
     //Check that password is entered
     if (empty($_POST["fpassword"])) {
 		$fpassword_error = "Password is required.";
@@ -96,15 +97,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="fusername">
                     <input id="fusername" placeholder="Enter username" type="text" name="fusername">
                     <p class="error hide-error"> please enter username </p>
+					<div class="error"> * <?php echo $username_error; ?> </div>
                 </label>
-                <div class="error"> * <?php echo $username_error; ?> </div>
 				
                 <label for="fpassword">
 
                     <input id="fpassword" type="password" placeholder="Enter password" name="fpassword">
                     <p class="error hide-error"> please enter passowrd</p>
+					<div class="error"> * <?php echo $fpassword_error; ?> </div>
                 </label>
-				<div class="error"> * <?php echo $fpassword_error; ?> </div>
 
                 <input type="submit" id="login_btn" value="sign in">
                 <a id="login_signup" href="Signup.php"> <small>Haven't registered?</small></a>
