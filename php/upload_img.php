@@ -5,10 +5,9 @@
 	
 	//Get to the right file path
 	$basename = basename($_FILES["imgref"]["name"]);
-	$targetPath = '../Images/thumbnails/' . $basename;
 	$canUpload = true;
-	$imageFileType = strtolower(pathinfo($targetPath,PATHINFO_EXTENSION));
-	
+	$fileExtension = strtolower(pathinfo($basename,PATHINFO_EXTENSION));
+	$targetPath = '../Images/thumbnails/' . hash('sha256', $_SESSION["ID"]) . "." . $fileExtension;
 	
 	//Need checks like making sure that .jpg or .png, is right size etc.
 	

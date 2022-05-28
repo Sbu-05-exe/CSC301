@@ -144,10 +144,14 @@ function importJSONdata() {
 // importJSONdata();
 
 function makeUpdatePasswordQuery($row) {
-  return "UPDATE Users SET PasswordHash=' "
+  return "UPDATE Users SET PasswordHash='"
    . hash('sha256', $row["Password"])
    . "' WHERE UserID=" . $row["UserId"]   ;
   // return "UPDATE Users SET PasswordHash=" . password_hash($row["Password"], PASSWORD_BCRYPT) . ";";
+}
+
+function makeUpdateImgRefQuery($row) {
+  return "UPDATE Users SET ImgRef='placeholder.png' WHERE UserID=" . $row["UserId"];
 }
 
 
@@ -161,18 +165,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   echo "<table>";
   while ($row = $results->fetch_assoc()) {
 
-    if ($conn->query(makeUpdatePasswordQuery($row))) {
-      // echo "hashed " . $row["Username"] . "'s password successfully";
+    if ($conn->query(makeUpdateImgRefQuery($row))) {
+      echo "hashed " . $row["Username"] . "'s image successfully";
 
     } else {
-      echo "failed to hash password for " . $row["Username"];
+      echo "failed to hash image reference for " . $row["Username"];
       echo "<br/> " . $conn->error;
     }      
     echo "
       <tr>
         <td> " . $row["Username"] . " </td>
-        <td> " . $row["Password"] . " </td>
-        <td> " . $row["PasswordHash"] . " </td>
+        <td> " . $row["ImgRef"] . " </td>
       </tr>
 
     ";
