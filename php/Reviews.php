@@ -134,7 +134,7 @@
                 // echo "why are you here";
               }
             } else {
-              echo "session is not set";
+              // echo "session is not set";
               $display_form = false;
             }
 

@@ -171,7 +171,7 @@ session_start();
 		<div class="flex-row">
 			<form id="image-form" action="upload_img.php" method="post" enctype="multipart/form-data">
 				<img id="user_thumbnail" style="height:100px;" src="<?php if (isset($_SESSION['img'])) {echo '../Images/thumbnails/' . $_SESSION['img'];} ?>" >
-				<input type="file" name="imgref" id="imgref">
+				<input type="file" name="imgref" id="imgref" accept=".png, .jpg, .jpeg">
 				<input type="submit" name="upload_img" value="Edit image">
 			</form>
 			<form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>" method="POST" id="profile-form">
