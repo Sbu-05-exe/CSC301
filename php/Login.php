@@ -81,7 +81,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					// create a session so the user is logged in on all pages
 					$_SESSION['ID'] = $result['UserId'];
 					$_SESSION['loggedin'] = true;
-					$_SESSION['img'] = $result['ImgRef'];
+					$fileExtension = strtolower(pathinfo($result['ImgRef'],PATHINFO_EXTENSION));
+					$_SESSION['img'] = hash('sha256', $_SESSION["ID"]) . "." . $fileExtension;
 					$_SESSION['addr'] = $_SERVER['REMOTE_ADDR'];
 					
 					header("Location: ../index.php");

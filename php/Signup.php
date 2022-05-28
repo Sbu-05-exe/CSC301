@@ -134,6 +134,17 @@
 					$userInsertStmt->bind_param("sssssss", $fname, $firstname, $surname, $email, $fpassword, $radio, $hashed_password);
 					//Insert user into database
 					$userInsertStmt->execute();
+					
+					$userSelectStmt = $conn->prepare("SELECT UserId FROM users WHERE Username=? AND PasswordHash=?");
+					$userSelectStmt->bind_param("ss", $fname, $hashed_password);
+					$userSelectStmt->execute();
+					$selectResult = $userSelectStmt->get_result();
+					$res = $selectResult->fetch_assoc();
+					
+					//Create placeholder image for this new user
+					$source = '../Images/thumbnails/placeholder.png';
+					$destination = '../Images/thumbnails/' . hash('sha256', $res['UserId']) . '.png';
+					copy($source, $destination);
 				
 					//Close the statement and database connection
 					$userInsertStmt->close();

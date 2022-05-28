@@ -18,7 +18,7 @@
 		$thumbnailStmt->bind_param('si', $basename, $_SESSION['ID']);
 		$thumbnailStmt->execute();
 		//Change the image for the session to reflect this new image
-		$_SESSION['img'] = $basename;
+		$_SESSION['img'] = hash('sha256', $_SESSION["ID"]) . "." . $fileExtension;
 		
 		//Close statement and connection
 		$thumbnailStmt->close();
