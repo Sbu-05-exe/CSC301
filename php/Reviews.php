@@ -1,9 +1,21 @@
 <?php
 
+	session_start();
+
+	//Safeguard for session hijacking
+	if (isset($_SESSION["ID"])) {
+		if ($_SESSION["addr"] != $_SERVER["REMOTE_ADDR"]) {
+			die('Invalid access.');
+		}
+	}
+
   include('connection.php');
   include('validation.php');
 
-  session_start();
+  
+  
+  
+  
   if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
     // sql to sanitize 

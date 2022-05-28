@@ -1,5 +1,13 @@
 <?php
 session_start();
+
+	//Safeguard for session hijacking
+	if (isset($_SESSION["ID"])) {
+		if ($_SESSION["addr"] != $_SERVER["REMOTE_ADDR"]) {
+			die('Invalid access.');
+		}
+	}
+
 ?>
 
 <!DOCTYPE html>
@@ -116,7 +124,11 @@ session_start();
 					$isSanitized = false;
 				}
 			}
-			$radio = $_POST["usertype"];
+			if ($_POST["usertype"] == "Student") {
+				$radio = true;
+			} else {
+				$radio = false;
+			}
 			if ($isSanitized) {
 				//Allowed for own username to stay the same, but cannot be the same as some other users
 				$usernameStmt = $conn->prepare("SELECT UserId FROM users WHERE Username=? AND UserId!=?");
@@ -145,7 +157,7 @@ session_start();
 				if ($canInsert) {
 					//Prepare statement in advance with parameters, to prevent SQL injection
 					$userInsertStmt = $conn->prepare("UPDATE users SET Username=?, Name=?, Surname=?, Email=?, Password=?, UserType=? WHERE UserId=?");
-					$userInsertStmt->bind_param("sssssbi", $fname, $firstname, $surname, $email, $fpassword, $radio, $_SESSION['ID']);
+					$userInsertStmt->bind_param("ssssssi", $fname, $firstname, $surname, $email, $fpassword, $radio, $_SESSION['ID']);
 					//Insert user into database
 					$userInsertStmt->execute();
 				
