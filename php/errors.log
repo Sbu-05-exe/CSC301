@@ -1,7 +1,12 @@
-[28-May-2022 06:27:34 UTC] Password field is empty.
-[28-May-2022 06:29:30 UTC] Username field is empty.
-[28-May-2022 06:33:53 UTC] Password field is empty. from 146.231.8.191
-[28-May-2022 06:49:14 UTC] Password field is empty. from 146.231.8.191
-[28-May-2022 06:55:57 UTC] Password field is empty from 146.231.8.191
-[28-May-2022 06:56:57 UTC] Invalid user vincent from 146.231.8.191
-[28-May-2022 06:57:36 UTC] Invalid password for user emily from 146.231.8.191
+[28-May-2022 10:03:54 UTC] PHP Warning:  fopen(./errors.log): Failed to open stream: No such file or directory in C:\Apache24\htdocs\Practicals\G20M8656\Prac 5\WebTech-Practical-prac5\WebTech-Practical-prac4\php\logs.php on line 5
+[28-May-2022 09:04:04 UTC] "Invalid user hello" "from" 146.231.8.191
+[28-May-2022 09:05:42 UTC] "Password field is empty" "from" 146.231.8.191
+[28-May-2022 09:05:46 UTC] "Password field is empty" "from" 146.231.8.191
+[28-May-2022 09:05:54 UTC] "Password field is empty" "from" 146.231.8.191
+[28-May-2022 09:05:57 UTC] "Password field is empty" "from" 146.231.8.191
+[28-May-2022 09:06:02 UTC] "Password field is empty" "from" 146.231.8.191
+[28-May-2022 10:11:16 UTC] "Invalid user hello" "from" 146.231.8.191
+[28-May-2022 10:11:49 UTC] "Invalid user hello" "from" 146.231.8.191
+[28-May-2022 10:11:53 UTC] "Invalid user hello" "from" 146.231.8.191
+[28-May-2022 10:11:57 UTC] "Invalid user hello" "from" 146.231.8.191
+[28-May-2022 10:12:02 UTC] "Invalid user hello" "from" 146.231.8.191

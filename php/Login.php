@@ -6,7 +6,9 @@ session_start();
 // Create connection
 include('connection.php');
 include('validation.php');
+include('logs.php');
 
+//Setting up log file for all errors
 $log_file = "./errors.log";
 ini_set("log_errors", TRUE);
 ini_set("error_log", $log_file);
@@ -17,84 +19,92 @@ $username = $password = $username_error = $fpassword_error = "";
 $isSanitized = true;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	//Check that username is entered
-	if (empty($_POST["fusername"])) {
-		$username_error = "Username is required.";
-		$msg = "Username field is empty";
-		$isSanitized = false;
-	}
-	else {
-		$username = $_POST["fusername"];
-		//Check if username has correct type
-		if (!isUser($username)) {
-			$username_error = "Username must be numbers, letters or underscores, and two or more characters long.";
-			$msg = "Username syntax is invalid";
+	//Check that the person has not been blocked, based on whether they entered an incorrect password or username 5 times or more in the last hour
+	if (!mustBlock()) {
+		//Check that username is entered
+		if (empty($_POST["fusername"])) {
+			$username_error = "Username is required.";
+			$msg = '"Username field is empty"';
 			$isSanitized = false;
 		}
-		$username = sanitize($username);
-	}
-    //Check that password is entered
-    if (empty($_POST["fpassword"])) {
-		$fpassword_error = "Password is required.";
-		$msg = "Password field is empty";
-		$isSanitized = false;
-	}
-	else {
-		$password = $_POST["fpassword"];
-				
-	}
-    if ($isSanitized) {
-		$nameSelectStmt = $conn->prepare("SELECT UserId FROM users WHERE Username=?");
-		$nameSelectStmt->bind_param("s", $username);
-		$nameSelectStmt->execute();
-		$nameResult = $nameSelectStmt->get_result();
-		$nameRes = $nameResult->fetch_assoc();
-		if ($nameRes) {
-			$isValidUsername = true;
+		else {
+			$username = $_POST["fusername"];
+			//Check if username has correct type
+			if (!isUser($username)) {
+				$username_error = "Username must be numbers, letters or underscores, and two or more characters long.";
+				$msg = '"Username syntax is invalid"';
+				$isSanitized = false;
+			}
+			$username = sanitize($username);
+		}
+		//Check that password is entered
+		if (empty($_POST["fpassword"])) {
+			$fpassword_error = "Password is required.";
+			$msg = '"Password field is empty"';
+			$isSanitized = false;
 		}
 		else {
-			$isValidUsername = false;
-			$error = "Invalid username or password";
-			$msg = "Invalid user " . $username;
-			
-			$conn->close();
+			$password = $_POST["fpassword"];
+				
 		}
-		$nameSelectStmt->close();
-		if ($isValidUsername) {
-			//Check whether user in database
-			$userSelectStmt = $conn->prepare("SELECT UserId, ImgRef FROM users WHERE Username=? AND Password=?");
-			$userSelectStmt->bind_param("ss", $username, $password);
-			$userSelectStmt->execute();
-			$userResult = $userSelectStmt->get_result();
-			$result = $userResult->fetch_assoc();
-    
-			if ($result) {
-				// the user exists
-				// create a session so the user is logged in on all pages
-				$_SESSION['ID'] = $result['UserId'];
-				$_SESSION['loggedin'] = true;
-				$_SESSION['img'] = $result['ImgRef'];
-			
-				header("Location: ../index.php");
-    
-			} else {
-				// the email or password is incorrect
-				$error = "Invalid username or password";
-				$msg = "Invalid password for user " . $username;
-    
+		if ($isSanitized) {
+			$nameSelectStmt = $conn->prepare("SELECT UserId FROM users WHERE Username=?");
+			$nameSelectStmt->bind_param("s", $username);
+			$nameSelectStmt->execute();
+			$nameResult = $nameSelectStmt->get_result();
+			$nameRes = $nameResult->fetch_assoc();
+			if ($nameRes) {
+				$isValidUsername = true;
 			}
-			//Close the statement and database connection
-			$userSelectStmt->close();
+			else {
+				$isValidUsername = false;
+				$error = "Invalid username or password";
+				$msg = '"Invalid user ' . $username . '"';
+			
+				$conn->close();
+			}
+			$nameSelectStmt->close();
+			if ($isValidUsername) {
+				//Check whether user in database
+				$userSelectStmt = $conn->prepare("SELECT UserId, ImgRef FROM users WHERE Username=? AND Password=?");
+				$userSelectStmt->bind_param("ss", $username, $password);
+				$userSelectStmt->execute();
+				$userResult = $userSelectStmt->get_result();
+				$result = $userResult->fetch_assoc();
+    
+				if ($result) {
+					// the user exists
+					// create a session so the user is logged in on all pages
+					$_SESSION['ID'] = $result['UserId'];
+					$_SESSION['loggedin'] = true;
+					$_SESSION['img'] = $result['ImgRef'];
+			
+					header("Location: ../index.php");
+    
+				} else {
+					// the email or password is incorrect
+					$error = "Invalid username or password";
+					$msg = '"Invalid password for user ' . $username . '"';
+    
+				}
+				//Close the statement and database connection
+				$userSelectStmt->close();
+				$conn->close();
+			}
+		}
+		else {
+			//Close the database connection
 			$conn->close();
 		}
+		if ($msg != "") {
+			//If the login was not successful, log it
+			$msg = $msg. ' "from" ' . $_SERVER["REMOTE_ADDR"];
+			error_log($msg);
+		}
 	}
+	//Tell them they cannot log in for the next hour
 	else {
-		//Close the database connection
-		$conn->close();
-	}
-	if ($msg != "") {
-		$msg = $msg. " from " . $_SERVER["REMOTE_ADDR"];
-		error_log($msg);
+		$error = "You have been locked out. Please wait an hour before trying again.";
 	}
 }
 
