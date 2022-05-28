@@ -20,7 +20,7 @@ $isSanitized = true;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	//Check that the person has not been blocked, based on whether they entered an incorrect password or username 5 times or more in the last hour
-	if (true/*!mustBlock()*/) {
+	if (!mustBlock()) {
 		//Check that username is entered
 		if (empty($_POST["fusername"])) {
 			$username_error = "Username is required.";
