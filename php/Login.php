@@ -78,6 +78,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 					$_SESSION['ID'] = $result['UserId'];
 					$_SESSION['loggedin'] = true;
 					$_SESSION['img'] = $result['ImgRef'];
+					$_SESSION['addr'] = $_SERVER['REMOTE_ADDR'];
 			
 					header("Location: ../index.php");
     

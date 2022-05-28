@@ -1,6 +1,12 @@
 <?php
-
   session_start();
+  
+	//Safeguard for session hijacking
+	if (isset($_SESSION["ID"])) {
+		if ($_SESSION["addr"] != $_SERVER["REMOTE_ADDR"]) {
+			die('Invalid access.');
+		}
+	}
 ?>
 
 <!DOCTYPE html>
@@ -33,9 +39,7 @@
         <li > <a  href="./Attractions.php"> Attractions </a> </li>
         <?php
           if (isset($_SESSION["loggedin"])) {
-
-              echo '<li><a href="./Profile.php"> Profile </a></li>' ;
-
+			echo '<li><a href="./Profile.php"> Profile </a></li>' ;
           } else {
             echo "you're not logged in";
             echo '<li><a href="./Login.php"> Login </a></li>';
